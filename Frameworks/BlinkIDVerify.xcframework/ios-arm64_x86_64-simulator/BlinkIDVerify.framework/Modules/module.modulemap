@@ -1,0 +1,10 @@
+framework module BlinkIDVerify {
+    umbrella header "BlinkIDVerify.h"
+
+    export *
+}
+
+module BlinkIDVerify.Swift {
+  header "BlinkIDVerify-Swift.h"
+  requires objc
+}
