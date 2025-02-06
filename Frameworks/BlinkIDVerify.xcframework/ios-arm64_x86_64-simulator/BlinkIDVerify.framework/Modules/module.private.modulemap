@@ -1,0 +1,12 @@
+//
+//  cxxmodule.modulemap
+//  DocumentVerificationClient
+//
+//  Created by DoDo on 11.09.2024..
+//
+
+module BlinkIDVerify.Swift {
+    header "SwiftCxxBridge.hpp"
+
+    requires cplusplus
+}
