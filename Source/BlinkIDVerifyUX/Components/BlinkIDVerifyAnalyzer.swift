@@ -162,10 +162,14 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     
     private func startTimer(_ interval: TimeInterval) {
         guard interval > 0.0 else { return }
-        timerTask = Task { [weak self] in
-            try? await Task.sleep(nanoseconds: UInt64(interval * 1_000_000_000))
-            if !Task.isCancelled {
-                await self?.timerFired()
+        timerTask = Task() { [weak self] in
+            while !Task.isCancelled {
+                guard let self else { return }
+                let nanoseconds = UInt64(interval * Double(NSEC_PER_SEC))
+                try? await Task.sleep(nanoseconds: nanoseconds)
+                if !Task.isCancelled {
+                    await timerFired()
+                }
             }
         }
     }

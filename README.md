@@ -232,10 +232,12 @@ struct ContentView: View {
 
 ```swift
 viewModel.$captureResult
-    .sink { captureResult in
-        if let result = captureResult {
-            // Handle the verification result
-            print("Verification completed with result: \(result)")
+    .sink { captureResultState in
+        if let captureResultState {
+                if let captureResult = captureResultState.captureResult {
+                    // Handle the verification result
+                    print("Verification completed with result: \(captureResult)")
+                }
         }
     }
     .store(in: &cancellables)
@@ -252,7 +254,7 @@ struct ContentView: View {
             ScanningUXView(viewModel: viewModel)
 
             if let result = viewModel.captureResult {
-                Text("Verification Result: \(result.description)")
+                Text("Verification Result: \(result.captureResult.description)")
             } else {
                 Text("Awaiting verification...")
             }
@@ -1245,6 +1247,6 @@ You can find the *App Size Report* [here]().
 
 Complete API references can be found:
 
-* [BlinkIDVerify](http://blinkid.github.io/blinkid-verify-sp/documentation/blinkidverify/) 
-* [BlinkIDVerifyUX](http://blinkid.github.io/blinkid-verify-ios/documentation/blinkidverifyux/)
+* [BlinkIDVerify](http://blinkid.github.io/blinkid-verify-sp/docs/blinkidverify/) 
+* [BlinkIDVerifyUX](http://blinkid.github.io/blinkid-verify-ios/docs/blinkidverifyux/)
 * [BlinkID Verify API](https://blinkidverify.docs.microblink.com/docs/api/request/)

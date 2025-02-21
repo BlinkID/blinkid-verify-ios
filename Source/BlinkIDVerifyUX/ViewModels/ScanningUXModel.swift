@@ -199,17 +199,17 @@ public final class ScanningUXModel: ObservableObject {
         Task {
             let result = await analyzer.result()
             switch result {
-            case .completed(let captureResult):
+            case .completed(let completedResult):
                 finishScan()
-                if let captureResult = captureResult as? BlinkIDVerifyCaptureResult {
-                    self.captureResult = .result(captureResult)
+                if let result = completedResult as? BlinkIDVerifyCaptureResult {
+                    captureResult = BlinkIDVerifyCaptureResultState(captureResult: result)
                 }
             case .cancelled:
                 showLicenseErrorAlert = true
             case .timeout:
                 showTimeoutAlert = true
             case .none:
-                captureResult = .empty
+                captureResult = BlinkIDVerifyCaptureResultState(captureResult: nil)
             }
         }
         
@@ -227,7 +227,7 @@ public final class ScanningUXModel: ObservableObject {
     }
     
     public func licenseErrorAlertDismised() {
-        captureResult = .empty
+        captureResult = BlinkIDVerifyCaptureResultState(captureResult: nil)
     }
     
     /// Completes the scanning process.

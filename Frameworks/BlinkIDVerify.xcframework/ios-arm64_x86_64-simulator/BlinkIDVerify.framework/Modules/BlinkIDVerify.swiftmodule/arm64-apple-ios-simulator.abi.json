@@ -55965,6 +55965,46 @@
           },
           {
             "kind": "Var",
+            "name": "timedOut",
+            "printedName": "timedOut",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.ResourceDownloaderError.Type) -> BlinkIDVerify.ResourceDownloaderError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResourceDownloaderError",
+                    "printedName": "BlinkIDVerify.ResourceDownloaderError",
+                    "usr": "s:13BlinkIDVerify23ResourceDownloaderErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.ResourceDownloaderError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResourceDownloaderError",
+                        "printedName": "BlinkIDVerify.ResourceDownloaderError",
+                        "usr": "s:13BlinkIDVerify23ResourceDownloaderErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify23ResourceDownloaderErrorO8timedOutyA2CmF",
+            "mangledName": "$s13BlinkIDVerify23ResourceDownloaderErrorO8timedOutyA2CmF",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "errorDescription",
             "printedName": "errorDescription",
             "children": [
@@ -65241,27 +65281,27 @@
       "filePath": "\/opt\/jenkins-iphone-13-pro-max\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Resources\/ResourceDownloader.swift",
       "kind": "IntegerLiteral",
       "offset": 603,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/opt\/jenkins-iphone-13-pro-max\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Resources\/ResourceDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 640,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-13-pro-max\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Resources\/ResourceDownloader.swift",
       "kind": "IntegerLiteral",
-      "offset": 685,
+      "offset": 642,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-13-pro-max\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Resources\/ResourceDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 687,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-13-pro-max\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Resources\/ResourceDownloader.swift",
       "kind": "BooleanLiteral",
-      "offset": 3339,
+      "offset": 3463,
       "length": 4,
       "value": "true"
     },
