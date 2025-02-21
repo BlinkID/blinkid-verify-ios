@@ -1616,6 +1616,7 @@ public enum ResourceDownloaderError : Foundation.LocalizedError {
   case noInternetConnection
   case invalidResponse
   case resourceUnavailable
+  case timedOut
   public var errorDescription: Swift.String? {
     get
   }

@@ -5,7 +5,6 @@
 
 import BlinkIDVerify
 
-public enum BlinkIDVerifyCaptureResultState {
-    case result(BlinkIDVerifyCaptureResult)
-    case empty
+public struct BlinkIDVerifyCaptureResultState {
+    public let captureResult: BlinkIDVerifyCaptureResult?
 }

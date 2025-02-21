@@ -72,11 +72,11 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             let scanningUxModel = ScanningUXModel(analyzer: analyzer)
             scanningUxModel.$captureResult
                 .sink { [weak self] captureResultState in
-                    if let captureResultState = captureResultState {
-                        switch captureResultState {
-                        case .result(let captureResult):
+                    if let captureResultState {
+                        if let captureResult = captureResultState.captureResult {
                             self?.state = .success(captureResult)
-                        case .empty:
+                        }
+                        else {
                             self?.state = .home
                         }
                     }
