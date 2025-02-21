@@ -59,11 +59,13 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             let scanningUxModel = CustomScanningViewModel(analyzer: analyzer)
             scanningUxModel.$captureResult
                 .sink { [weak self] captureResult in
-                    if let captureResult = captureResult {
-                        self?.state = .success(captureResult)
-                    } else {
-                        self?.state = .home
-                    }
+                    if let captureResult {
+                        if let captureRes = captureResult.captureResult {
+                            self?.state = .success(captureRes)
+                        }
+                        else {
+                            self?.state = .home
+                        }
                 }
                 .store(in: &cancellables)
             
