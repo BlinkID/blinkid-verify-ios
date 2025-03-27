@@ -1,8 +1,8 @@
 //
 //  cxxmodule.modulemap
-//  DocumentVerificationClient
+//  BlinkID
 //
-//  Created by DoDo on 11.09.2024..
+//  Created by Jura Skrlec on 20.01.2025..
 //
 
 module BlinkIDVerify.Swift {

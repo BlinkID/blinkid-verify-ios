@@ -5,8 +5,6 @@
 //  Created by DoDo on 23.12.2024..
 //
 
-#import <BlinkIDVerify/MBSampleBufferWrapper.h>
-
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 

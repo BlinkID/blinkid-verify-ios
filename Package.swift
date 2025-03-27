@@ -43,7 +43,9 @@ let package = Package(name: "BlinkIDVerifyUX",
                       targets: [.target(name: "BlinkIDVerifyUX",
                                         dependencies: ["BlinkIDVerify"],
                                         path: "Source",
-                                        resources: [.process("PrivacyInfo.xcprivacy")],
+                                        resources: [
+                                            .process("PrivacyInfo.xcprivacy"),
+                                            .process("BlinkIDVerifyUX/Localizable.xcstrings")],
                                         swiftSettings: [.enableUpcomingFeature("ExistentialAny")]),
                                  .binaryTarget(
                                     name: "BlinkIDVerify",
