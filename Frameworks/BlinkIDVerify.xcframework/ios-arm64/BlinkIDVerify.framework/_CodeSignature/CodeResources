@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/BlinkIDVerify-Swift.h</key>
 		<data>
-		Tkbd7X6pTgxD0ac0mYNfu6ByKWs=
+		DFP8MVnyTaBaaaSj51xu78RSt/s=
 		</data>
 		<key>Headers/BlinkIDVerify.h</key>
 		<data>
@@ -14,31 +14,31 @@
 		</data>
 		<key>Headers/MBSampleBufferWrapper.h</key>
 		<data>
-		Rbz7i0NRjUijgky5drIHxLOGMs4=
+		PYtKceqBS/avglhWjoTVhW5h68A=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		SY/0fe/Bm0bPAPTCMy3PAWfc+hI=
+		OIVm/dvYX4Onva1NbeKiQTwOjCg=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		wWj+9bv/C7W09KEHDPF57rjOg6M=
+		5sAmQegvklYf+z/noeqEovdzvuw=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		dpM/4GWXLGzkgrYaa2f7+GlPNFc=
+		b6ddXUx6feWWVcIPmMAZBrUUzjA=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		GTIpgsK71IKFIA1y40icolA/5NU=
+		K/QRHJqe6+W8kdBYy++sJFD5Zj8=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		dpM/4GWXLGzkgrYaa2f7+GlPNFc=
+		b6ddXUx6feWWVcIPmMAZBrUUzjA=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		sJl28vcfpDCu4b8AIyRDoqNaFmA=
+		AcKeflZuua2KlVJvCONTmQ52wts=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/module.private.modulemap</key>
 		<data>
-		KzhapoEyfUm/HwTTugdXdQCwDFU=
+		xB/bYwgC+auC6RvdZ36UGOywacw=
 		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>PrivateHeaders/SwiftCxxBridge.hpp</key>
 		<data>
-		zS8O0WPB1XWCP5YhwzEFWOiOh7M=
+		ACfputyiaWrYjn+rpyzdsNniITo=
 		</data>
 		<key>conan.xcconfig</key>
 		<data>
-		tUdtUcJ2/vchR7/YqydTnW6M3OE=
+		9MzEUL5ZCMol6CpChOmQm2CuhZk=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7icYXVRT/IU2TLCvI572HN5JAMl1vqhP5ZUOBgTjYWk=
+			ifuM01ti/CBhK3KdQo6JJvTuQ4M/K8gfaNP0WBklZZ8=
 			</data>
 		</dict>
 		<key>Headers/BlinkIDVerify.h</key>
@@ -81,42 +81,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4FlRhcS0sLCHmNd365+aK5ByzZAjLtUsvjEhCqi1zhM=
+			Svyfvtc/dt4MLVWYT2vMnvmmfQ8tjtXUkWJox6DDC7U=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ue9u4fM5jHQXn5VtyOzuuIcO6K+aLDS6EezSIyvNrfk=
+			/cF8MzehKoWlJkRI1dg7eaUK5NHLVbcml9Qwo04ImNc=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K14mQEnCDgGf11lKJXvB7+JEo9/0hnUGe7+Suk71YsM=
+			RuFh3V5FVPe/BaBCO8v0ktWrN/VIdJlZFRzFEJ4R4XA=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AkIfY7Y7mgu14k8OCItow7BTmNV0pttfq0zVeNgLYMA=
+			ybX2WMBcbGEKgUaXRtEu8oGPuYZt5LQxqT353AyuUWY=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K14mQEnCDgGf11lKJXvB7+JEo9/0hnUGe7+Suk71YsM=
+			RuFh3V5FVPe/BaBCO8v0ktWrN/VIdJlZFRzFEJ4R4XA=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fgVJV2R/3/kXkg0mCxrS1apng6DWKE6TGSgdmKkDFoU=
+			KNYIC2wvSbhdvU5fueT1h4Y61HjKYMjh3bc9LqYJVfs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -130,7 +130,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JefBfyzkMFUKqjoRfIrMlPfM99M25ldjthSAC2SNC+s=
+			hOQu3kYrRYqfW/7fwnTGwaCBJKtjD8b2jxztnaoZtu8=
 			</data>
 		</dict>
 		<key>PrivacyInfo.xcprivacy</key>
@@ -144,14 +144,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oJ7DyhLiM3NYXCppdwn/7MzUkpRYZ1COkOLqTWYfWNs=
+			IJLtHRQgBTx5O5hbwcouyhqNze4JRE1azQ2TbOHpZVo=
 			</data>
 		</dict>
 		<key>conan.xcconfig</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LUfn51BCJBiyXyqnaOry6aqUwoT3pKX+iSBpuC/iKT8=
+			Vm9tO3TfCdiioDqQydNqLb3vWwDfEYlrdModMO+FfL8=
 			</data>
 		</dict>
 	</dict>

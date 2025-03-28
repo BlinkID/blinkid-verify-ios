@@ -11,6 +11,8 @@
 #include <tuple>
 
 #import "Frame/InputImage.hpp"
-#import "Session/NativeSession.hpp"
+#import "BlinkIDVerify/NativeSession.hpp"
 #import "NativeDocumentVerify.hpp"
 #import "License/NativeLicenseProvider.hpp"
+#import "BlinkID/NativeBlinkIDScanningSession.hpp"
+#import "NativeBlinkId.hpp"

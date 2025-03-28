@@ -38,7 +38,7 @@ final class ScanningUXTranslator {
         switch frameAnalysisResult.processingStatus {
         case .scanningWrongSide, .awaitingOtherSide:
             events.append(.wrongSide)
-        case .success, .detectionFailed, .unsupportedClass, .unsupportedByLicense, .unknown:
+        case .success, .detectionFailed:
             break
         default:
             events.append(.notFullyVisible)

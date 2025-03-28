@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-public final class BlinkIDVerifyTheme {
+public final class BlinkIDVerifyTheme: UXThemeProtocol {
     public static let shared = BlinkIDVerifyTheme()
     
     private init() {}
