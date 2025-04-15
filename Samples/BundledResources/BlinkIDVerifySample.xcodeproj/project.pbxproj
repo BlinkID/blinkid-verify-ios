@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FFAD47DB2DAE9722003931BB /* BlinkIDVerifyUX in Frameworks */ = {isa = PBXBuildFile; productRef = FFAD47DA2DAE9722003931BB /* BlinkIDVerifyUX */; };
+		FFAD47DC2DAE9729003931BB /* BlinkIDVerifyUX in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FFAD47DA2DAE9722003931BB /* BlinkIDVerifyUX */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		FF668B082D350D060015085E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -13,6 +18,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FFAD47DC2DAE9729003931BB /* BlinkIDVerifyUX in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFAD47DB2DAE9722003931BB /* BlinkIDVerifyUX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +94,7 @@
 			);
 			name = BlinkIDVerifySample;
 			packageProductDependencies = (
+				FFAD47DA2DAE9722003931BB /* BlinkIDVerifyUX */,
 			);
 			productName = DocumentVerificationSample;
 			productReference = FF52A0B12D350AA9001773CC /* BlinkIDVerifySample.app */;
@@ -117,7 +125,7 @@
 			mainGroup = FF52A0A82D350AA9001773CC;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				FF4B10412D54C78F0085B78A /* XCLocalSwiftPackageReference "../../../blinkid-verify-ios" */,
+				FFAD47D92DAE9722003931BB /* XCLocalSwiftPackageReference "../../../blinkid-verify-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FF52A0B22D350AA9001773CC /* Products */;
@@ -367,11 +375,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FF4B10412D54C78F0085B78A /* XCLocalSwiftPackageReference "../../../blinkid-verify-ios" */ = {
+		FFAD47D92DAE9722003931BB /* XCLocalSwiftPackageReference "../../../blinkid-verify-ios" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../../blinkid-verify-ios";
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFAD47DA2DAE9722003931BB /* BlinkIDVerifyUX */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BlinkIDVerifyUX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF52A0A92D350AA9001773CC /* Project object */;
 }

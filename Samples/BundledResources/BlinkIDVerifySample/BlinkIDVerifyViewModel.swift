@@ -41,7 +41,6 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             let settings = BlinkIDVerifySdkSettings(licenseKey: licenseKey, downloadResources: false, bundleURL: Bundle.main.bundleURL)
             sdkInstance = try await BlinkIDVerifySdk.createBlinkIDVerifySdk(withSettings: settings)
         } catch {
-            print("tu")
             state = .error(error.localizedDescription)
         }
         state = .home
@@ -59,26 +58,23 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             let scanningUxModel = CustomScanningViewModel(analyzer: analyzer)
             scanningUxModel.$captureResult
                 .sink { [weak self] captureResult in
-                    if let captureResult {
-                        if let captureRes = captureResult.captureResult {
-                            self?.state = .success(captureRes)
-                        }
-                        else {
-                            self?.state = .home
-                        }
+                    if let captureResult = captureResult {
+                        self?.state = .success(captureResult)
+                    } else {
+                        self?.state = .home
+                    }
                 }
                 .store(in: &cancellables)
-            
             state = .scanCustom(scanningUxModel)
         } else {
             let scanningUxModel = ScanningUXModel(analyzer: analyzer)
             scanningUxModel.$captureResult
                 .sink { [weak self] captureResultState in
-                    if let captureResultState = captureResultState {
-                        switch captureResultState {
-                        case .result(let captureResult):
+                    if let captureResultState {
+                        if let captureResult = captureResultState.captureResult {
                             self?.state = .success(captureResult)
-                        case .empty:
+                        }
+                        else {
                             self?.state = .home
                         }
                     }
