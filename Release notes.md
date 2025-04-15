@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.9.1
+
+- Bug fixes:
+    - Fix `lastName` BlinkID extraction 
+
 ## 3.9.0
 
 ### BlinkID integration
