@@ -66,7 +66,6 @@ final class BlinkIDVerifyViewModel: ObservableObject {
                     }
                 }
                 .store(in: &cancellables)
-            
             state = .scanCustom(scanningUxModel)
         } else {
             let scanningUxModel = ScanningUXModel(analyzer: analyzer)

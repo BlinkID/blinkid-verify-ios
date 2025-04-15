@@ -17,7 +17,7 @@ import BlinkIDVerifyUX
 public final class CustomScanningViewModel: ObservableObject {
   
     let camera: Camera = Camera()
-    let analyzer: CameraFrameAnalyzer
+    let analyzer: BlinkIDVerifyAnalyzer
     @Published var instructionText: String = "Scan the front side"
     @Published public var captureResult: BlinkIDVerifyCaptureResult?
     @Published public var roi: RegionOfInterest = RegionOfInterest()
@@ -25,7 +25,7 @@ public final class CustomScanningViewModel: ObservableObject {
     
     private var eventHandlingTask: Task<Void, Never>?
     
-    public init(analyzer: CameraFrameAnalyzer) {
+    public init(analyzer: BlinkIDVerifyAnalyzer) {
         self.analyzer = analyzer
         startEventHandling()
     }
@@ -51,10 +51,8 @@ public final class CustomScanningViewModel: ObservableObject {
             let result = await analyzer.result()
             switch result {
             case .completed(let captureResult):
-               self.captureResult = captureResult as? BlinkIDVerifyCaptureResult
-            case .cancelled, .timeout:
-                break
-            case .none:
+                self.captureResult = captureResult
+            case .cancelled, .interrupted(_), .ended:
                 break
             }
         }
