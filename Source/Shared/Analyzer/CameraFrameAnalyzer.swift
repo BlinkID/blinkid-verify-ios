@@ -2,6 +2,8 @@
 //  Copyright (c) Microblink. All rights reserved.
 //  Modifications are allowed under the terms of the license for files located in the UX/UI lib folder.
 
+import Foundation
+
 public protocol ScanningResultProtocol: Sendable {
     associatedtype Result: Sendable
     nonisolated var scanResult: Result? { get }
@@ -66,14 +68,29 @@ public protocol CameraFrameAnalyzer<Frame, Event> : Sendable {
     
     /// Get stream of UI Events.
     var events: any EventStream<Event> { get }
+    
+    /// Duration in seconds before scanning step times out and is cancelled.
+    /// If less than zero, scanning will not time out.
+    var stepTimeoutDuration: TimeInterval { get async }
+}
+
+/// Represents passport rotation orientation depending on View interface and a document card rotation property.
+///
+/// See ``DocumentRotation``.
+public enum PassportOrientation: Sendable, Equatable {
+    case none
+    case left90
+    case right90
 }
 
 /// Represents different sides of a document during the scanning process.
-public enum DocumentSide: Sendable {
+public enum DocumentSide: Sendable, Equatable {
     /// Front side of the document
     case front
     /// Back side of the document
     case back
     /// Barcode region of the document
     case barcode
+    /// Document is passport
+    case passport(PassportOrientation)
 }

@@ -11,14 +11,14 @@ public enum BlinkIDVerifyScanningAlertType: Sendable, AlertTypeProtocol {
     public var title: String {
         switch self {
         case .timeout:
-            return "Scan unsuccessful"
+            return "mb_recognition_timeout_dialog_title".localizedString
         }
     }
     
     public var description: String {
         switch self {
         case .timeout:
-            return "Unable to read the document. Please try again."
+            return "mb_recognition_timeout_dialog_message".localizedString
         }
     }
 }

@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Cancel" : {
-
-    },
-    "Double tap to attempt reconnecting to the internet" : {
-
-    },
     "mb_back_instructions" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -62,7 +56,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skeniraj stražnju\nstranu dokumenta"
+            "value" : "Skenirajte stražnju stranu dokumenta"
           }
         },
         "hu" : {
@@ -350,7 +344,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drži dokument i telefon mirno"
+            "value" : "Držite dokument i telefon mirno"
           }
         },
         "hu" : {
@@ -494,7 +488,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Okreni dokument"
+            "value" : "Okrenite dokument"
           }
         },
         "hu" : {
@@ -867,6 +861,149 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉"
+          }
+        }
+      }
+    },
+    "mb_decrease_lighting_intensity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتقل إلى مكان ذي إضاءة أقل"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přesuňte se na méně osvětlené místo"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An eine Stelle mit weniger Licht gehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to spot with less lighting"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muévase a un lugar con menos luz"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iusog sa bahaging hindi masyadong maliwanag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se déplacer vers un endroit moins éclairé"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "עברו למקום עם פחות תאורה"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomaknite se na slabije osvijetljeno mjesto"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menjen egy kevésbé megvilágított helyre"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pindah ke tempat dengan pencahayaan yang lebih sedikit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sposta in un punto meno illuminato"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beralih ke tempat yang kurang pencahayaan"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga na een plek met minder licht"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desloque-se para um local com menos iluminação"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutați-vă într-un loc mai puțin luminos"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presuňte sa na miesto s menším osvetlením"
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premaknite se na mesto z manj svetlobe"
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomerite se na mesto sa manje svetla"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ย้ายไปยังจุดที่มีแสงสว่างน้อยกว่า"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di chuyển đến nơi ít sáng hơn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移动到光线更暗的位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到照明較暗的點"
           }
         }
       }
@@ -1790,7 +1927,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drži dokument u potpunosti vidljivim"
+            "value" : "Držite dokument u potpunosti vidljivim"
           }
         },
         "hu" : {
@@ -1934,7 +2071,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odmakni dokument od ruba"
+            "value" : "Odmaknite dokument od ruba"
           }
         },
         "hu" : {
@@ -2078,7 +2215,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dozvoli pristup kameri"
+            "value" : "Dozvolite pristup kameri"
           }
         },
         "hu" : {
@@ -2222,7 +2359,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bit ćeš odveden na sustavske postavke gdje moraš aplikaciji dozvoliti pristup kameri."
+            "value" : "Bit ćete odvedeni na sustavske postavke gdje morate aplikaciji dozvoliti pristup kameri."
           }
         },
         "hu" : {
@@ -2366,7 +2503,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dozvoli pristup kameri u postavkama aplikacije."
+            "value" : "Dozvolite pristup kameri u postavkama aplikacije."
           }
         },
         "hu" : {
@@ -2654,7 +2791,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Smanji odsjaj bljeskalice laganim pomicanjem dokumenta."
+            "value" : "Smanjite odsjaj bljeskalice laganim pomicanjem dokumenta."
           }
         },
         "hu" : {
@@ -2798,7 +2935,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skeniraj prednju\nstranu dokumenta"
+            "value" : "Skenirajte prednju stranu dokumenta"
           }
         },
         "hu" : {
@@ -2942,7 +3079,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nagni ili premjesti dokument kako bi uklonio refleksiju"
+            "value" : "Nagnite ili premjestite dokument kako biste uklonili refleksiju"
           }
         },
         "hu" : {
@@ -3895,6 +4032,149 @@
         }
       }
     },
+    "mb_increase_lighting_intensity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتقل إلى مكان ذي إضاءة أعلى"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přesuňte se na lépe osvětlené místo"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An eine hellere Stelle gehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to brighter spot"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muévase a un lugar con más luz"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iusog sa bahaging mas malinawag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacer le document vers un endroit plus lumineux"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "עברו למקום בהיר יותר"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomaknite se na više osvijetljeno mjesto"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menjen jobban megvilágított helyre"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pindah ke tempat yang lebih terang"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sposta in un punto più illuminato"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beralih ke tempat yang lebih cerah"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga naar een lichtere plek"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desloque-se para um local com mais iluminação"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutați-vă într-un loc mai luminos"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presuňte sa na svetlejšie miesto"
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premaknite se na svetlejšo točko"
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomerite se na svetlije mesto"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ย้ายไปยังจุดที่สว่างกว่า"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di chuyển đến nơi sáng hơn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移动到更明亮的位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到更亮的點"
+          }
+        }
+      }
+    },
     "mb_instructions_mrz" : {
       "comment" : "",
       "extractionState" : "manual",
@@ -4238,7 +4518,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na lijevu stranicu"
+            "value" : "Prijeđite na lijevu stranicu"
           }
         },
         "hu" : {
@@ -4382,7 +4662,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na desnu stranicu"
+            "value" : "Prijeđite na desnu stranicu"
           }
         },
         "hu" : {
@@ -4526,7 +4806,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na gornju stranicu"
+            "value" : "Prijeđite na gornju stranicu"
           }
         },
         "hu" : {
@@ -4670,7 +4950,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drži dokument paralelno s telefonom"
+            "value" : "Držite dokument paralelno s telefonom"
           }
         },
         "hu" : {
@@ -4814,7 +5094,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skeniraj lijevu stranicu"
+            "value" : "Skenirajte lijevu stranicu"
           }
         },
         "hu" : {
@@ -5102,7 +5382,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Približi dokument"
+            "value" : "Približite dokument"
           }
         },
         "hu" : {
@@ -5246,7 +5526,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Udalji dokument"
+            "value" : "Udaljite dokument"
           }
         },
         "hu" : {
@@ -5390,7 +5670,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trebaš pomoć?"
+            "value" : "Trebate pomoć?"
           }
         },
         "hu" : {
@@ -5966,7 +6246,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dokument nije moguće očitati. Molimo pokušaj ponovo."
+            "value" : "Dokument nije moguće očitati. Molimo pokušajte ponovo."
           }
         },
         "hu" : {
@@ -6398,7 +6678,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skeniraj desnu stranicu"
+            "value" : "Skenirajte desnu stranicu"
           }
         },
         "hu" : {
@@ -6542,7 +6822,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na lijevu stranicu"
+            "value" : "Prijeđite na lijevu stranicu"
           }
         },
         "hu" : {
@@ -6686,7 +6966,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na desnu stranicu"
+            "value" : "Prijeđite na desnu stranicu"
           }
         },
         "hu" : {
@@ -6830,7 +7110,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prijeđi na gornju stranicu"
+            "value" : "Prijeđite na gornju stranicu"
           }
         },
         "hu" : {
@@ -7118,7 +7398,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skeniraj gornju stranicu"
+            "value" : "Skenirajte gornju stranicu"
           }
         },
         "hu" : {
@@ -7262,7 +7542,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ponovi skeniranje prednje strane podržanog dokumenta."
+            "value" : "Ponovite skeniranje prednje strane podržanog dokumenta."
           }
         },
         "hu" : {
@@ -7638,12 +7918,6 @@
           }
         }
       }
-    },
-    "No Internet Connection Screen" : {
-
-    },
-    "Retry connection" : {
-
     }
   },
   "version" : "1.0"

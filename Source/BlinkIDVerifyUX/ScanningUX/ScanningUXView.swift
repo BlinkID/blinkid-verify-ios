@@ -25,6 +25,6 @@ public struct ScanningUXView: View, ScanningUXProtocol {
     }
 
     public var body: some View {
-        MainView(reticleState: $viewModel.reticleState, isTorchOn: $viewModel.isTorchOn, showSheet: $viewModel.showSheet, showScanningAlert: $viewModel.showScanningAlert, showLicenseErrorAlert: $viewModel.showLicenseErrorAlert)
+        MainView(reticleState: $viewModel.reticleState, isTorchOn: $viewModel.isTorchOn, showToast: $viewModel.isToastVisible, showSheet: $viewModel.showSheet, showScanningAlert: $viewModel.showScanningAlert, showLicenseErrorAlert: $viewModel.showLicenseErrorAlert)
     }
 }

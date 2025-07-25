@@ -1,5 +1,31 @@
 # Release notes
 
+## 3.14.0
+
+### What's New
+- Update to BlinkID v7.4 for document capturing and extraction
+- Improved document coverage globally with new document version support and new document types
+- Improved data extraction accuracy for Quebec and Ontario Healthcare cards
+
+### Bugfixes
+- Fixed document number extraction from Canada/Nunavut barcodes
+- Fixed core data concurrency crash when using com.apple.CoreData.ConcurrencyDebug flag
+
+#### Platform API changes
+- Complete scanning instruction messages revamp - the scanning session is now more stable and cleaner, which ensures a better scanning experience
+- Added "Demo" overlay for the demo licenses (non-production)
+- Added "Powered by Microblink" overlay option for licenses with this enabled
+- Added a separate timeout timer for the Barcode step
+- Updated help screens with new illustrations
+- Updated "Need help?" tooltip triggers
+- Updated translations for Croatian language
+- `dependentsInfo` in `VizResult` is now nullable
+- Fixed data match overall result
+
+#### Breaking API changes
+- Removed `stepTimeoutDuration` from `BlinkIDVerifyAnalyzer` init as it is stored in `CaptureSessionSettings`
+  - fix by setting `stepTimeoutDuration` in `CaptureSessionSettings`, remove from `BlinkIDVerifyAnalyzer` init
+
 ## 3.9.1
 
 - Bug fixes:

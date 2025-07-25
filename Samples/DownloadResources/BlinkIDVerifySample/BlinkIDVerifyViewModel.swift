@@ -25,7 +25,7 @@ enum UIState {
 
 @MainActor
 final class BlinkIDVerifyViewModel: ObservableObject {
-    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBKWNvbS5taWNyb2JsaW5rLkRvY3VtZW50VmVyaWZpY2F0aW9uU2FtcGxl/cT+zgvB/gf4RsGV/1+mBYlGn+3Vzqyuyqb8SYgyT8hnZPe3O1npglqaCuqP8uWstgH6Kwsg1I0px/Z/83ox59L25kNnXz0ZIG0/vSw8M0vZ3COws1lM4mPKWlZWqu3OyXAos4ihVawoV3Gyzmg="
+    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBKWNvbS5taWNyb2JsaW5rLkRvY3VtZW50VmVyaWZpY2F0aW9uU2FtcGxl/cT+zgvB/gf4RsGVXwjWVESBt+5XVJwXU24kfSmcgWvVxzNbXxUvgwzFyM5T9Eu6cqbdkWkz3DPMuY2f3AoG/P5qTuyqJPeUyZ9aCFci1/BQzJqElIjfjkyUQ2Eztm/7+4s7LPxAv72mlgqwVwI="
     private var sdkInstance: BlinkIDVerifySdk?
     private var cancellables = Set<AnyCancellable>()
     @Published var state: UIState = .loading
@@ -41,7 +41,6 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             let settings = BlinkIDVerifySdkSettings(licenseKey: licenseKey)
             sdkInstance = try await BlinkIDVerifySdk.createBlinkIDVerifySdk(withSettings: settings)
         } catch {
-            print("tu")
             state = .error(error.localizedDescription)
         }
         state = .home

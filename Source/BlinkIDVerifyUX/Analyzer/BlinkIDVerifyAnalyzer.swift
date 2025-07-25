@@ -44,7 +44,7 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     private var scanningDone = false
     private var paused = false
     private var resultContinuation: CheckedContinuation<Result, Never>?
-    private var stepTimeoutDuration: TimeInterval
+    public private(set) var stepTimeoutDuration: TimeInterval
     private var timerTask: Task<Void, Never>?
     
     /// Creates a new document verification analyzer.
@@ -55,12 +55,11 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     public init(
         sdk: BlinkIDVerifySdk,
         captureSessionSettings: CaptureSessionSettings = CaptureSessionSettings(capturePolicy: .video),
-        eventStream: BlinkIDVerifyEventStream,
-        stepTimeoutDuration: TimeInterval = 15.0
+        eventStream: BlinkIDVerifyEventStream
     ) async {
         self.captureSession = await sdk.createScanningSession(sessionSettings: captureSessionSettings)
         self.eventStream = eventStream
-        self.stepTimeoutDuration = stepTimeoutDuration
+        self.stepTimeoutDuration = captureSessionSettings.stepTimeoutDuration
     }
     
     /// Processes a camera frame for document analysis.
@@ -83,8 +82,9 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
                 session: self.captureSession
                 )
             
-            if events.contains(.requestDocumentSide(side: .back)) {
+            if events.contains(.requestDocumentSide(side: .barcode)) {
                 timerTask?.cancel()
+                startTimer(stepTimeoutDuration)
             }
                     
             await eventStream.send(events)
@@ -170,8 +170,7 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     }
     
     private func timerFired() {
-        self.paused = true
-        self.cancel()
+        pause()
         resultContinuation?.resume(returning: .interrupted(.timeout))
         resultContinuation = nil
         captureSession.restart()
