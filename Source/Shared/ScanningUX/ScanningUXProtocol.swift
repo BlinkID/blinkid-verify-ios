@@ -25,14 +25,15 @@ protocol ScanningUXProtocol {
     var theme: UXTheme { get }
     
     /// Builder for Reticle
-    func ReticleView(reticleState: Binding<ReticleState>) -> AnyView
+    func ReticleView(reticleState: Binding<ReticleState>) -> GenericContentView
     
     /// Builder for whole view
     func MainView(reticleState: Binding<ReticleState>,
                   isTorchOn: Binding<Bool>,
+                  showToast: Binding<Bool>,
                   showSheet: Binding<Bool>,
                   showScanningAlert: Binding<Bool>,
-                  showLicenseErrorAlert: Binding<Bool>) -> AnyView
+                  showLicenseErrorAlert: Binding<Bool>) -> GenericContentView
     
     /// Builder for the cancel button
     func CancelButton() -> GenericContentView
@@ -103,18 +104,21 @@ extension ScanningUXProtocol where Self: View {
     @ViewBuilder
     func MainView(reticleState: Binding<ReticleState>,
                   isTorchOn: Binding<Bool>,
+                  showToast: Binding<Bool>,
                   showSheet: Binding<Bool>,
                   showScanningAlert: Binding<Bool>,
                   showLicenseErrorAlert: Binding<Bool>) -> GenericContentView {
-        createMainView(reticleState: reticleState, isTorchOn: isTorchOn, showSheet: showSheet, showScanningAlert: showScanningAlert, showLicenseErrorAlert: showLicenseErrorAlert) as! GenericContentView
+        createMainView(reticleState: reticleState, isTorchOn: isTorchOn, showToast: showToast, showSheet: showSheet, showScanningAlert: showScanningAlert, showLicenseErrorAlert: showLicenseErrorAlert) as! GenericContentView
     }
     
     @ViewBuilder
     private func createMainView(reticleState: Binding<ReticleState>,
                                 isTorchOn: Binding<Bool>,
+                                showToast: Binding<Bool>,
                                 showSheet: Binding<Bool>,
                                 showScanningAlert: Binding<Bool>,
                                 showLicenseErrorAlert: Binding<Bool>) -> some View {
+        
         AnyView(
             Group {
                 if viewModel.camera.status == .unauthorized {
@@ -125,11 +129,36 @@ extension ScanningUXProtocol where Self: View {
                             CameraView(camera: viewModel.camera)
                                 .statusBarHidden(true)
                                 .ignoresSafeArea()
+                                .zIndex(1)
+                            /// - Note: zIndex is necessary because, without it, the OnboardingAlertView does not animate when disappearing
+                            ///                                                          (27.6.2025. Toni Kreso)
+                            
+                            if viewModel.showDemoOverlayImage {
+                                VStack {
+                                    Spacer()
+                                    Image.demoOverlayImage
+                                        .offset(y: -Self.reticleDiameter)
+                                    Spacer()
+                                }
+                                .frame(maxHeight: .infinity)
+                                .zIndex(2)
+                            }
+                            
+                            if viewModel.showProductionOverlayImage {
+                                VStack {
+                                    Spacer()
+                                    Image.productionOverlayImage
+                                }
+                                .zIndex(3)
+                            }
+                            
                             VStack(spacing: 8) {
                                 ReticleView(reticleState: reticleState)
                                 Spacer()
                             }
                             .offset(y: geometry.size.height / 2 - Self.reticleDiameter / 2)
+                            .zIndex(4)
+                            
                             VStack {
                                 HStack {
                                     CancelButton()
@@ -139,19 +168,28 @@ extension ScanningUXProtocol where Self: View {
                                     }
                                 }
                                 Spacer()
-                                HStack {
-                                    Spacer()
-                                    HelpButton()
+                                if viewModel.showHelpButton {
+                                    HelpButton(
+                                        showTooltip: viewModel.showTooltip,
+                                        tooltipText: "mb_need_help_tooltip".localizedString
+                                    )
                                 }
                             }
                             .disabled(viewModel.showIntroductionAlert)
                             .padding()
+                            .zIndex(5)
                             
                             if viewModel.showIntroductionAlert {
-                                OnboardingAlertView(theme: self.theme,
-                                                    dimiss: viewModel.dismissAlert())
-                                .transition(.move(edge: .bottom))
+                                ZStack {
+                                    Color.black.opacity(0.5)
+                                        .ignoresSafeArea()
+                                    OnboardingAlertView(theme: self.theme,
+                                                        dismiss: viewModel.dismissAlert())
+                                }
+                                .transition(.opacity)
+                                .zIndex(6)
                             }
+                                
                         }
                     }
                     .onChange(of: viewModel.reticleState) { newValue in
@@ -171,36 +209,58 @@ extension ScanningUXProtocol where Self: View {
                     }
                     .alert(isPresented: showScanningAlert) {
                         Alert(
-                            title: Text("mb_recognition_timeout_dialog_title".localizedString),
-                            message: Text("mb_recognition_timeout_dialog_message".localizedString),
+                            title: Text(viewModel.alertType?.title ?? "mb_recognition_timeout_dialog_title".localizedString),
+                            message: Text(viewModel.alertType?.description ?? "mb_recognition_timeout_dialog_message".localizedString),
                             dismissButton: .default(Text("mb_recognition_timeout_dialog_retry_button".localizedString))
                         )
                     }
                     .alert("mb_license_locked".localizedString, isPresented: showLicenseErrorAlert) {
                         Button("mb_close".localizedString, role: .cancel) { }
                     }
+                    .onTapGesture(count: 2) {
+                        viewModel.showTooltip.toggle()
+                    }
+                    .toast(isShowing: showToast, message: "mb_flashlight_warning_message".localizedString, duration: 3, backgroundColor: self.theme.toastBackgroundColor)
                 }
             }
-                .task {
-                    // Start the capture pipeline.
-                    await viewModel.camera.start()
-                    await viewModel.analyze()
+            .task {
+                // Start the capture pipeline.
+                await viewModel.camera.start()
+                await viewModel.analyze()
+            }
+            .onAppear {
+                if viewModel.shouldShowIntroductionAlert {
+                    viewModel.presentAlert()
+                } else {
+                    viewModel.startTooltipTimer()
+                    UIAccessibility.post(notification: .screenChanged, argument: ReticleState.front.text)
                 }
-                .onAppear {
-                    if viewModel.shouldShowIntroductionAlert {
-                        viewModel.presentAlert()
-                    } else {
-                        UIAccessibility.post(notification: .screenChanged, argument: ReticleState.front.text)
-                    }
+            }
+            .onDisappear {
+                viewModel.stopEventHandling()
+                viewModel.camera.stopRotationCoordinator()
+                Task { @MainActor in
+                    await viewModel.camera.stop()
                 }
-                .onDisappear {
-                    viewModel.stopEventHandling()
-                    viewModel.camera.stopRotationCoordinator()
-                    Task { @MainActor in
-                        await viewModel.camera.stop()
-                    }
-                }
+            }
         )
+    }
+    
+    @ViewBuilder
+    func HelpButton(showTooltip: Bool, tooltipText: String) -> some View {
+        HStack {
+            Spacer()
+            ZStack(alignment: .bottomTrailing) {
+                if showTooltip {
+                    VStack(spacing: 0) {
+                        ToolTipView(message: tooltipText, foregroundColor: self.theme.helpButtonTooltipForegroundColor, backgroundColor: self.theme.helpButtonTooltipBackgroundColor)
+                            .offset(x: -8, y: -45) // Adjust this value to control the spacing between tooltip and button
+                    }
+                    .animation(.easeInOut(duration: 0.2), value: showTooltip)
+                }
+                HelpButton()
+            }
+        }
     }
     
     @ViewBuilder

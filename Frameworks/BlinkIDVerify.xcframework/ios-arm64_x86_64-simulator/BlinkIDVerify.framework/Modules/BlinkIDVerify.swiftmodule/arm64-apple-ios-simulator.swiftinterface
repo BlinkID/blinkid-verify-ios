@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
-// swift-module-flags: -target arm64-apple-ios16.6-simulator -enable-objc-interop -cxx-interoperability-mode=default -enable-library-evolution -swift-version 6 -enforce-exclusivity=checked -O -module-name BlinkIDVerify
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios16.6-simulator -enable-objc-interop -enable-library-evolution -swift-version 6 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -module-name BlinkIDVerify
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import AVFoundation
 @_exported import BlinkIDVerify
 import CoreData
@@ -57,7 +57,6 @@ public enum MatchLevel : Swift.String, Swift.Codable, Swift.Sendable, Swift.Case
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.MatchLevel]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.MatchLevel] {
@@ -132,7 +131,7 @@ indirect public enum DetailValue : Swift.Sendable, Swift.Decodable, Swift.Custom
     get
   }
 }
-public enum RecognitionMode : Swift.String, Swift.Sendable, Swift.Decodable {
+public enum RecognitionMode : Swift.String, Swift.Sendable, Swift.Decodable, Swift.CaseIterable {
   case none
   case mrzId
   case mrzVisa
@@ -142,7 +141,11 @@ public enum RecognitionMode : Swift.String, Swift.Sendable, Swift.Decodable {
   case barcodeId
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [BlinkIDVerify.RecognitionMode]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [BlinkIDVerify.RecognitionMode] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -191,6 +194,9 @@ public enum MessageStatus : Swift.String, Swift.Sendable, Swift.Decodable {
   }
 }
 public struct ResultArray : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
+  public var values: [BlinkIDVerify.ResultValue] {
+    get
+  }
   public init(from decoder: any Swift.Decoder) throws
   public var description: Swift.String {
     get
@@ -334,7 +340,6 @@ public enum ImageFormat : Swift.String, Swift.Codable, Swift.CaseIterable, Swift
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.ImageFormat]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.ImageFormat] {
@@ -357,7 +362,6 @@ public enum ImageQualityInterpretation : Swift.String, Swift.Codable, Swift.Case
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.ImageQualityInterpretation]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.ImageQualityInterpretation] {
@@ -419,7 +423,6 @@ public enum DocumentVerificationPolicy : Swift.String, Swift.Codable, Swift.Send
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.DocumentVerificationPolicy]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.DocumentVerificationPolicy] {
@@ -442,7 +445,6 @@ public enum VerificationContext : Swift.String, Swift.Codable, Swift.Sendable, S
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.VerificationContext]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.VerificationContext] {
@@ -467,7 +469,6 @@ public enum ReviewStrategy : Swift.String, Swift.Codable, Swift.Sendable, Swift.
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.ReviewStrategy]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.ReviewStrategy] {
@@ -491,7 +492,6 @@ public enum ReviewSensitivity : Swift.String, Swift.Codable, Swift.Sendable, Swi
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.ReviewSensitivity]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.ReviewSensitivity] {
@@ -545,6 +545,9 @@ public enum VerifyScript : Swift.String, Swift.Decodable, Swift.Sendable {
   }
 }
 public struct CheckArray : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
+  public var values: [BlinkIDVerify.CheckValue] {
+    get
+  }
   public init(from decoder: any Swift.Decoder) throws
   public var description: Swift.String {
     get
@@ -629,7 +632,7 @@ public struct Extraction : Swift.Sendable, Swift.Decodable, Swift.CustomStringCo
   public let mrz: BlinkIDVerify.ResultArray?
   public let barcode: BlinkIDVerify.ResultArray?
   public let classInfo: BlinkIDVerify.BlinkIDVerifySDK.VerifyClassInfo?
-  public let additionalInfo: BlinkIDVerify.AdditionalProcessingInfo?
+  public let additionalInfo: BlinkIDVerify.AdditionalInfo?
   public var description: Swift.String {
     get
   }
@@ -649,17 +652,28 @@ public enum ResultState : Swift.String, Swift.Decodable, Swift.Sendable {
   }
 }
 public struct VizResult : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
-  public let front: BlinkIDVerify.ResultArray
-  public let back: BlinkIDVerify.ResultArray
+  public let front: BlinkIDVerify.ResultArray?
+  public let back: BlinkIDVerify.ResultArray?
+  public var description: Swift.String {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdditionalInfo : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
+  public let frontProcessingStatus: BlinkIDVerify.ProcessingStatus
+  public let backProcessingStatus: BlinkIDVerify.ProcessingStatus
+  public let recognitionMode: BlinkIDVerify.RecognitionMode
+  public let firstSideAdditionalProcessingInfo: BlinkIDVerify.AdditionalProcessingInfo
+  public let secondSideAdditionalProcessingInfo: BlinkIDVerify.AdditionalProcessingInfo
   public var description: Swift.String {
     get
   }
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct AdditionalProcessingInfo : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
-  public let frontProcessingStatus: BlinkIDVerify.ProcessingStatus?
-  public let backProcessingStatus: BlinkIDVerify.ProcessingStatus?
-  public let recognitionMode: BlinkIDVerify.RecognitionMode
+  public let missingMandatoryFields: [BlinkIDVerify.FieldType]?
+  public let extraPresentFields: [BlinkIDVerify.FieldType]?
+  public let invalidCharacterFields: [BlinkIDVerify.FieldType]?
   public var description: Swift.String {
     get
   }
@@ -701,7 +715,7 @@ public struct LocationInfo : Swift.Sendable, Swift.Decodable, Swift.CustomString
   }
   public init(from decoder: any Swift.Decoder) throws
 }
-public enum Country : Swift.String, Swift.Decodable, Swift.Sendable {
+public enum Country : Swift.String, Swift.Decodable, Swift.Sendable, Swift.CaseIterable {
   case none
   case albania
   case algeria
@@ -960,12 +974,16 @@ public enum Country : Swift.String, Swift.Decodable, Swift.Sendable {
   case schengen_area
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [BlinkIDVerify.Country]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [BlinkIDVerify.Country] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
 }
-public enum Region : Swift.String, Swift.Decodable, Swift.Sendable {
+public enum Region : Swift.String, Swift.Decodable, Swift.Sendable, Swift.CaseIterable {
   case none
   case alabama
   case alaska
@@ -1108,12 +1126,16 @@ public enum Region : Swift.String, Swift.Decodable, Swift.Sendable {
   case bangsamoro
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [BlinkIDVerify.Region]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [BlinkIDVerify.Region] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
 }
-public enum DocumentType : Swift.String, Swift.Decodable, Swift.Sendable {
+public enum DocumentType : Swift.String, Swift.Decodable, Swift.Sendable, Swift.CaseIterable {
   case none
   case consularId
   case dl
@@ -1194,9 +1216,15 @@ public enum DocumentType : Swift.String, Swift.Decodable, Swift.Sendable {
   case esaadCard
   case registrationCertificate
   case medicalMarijuanaId
+  case nonCardTribalId
+  case diplomaticId
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [BlinkIDVerify.DocumentType]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [BlinkIDVerify.DocumentType] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -1275,6 +1303,9 @@ public struct DetailedDateResult : BlinkIDVerify.VerifyResultProtocol {
   public var year: Swift.Int {
     get
   }
+  public var date: Foundation.Date? {
+    get
+  }
   public let type: BlinkIDVerify.ResultType
   public let field: Swift.String?
   public let details: BlinkIDVerify.DetailDictionary?
@@ -1338,7 +1369,14 @@ public enum AlphabetType : Swift.String, Swift.Sendable, Swift.CaseIterable {
     get
   }
 }
+public struct RectangleFPoint : Swift.Sendable {
+  public let x: Swift.Float
+  public let y: Swift.Float
+}
 public struct RectangleF : Swift.Sendable {
+  public let origin: BlinkIDVerify.RectangleFPoint
+  public let width: Swift.Float
+  public let height: Swift.Float
 }
 public struct DateResult<StringType> : Swift.Sendable where StringType : Swift.Sendable {
   public let day: Swift.Int?
@@ -1359,21 +1397,29 @@ public enum InputImageSource : Swift.Sendable {
     get
   }
 }
-public enum ScanningMode : Swift.Sendable {
+public enum ScanningMode : Swift.Sendable, Swift.CaseIterable {
   case single
   case automatic
   public static func == (a: BlinkIDVerify.ScanningMode, b: BlinkIDVerify.ScanningMode) -> Swift.Bool
+  public typealias AllCases = [BlinkIDVerify.ScanningMode]
+  nonisolated public static var allCases: [BlinkIDVerify.ScanningMode] {
+    get
+  }
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
-public enum DetectionLevel : Swift.Sendable {
+public enum DetectionLevel : Swift.Sendable, Swift.CaseIterable {
   case off
   case low
   case mid
   case high
   public static func == (a: BlinkIDVerify.DetectionLevel, b: BlinkIDVerify.DetectionLevel) -> Swift.Bool
+  public typealias AllCases = [BlinkIDVerify.DetectionLevel]
+  nonisolated public static var allCases: [BlinkIDVerify.DetectionLevel] {
+    get
+  }
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1448,7 +1494,7 @@ public struct ScanningSettings : Swift.Sendable {
   public var maxAllowedMismatchesPerField: Swift.Int
   public var scanPassportDataPageOnly: Swift.Bool
   public var croppedImageSettings: BlinkIDVerify.CroppedImageSettings
-  public init(blurDetectionLevel: BlinkIDVerify.DetectionLevel = .mid, skipImagesWithBlur: Swift.Bool = true, glareDetectionLevel: BlinkIDVerify.DetectionLevel = .mid, skipImagesWithGlare: Swift.Bool = true, tiltDetectionLevel: BlinkIDVerify.DetectionLevel = .off, skipImagesWithInadequateLightingConditions: Swift.Bool = false, skipImagesOccludedByHand: Swift.Bool = false, combineResultsFromMultipleInputImages: Swift.Bool = true, enableBarcodeScanOnly: Swift.Bool = false, customDocumentRules: Swift.Array<BlinkIDVerify.DocumentRules>? = nil, anonymizationMode: BlinkIDVerify.AnonymizationMode = .fullResult, customDocumentAnonymizationSettings: Swift.Array<BlinkIDVerify.DocumentAnonymizationSettings>? = nil, returnInputImages: Swift.Bool = false, scanCroppedDocumentImage: Swift.Bool = false, enableCharacterValidation: Swift.Bool = true, recognitionModeFilter: BlinkIDVerify.RecognitionModeFilter = RecognitionModeFilter(), inputImageMargin: Swift.Float = 0.02, scanUnsupportedBack: Swift.Bool = false, allowUncertainFrontSideScan: Swift.Bool = false, maxAllowedMismatchesPerField: Swift.Int = 0, scanPassportDataPageOnly: Swift.Bool = true, croppedImageSettings: BlinkIDVerify.CroppedImageSettings = CroppedImageSettings())
+  public init(blurDetectionLevel: BlinkIDVerify.DetectionLevel = .mid, skipImagesWithBlur: Swift.Bool = true, glareDetectionLevel: BlinkIDVerify.DetectionLevel = .mid, skipImagesWithGlare: Swift.Bool = true, tiltDetectionLevel: BlinkIDVerify.DetectionLevel = .off, skipImagesWithInadequateLightingConditions: Swift.Bool = true, skipImagesOccludedByHand: Swift.Bool = true, combineResultsFromMultipleInputImages: Swift.Bool = true, enableBarcodeScanOnly: Swift.Bool = false, customDocumentRules: Swift.Array<BlinkIDVerify.DocumentRules>? = nil, anonymizationMode: BlinkIDVerify.AnonymizationMode = .fullResult, customDocumentAnonymizationSettings: Swift.Array<BlinkIDVerify.DocumentAnonymizationSettings>? = nil, returnInputImages: Swift.Bool = false, scanCroppedDocumentImage: Swift.Bool = false, enableCharacterValidation: Swift.Bool = true, recognitionModeFilter: BlinkIDVerify.RecognitionModeFilter = RecognitionModeFilter(), inputImageMargin: Swift.Float = 0.02, scanUnsupportedBack: Swift.Bool = false, allowUncertainFrontSideScan: Swift.Bool = false, maxAllowedMismatchesPerField: Swift.Int = 0, scanPassportDataPageOnly: Swift.Bool = true, croppedImageSettings: BlinkIDVerify.CroppedImageSettings = CroppedImageSettings())
 }
 public struct BlinkIDSessionSettings : Swift.Sendable {
   public var inputImageSource: BlinkIDVerify.InputImageSource
@@ -1457,7 +1503,7 @@ public struct BlinkIDSessionSettings : Swift.Sendable {
   public var stepTimeoutDuration: Foundation.TimeInterval
   public init(inputImageSource: BlinkIDVerify.InputImageSource = .video, scanningMode: BlinkIDVerify.ScanningMode = .automatic, scanningSettings: BlinkIDVerify.ScanningSettings = ScanningSettings(), stepTimeoutDuration: Foundation.TimeInterval = 15.0)
 }
-public enum MRZDocumentType : Swift.Sendable {
+public enum MRZDocumentType : Swift.Sendable, Swift.CaseIterable {
   case unknown
   case identityCard
   case passport
@@ -1468,6 +1514,10 @@ public enum MRZDocumentType : Swift.Sendable {
   case internalTravelDocument
   case borderCrossingCard
   public static func == (a: BlinkIDVerify.MRZDocumentType, b: BlinkIDVerify.MRZDocumentType) -> Swift.Bool
+  public typealias AllCases = [BlinkIDVerify.MRZDocumentType]
+  nonisolated public static var allCases: [BlinkIDVerify.MRZDocumentType] {
+    get
+  }
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1506,15 +1556,18 @@ public struct VIZResult : Swift.Sendable {
   public let additionalPersonalIdNumber: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let issuingAuthority: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let visaType: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let certificateNumber: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let countryCode: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let driverLicenseDetailedInfo: BlinkIDVerify.DriverLicenseDetailedInfo<BlinkIDVerify.BlinkIDSDK.StringResult>?
   public let documentSubtype: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let remarks: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let residencePermitType: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let manufacturingYear: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let nationalInsuranceNumber: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let vehicleType: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let eligibilityCategory: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let specificDocumentValidity: BlinkIDVerify.BlinkIDSDK.StringResult?
-  public let dependentsInfo: Swift.Array<BlinkIDVerify.DependentInfo>
+  public let dependentsInfo: Swift.Array<BlinkIDVerify.DependentInfo>?
   public let vehicleOwner: BlinkIDVerify.BlinkIDSDK.StringResult?
 }
 public struct MRZResult : Swift.Sendable {
@@ -1547,7 +1600,7 @@ public struct AddressDetailedInfo : Swift.Sendable {
   public let city: Swift.String?
   public let jurisdiction: Swift.String?
 }
-public enum BarcodeType : Swift.Sendable {
+public enum BarcodeType : Swift.Sendable, Swift.CaseIterable {
   case none
   case qrCode
   case dataMatrix
@@ -1561,6 +1614,10 @@ public enum BarcodeType : Swift.Sendable {
   case aztec
   case pdf417
   public static func == (a: BlinkIDVerify.BarcodeType, b: BlinkIDVerify.BarcodeType) -> Swift.Bool
+  public typealias AllCases = [BlinkIDVerify.BarcodeType]
+  nonisolated public static var allCases: [BlinkIDVerify.BarcodeType] {
+    get
+  }
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1652,6 +1709,10 @@ public struct BlinkIDScanningResult : Swift.Sendable {
   public let eligibilityCategory: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let specificDocumentValidity: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let visaType: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let vehicleOwner: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let certificateNumber: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let countryCode: BlinkIDVerify.BlinkIDSDK.StringResult?
+  public let nationalInsuranceNumber: BlinkIDVerify.BlinkIDSDK.StringResult?
   public let dateOfBirth: BlinkIDVerify.DateResult<BlinkIDVerify.BlinkIDSDK.StringResult>?
   public let dateOfIssue: BlinkIDVerify.DateResult<BlinkIDVerify.BlinkIDSDK.StringResult>?
   public let dateOfExpiry: BlinkIDVerify.DateResult<BlinkIDVerify.BlinkIDSDK.StringResult>?
@@ -1665,20 +1726,28 @@ public struct BlinkIDScanningResult : Swift.Sendable {
   public func getFaceImage() -> BlinkIDVerify.DetailedCroppedImageResult?
   public func getSignatureImage() -> BlinkIDVerify.DetailedCroppedImageResult?
 }
-public enum ScanningSide : Swift.Int, Swift.Sendable {
+public enum ScanningSide : Swift.Int, Swift.Sendable, Swift.CaseIterable {
   case first
   case second
   public init?(rawValue: Swift.Int)
+  public typealias AllCases = [BlinkIDVerify.ScanningSide]
   public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [BlinkIDVerify.ScanningSide] {
+    get
+  }
   public var rawValue: Swift.Int {
     get
   }
 }
-public enum DataMatchState : Swift.Sendable {
+public enum DataMatchState : Swift.Sendable, Swift.CaseIterable {
   case notPerformed
   case failed
   case success
   public static func == (a: BlinkIDVerify.DataMatchState, b: BlinkIDVerify.DataMatchState) -> Swift.Bool
+  public typealias AllCases = [BlinkIDVerify.DataMatchState]
+  nonisolated public static var allCases: [BlinkIDVerify.DataMatchState] {
+    get
+  }
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1692,11 +1761,11 @@ public enum DataMatchFieldType : Swift.Sendable, Swift.CaseIterable {
   case documentOptionalAdditionalNumber
   case personalIdNumber
   public static func == (a: BlinkIDVerify.DataMatchFieldType, b: BlinkIDVerify.DataMatchFieldType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public typealias AllCases = [BlinkIDVerify.DataMatchFieldType]
   nonisolated public static var allCases: [BlinkIDVerify.DataMatchFieldType] {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
@@ -1719,7 +1788,8 @@ public struct BlinkIDSdkSettings : Swift.Sendable, BlinkIDVerify.SdkSettings {
   public var resourceLocalFolder: Swift.String
   public var bundleURL: Foundation.URL?
   public var resourceRequestTimeout: BlinkIDVerify.RequestTimeout
-  public init(licenseKey: Swift.String, licensee: Swift.String? = nil, helloLogEnabled: Swift.Bool = false, downloadResources: Swift.Bool = true, resourceDownloadUrl: Swift.String = "https://models.cdn.microblink.com/resources", resourceLocalFolder: Swift.String = "MLModels", bundleURL: Foundation.URL? = nil, resourceRequestTimeout: BlinkIDVerify.RequestTimeout = .default)
+  public var microblinkProxyURL: Swift.String?
+  public init(licenseKey: Swift.String, licensee: Swift.String? = nil, helloLogEnabled: Swift.Bool = false, downloadResources: Swift.Bool = true, resourceDownloadUrl: Swift.String = "https://models.cdn.microblink.com/resources", resourceLocalFolder: Swift.String = "MLModels", bundleURL: Foundation.URL? = nil, resourceRequestTimeout: BlinkIDVerify.RequestTimeout = .default, microblinkProxyURL: Swift.String? = nil)
 }
 @_hasMissingDesignatedInitializers final public class BlinkIDSdk : Swift.Sendable {
   @BlinkIDVerify.ProcessingActor final public func createScanningSession(sessionSettings: BlinkIDVerify.BlinkIDSessionSettings = BlinkIDSessionSettings()) async throws -> BlinkIDVerify.BlinkIDSession
@@ -1741,7 +1811,7 @@ public enum ImageAnalysisLightingStatus : Swift.Sendable {
   }
 }
 public enum ImageExtractionType : Swift.Sendable {
-  case fullDocument
+  case document
   case face
   case signature
   public static func == (a: BlinkIDVerify.ImageExtractionType, b: BlinkIDVerify.ImageExtractionType) -> Swift.Bool
@@ -1973,7 +2043,6 @@ public enum AnonymizationMode : Swift.String, Swift.Codable, Swift.CaseIterable,
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.AnonymizationMode]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   nonisolated public static var allCases: [BlinkIDVerify.AnonymizationMode] {
@@ -2059,6 +2128,9 @@ public enum FieldType : Swift.String, Swift.Decodable, Swift.Sendable, Swift.Cas
   case eligibilityCategory
   case specificDocumentValidity
   case vehicleOwner
+  case nationalInsuranceNumber
+  case countryCode
+  case certificateNumber
   public init(from decoder: any Swift.Decoder) throws
   public init?(rawValue: Swift.String)
   public typealias AllCases = [BlinkIDVerify.FieldType]
@@ -2098,6 +2170,9 @@ public struct BlinkIDVerifySDK {
       get
     }
     public var year: Swift.Int {
+      get
+    }
+    public var date: Foundation.Date? {
       get
     }
     public let type: BlinkIDVerify.ResultType
@@ -2187,7 +2262,6 @@ public struct FrameAnalysisResult : Swift.Sendable {
   public let verificationProcessingStatus: BlinkIDVerify.BlinkIDVerifyProcessingStatus
   public let processingStatus: BlinkIDVerify.ProcessingStatus
   public let documentLocation: BlinkIDVerify.DocumentLocation?
-  public let documentLocalizationStatus: BlinkIDVerify.DocumentLocalizationStatus
   public let blurDetected: Swift.Bool
   public let glareDetected: Swift.Bool
   public let occlusionDetected: Swift.Bool
@@ -2376,6 +2450,12 @@ public enum SDKInitError : Swift.Error, Foundation.LocalizedError {
   public var errorDescription: Swift.String? {
     get
   }
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class UXLicenseProviderBridge {
+  @_Concurrency.MainActor final public var showDemoOverlay: Swift.Bool
+  @_Concurrency.MainActor final public var showProductionOverlay: Swift.Bool
+  @_Concurrency.MainActor public static let shared: BlinkIDVerify.UXLicenseProviderBridge
+  @objc deinit
 }
 public protocol SdkSettings : Swift.Sendable {
   var licenseKey: Swift.String { get set }
@@ -2677,3 +2757,4 @@ extension BlinkIDVerify.CameraFrameVideoOrientation : Swift.Equatable {}
 extension BlinkIDVerify.CameraFrameVideoOrientation : Swift.Hashable {}
 extension BlinkIDVerify.ModelLoadError : Swift.Equatable {}
 extension BlinkIDVerify.ModelLoadError : Swift.Hashable {}
+extension BlinkIDVerify.UXLicenseProviderBridge : Swift.Sendable {}

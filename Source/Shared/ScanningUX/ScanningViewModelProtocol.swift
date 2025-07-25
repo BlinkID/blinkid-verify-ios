@@ -83,8 +83,13 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
             camera.isTorchEnabled = isTorchOn
             torchImage = isTorchOn ? Image(systemName: "bolt.fill") : Image(systemName: "bolt.slash.fill")
             torchHint = isTorchOn ? "Turn flashlight on" : "Turn flashlight off"
+            if isTorchOn && !isToastVisible {
+                isToastVisible = true
+            }
         }
     }
+    
+    @Published public var isToastVisible: Bool = false
     
     // Help button
     let helpImage = Image(systemName: "questionmark.circle.fill")
@@ -95,12 +100,16 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     // Introduction alert
     let shouldShowIntroductionAlert: Bool
     
+    // Onboarding sheet
+    let showHelpButton: Bool
+    
     // MARK: - Alert States
     @Published public var showIntroductionAlert = false {
         didSet {
             if showIntroductionAlert {
                 pauseScanning()
             } else {
+                setReticleState(.front, force: true)
                 UIAccessibility.post(notification: .screenChanged, argument: ReticleState.front.text)
                 resumeScanning()
             }
@@ -129,6 +138,20 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
         }
     }
     
+    // MARK: - Tooltip
+    @Published var showTooltip: Bool = false {
+        didSet {
+            if showTooltip {
+                startHideTooltipTimer()
+            }
+            else {
+                hideTooltipTimer?.invalidate()
+            }
+        }
+    }
+    private var hideTooltipTimer: Timer?
+    private var showTooltipTimer: Timer?
+    
     // MARK: - Animation Properties
     @Published var showCardImage: Bool = false
     @Published var cardImage = Image.frontIdImage
@@ -147,15 +170,30 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     let rippleViewAnimationDuration = 0.45
     
     var eventHandlingTask: Task<Void, Never>?
-    var timer: Timer?
     private var lastReticleStateChange: TimeInterval = Date().timeIntervalSince1970
+    private var eventCounter: [ReticleState: Int] = [:]
+    private var reticleStateIsInterruptible = false
+    private var lastPassportErrorOrientation: PassportOrientation = .none
+    var inactiveState: ReticleState = .front
+    
+    let stateCountingDuration: TimeInterval = 1.5
+    
+    let showDemoOverlayImage: Bool
+    let showProductionOverlayImage: Bool
     
     /// Initializes a new scanning UX model with the specified document analyzer.
     /// - Parameter analyzer: The analyzer responsible for processing camera frames and detecting documents.
     /// - Parameter shouldShowIntroductionAlert: Whether introduction alert will be shown on appear
-    public init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = false) {
+    public init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = false, showHelpButton: Bool = false) {
         self.analyzer = analyzer
         self.shouldShowIntroductionAlert = shouldShowIntroductionAlert
+        self.showHelpButton = showHelpButton
+        self.showDemoOverlayImage = UXLicenseProviderBridge.shared.showDemoOverlay
+        self.showProductionOverlayImage = UXLicenseProviderBridge.shared.showProductionOverlay
+    }
+    
+    deinit {
+        hideTooltipTimer?.invalidate()
     }
     
     // - MARK: - Protocol Implementation
@@ -199,6 +237,7 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     }
     
     public func resumeScanning() {
+        startTooltipTimer()
         Task {
             await analyzer.resume()
             await camera.start()
@@ -228,27 +267,112 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
         showSheet.toggle()
     }
     
-    func calculateRemainingTime() -> Double {
+    func calculateRemainingTime(stateDuration: Double? = nil) -> Double {
         let currentTime = Date().timeIntervalSince1970
         let elapsedTime = currentTime - lastReticleStateChange
-        return reticleState.duration - elapsedTime
+        
+        if reticleStateIsInterruptible,
+           let stateDuration = stateDuration {
+            return stateDuration - elapsedTime
+        } else {
+            return reticleState.duration - elapsedTime
+        }
+        
     }
     
     func setReticleState(_ state: ReticleState, force: Bool = false) {
         let currentTime = Date().timeIntervalSince1970
-        guard (currentTime - lastReticleStateChange >= self.reticleState.duration) || force else { return }
         
-        timer?.invalidate()
+        let timeLeft = calculateRemainingTime()
+        guard timeLeft < 0 || force else {
+            if timeLeft <= stateCountingDuration {
+                eventCounter[state, default: 0] += 1
+            }
+            return
+        }
+        
+        let newState: ReticleState
+        
+        if !force,
+           let (mostFrequentState, _) = eventCounter.max(by: { $0.value < $1.value }) {
+            
+            if mostFrequentState == .error("mb_scanning_wrong_page_top") {
+                lastPassportErrorOrientation = .none
+            } else if mostFrequentState == .error("mb_scanning_wrong_page_left") {
+                lastPassportErrorOrientation = .left90
+            } else if mostFrequentState == .error("mb_scanning_wrong_page_right") {
+                lastPassportErrorOrientation = .right90
+            }
+            
+            if case .passport(_) = mostFrequentState {
+                switch lastPassportErrorOrientation {
+                case .none:
+                    newState = .passport("mb_top_page_instructions".localizedString)
+                case .left90:
+                    newState = .passport("mb_left_page_instructions".localizedString)
+                case .right90:
+                    newState = .passport("mb_right_page_instructions".localizedString)
+                }
+            } else {
+                newState = mostFrequentState
+            }
+        } else {
+            newState = state
+        }
+        
+        reticleState = newState
+        reticleStateIsInterruptible = !force
+        
+        switch reticleState {
+        case .front, .back, .barcode, .passport(_), .inactiveWithMessage(_):
+            inactiveState = reticleState
+        case .flip, .inactive, .error(_), .detecting:
+            break
+        }
         
         lastReticleStateChange = currentTime
-        reticleState = state
+        eventCounter.removeAll()
+    }
+    
+    // MARK: - Tooltip Management
+    
+    func startTooltipTimer() {
+        showTooltipTimer?.invalidate()
+        showTooltip = false
         
-        if state.shouldExpire {
-            timer = Timer.scheduledTimer(withTimeInterval: state.duration, repeats: false) { [weak self] _ in
-                Task {
-                    await self?.setReticleState(.detecting)
-                }
+        Task {
+            var interval = await analyzer.stepTimeoutDuration / 2.0
+            
+            if interval <= 0 {
+                interval = 8.0
+            }
+            
+            await MainActor.run {
+                showTooltipTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(showTooltipInvoked), userInfo: nil, repeats: false)
+                RunLoop.current.add(showTooltipTimer!, forMode: .common)
             }
         }
+        
+    }
+    
+    @MainActor
+    @objc private func showTooltipInvoked() {
+        showTooltip = true
+    }
+    
+    /// Cancels the tooltip timer and hides the tooltip
+    func cancelTooltipTimer() {
+        showTooltipTimer?.invalidate()
+        showTooltipTimer = nil
+        showTooltip = false
+    }
+    
+    private func startHideTooltipTimer() {
+        hideTooltipTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(hideTooltipInvoked), userInfo: nil, repeats: false)
+        RunLoop.current.add(hideTooltipTimer!, forMode: .common)
+    }
+    
+    @objc private func hideTooltipInvoked() {
+        showTooltip = false
     }
 }

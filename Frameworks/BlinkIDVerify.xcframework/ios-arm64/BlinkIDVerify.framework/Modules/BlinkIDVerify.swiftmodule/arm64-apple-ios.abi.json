@@ -4198,6 +4198,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.RecognitionMode]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognitionMode",
+                    "printedName": "BlinkIDVerify.RecognitionMode",
+                    "usr": "s:13BlinkIDVerify15RecognitionModeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify15RecognitionModeO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify15RecognitionModeO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.RecognitionMode]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecognitionMode",
+                        "printedName": "BlinkIDVerify.RecognitionMode",
+                        "usr": "s:13BlinkIDVerify15RecognitionModeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify15RecognitionModeO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify15RecognitionModeO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -4273,6 +4333,36 @@
             "printedName": "Decodable",
             "usr": "s:Se",
             "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.RecognitionMode]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecognitionMode",
+                        "printedName": "BlinkIDVerify.RecognitionMode",
+                        "usr": "s:13BlinkIDVerify15RecognitionModeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -5746,6 +5836,62 @@
         "name": "ResultArray",
         "printedName": "ResultArray",
         "children": [
+          {
+            "kind": "Var",
+            "name": "values",
+            "printedName": "values",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.ResultValue]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResultValue",
+                    "printedName": "BlinkIDVerify.ResultValue",
+                    "usr": "s:13BlinkIDVerify11ResultValueO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify11ResultArrayV6valuesSayAA0C5ValueOGvp",
+            "mangledName": "$s13BlinkIDVerify11ResultArrayV6valuesSayAA0C5ValueOGvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.ResultValue]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResultValue",
+                        "printedName": "BlinkIDVerify.ResultValue",
+                        "usr": "s:13BlinkIDVerify11ResultValueO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify11ResultArrayV6valuesSayAA0C5ValueOGvg",
+                "mangledName": "$s13BlinkIDVerify11ResultArrayV6valuesSayAA0C5ValueOGvg",
+                "moduleName": "BlinkIDVerify",
+                "accessorKind": "get"
+              }
+            ]
+          },
           {
             "kind": "Constructor",
             "name": "init",
@@ -19227,6 +19373,62 @@
         "printedName": "CheckArray",
         "children": [
           {
+            "kind": "Var",
+            "name": "values",
+            "printedName": "values",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.CheckValue]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CheckValue",
+                    "printedName": "BlinkIDVerify.CheckValue",
+                    "usr": "s:13BlinkIDVerify10CheckValueO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify10CheckArrayV6valuesSayAA0C5ValueOGvp",
+            "mangledName": "$s13BlinkIDVerify10CheckArrayV6valuesSayAA0C5ValueOGvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.CheckValue]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CheckValue",
+                        "printedName": "BlinkIDVerify.CheckValue",
+                        "usr": "s:13BlinkIDVerify10CheckValueO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify10CheckArrayV6valuesSayAA0C5ValueOGvg",
+                "mangledName": "$s13BlinkIDVerify10CheckArrayV6valuesSayAA0C5ValueOGvg",
+                "moduleName": "BlinkIDVerify",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -22156,21 +22358,21 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "BlinkIDVerify.AdditionalProcessingInfo?",
+                "printedName": "BlinkIDVerify.AdditionalInfo?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "AdditionalProcessingInfo",
-                    "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
-                    "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+                    "name": "AdditionalInfo",
+                    "printedName": "BlinkIDVerify.AdditionalInfo",
+                    "usr": "s:13BlinkIDVerify14AdditionalInfoV"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify10ExtractionV14additionalInfoAA020AdditionalProcessingE0VSgvp",
-            "mangledName": "$s13BlinkIDVerify10ExtractionV14additionalInfoAA020AdditionalProcessingE0VSgvp",
+            "usr": "s:13BlinkIDVerify10ExtractionV14additionalInfoAA010AdditionalE0VSgvp",
+            "mangledName": "$s13BlinkIDVerify10ExtractionV14additionalInfoAA010AdditionalE0VSgvp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -22188,21 +22390,21 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "BlinkIDVerify.AdditionalProcessingInfo?",
+                    "printedName": "BlinkIDVerify.AdditionalInfo?",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "AdditionalProcessingInfo",
-                        "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
-                        "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+                        "name": "AdditionalInfo",
+                        "printedName": "BlinkIDVerify.AdditionalInfo",
+                        "usr": "s:13BlinkIDVerify14AdditionalInfoV"
                       }
                     ],
                     "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify10ExtractionV14additionalInfoAA020AdditionalProcessingE0VSgvg",
-                "mangledName": "$s13BlinkIDVerify10ExtractionV14additionalInfoAA020AdditionalProcessingE0VSgvg",
+                "usr": "s:13BlinkIDVerify10ExtractionV14additionalInfoAA010AdditionalE0VSgvg",
+                "mangledName": "$s13BlinkIDVerify10ExtractionV14additionalInfoAA010AdditionalE0VSgvg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -22701,14 +22903,22 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "ResultArray",
-                "printedName": "BlinkIDVerify.ResultArray",
-                "usr": "s:13BlinkIDVerify11ResultArrayV"
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.ResultArray?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResultArray",
+                    "printedName": "BlinkIDVerify.ResultArray",
+                    "usr": "s:13BlinkIDVerify11ResultArrayV"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify9VizResultV5frontAA0D5ArrayVvp",
-            "mangledName": "$s13BlinkIDVerify9VizResultV5frontAA0D5ArrayVvp",
+            "usr": "s:13BlinkIDVerify9VizResultV5frontAA0D5ArrayVSgvp",
+            "mangledName": "$s13BlinkIDVerify9VizResultV5frontAA0D5ArrayVSgvp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -22725,14 +22935,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "ResultArray",
-                    "printedName": "BlinkIDVerify.ResultArray",
-                    "usr": "s:13BlinkIDVerify11ResultArrayV"
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.ResultArray?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResultArray",
+                        "printedName": "BlinkIDVerify.ResultArray",
+                        "usr": "s:13BlinkIDVerify11ResultArrayV"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify9VizResultV5frontAA0D5ArrayVvg",
-                "mangledName": "$s13BlinkIDVerify9VizResultV5frontAA0D5ArrayVvg",
+                "usr": "s:13BlinkIDVerify9VizResultV5frontAA0D5ArrayVSgvg",
+                "mangledName": "$s13BlinkIDVerify9VizResultV5frontAA0D5ArrayVSgvg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -22746,14 +22964,22 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "ResultArray",
-                "printedName": "BlinkIDVerify.ResultArray",
-                "usr": "s:13BlinkIDVerify11ResultArrayV"
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.ResultArray?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResultArray",
+                    "printedName": "BlinkIDVerify.ResultArray",
+                    "usr": "s:13BlinkIDVerify11ResultArrayV"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify9VizResultV4backAA0D5ArrayVvp",
-            "mangledName": "$s13BlinkIDVerify9VizResultV4backAA0D5ArrayVvp",
+            "usr": "s:13BlinkIDVerify9VizResultV4backAA0D5ArrayVSgvp",
+            "mangledName": "$s13BlinkIDVerify9VizResultV4backAA0D5ArrayVSgvp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -22770,14 +22996,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "ResultArray",
-                    "printedName": "BlinkIDVerify.ResultArray",
-                    "usr": "s:13BlinkIDVerify11ResultArrayV"
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.ResultArray?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResultArray",
+                        "printedName": "BlinkIDVerify.ResultArray",
+                        "usr": "s:13BlinkIDVerify11ResultArrayV"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify9VizResultV4backAA0D5ArrayVvg",
-                "mangledName": "$s13BlinkIDVerify9VizResultV4backAA0D5ArrayVvg",
+                "usr": "s:13BlinkIDVerify9VizResultV4backAA0D5ArrayVSgvg",
+                "mangledName": "$s13BlinkIDVerify9VizResultV4backAA0D5ArrayVSgvg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -22899,8 +23133,8 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "AdditionalProcessingInfo",
-        "printedName": "AdditionalProcessingInfo",
+        "name": "AdditionalInfo",
+        "printedName": "AdditionalInfo",
         "children": [
           {
             "kind": "Var",
@@ -22909,22 +23143,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "BlinkIDVerify.ProcessingStatus?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProcessingStatus",
-                    "printedName": "BlinkIDVerify.ProcessingStatus",
-                    "usr": "s:13BlinkIDVerify16ProcessingStatusO"
-                  }
-                ],
-                "usr": "s:Sq"
+                "name": "ProcessingStatus",
+                "printedName": "BlinkIDVerify.ProcessingStatus",
+                "usr": "s:13BlinkIDVerify16ProcessingStatusO"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV05frontD6StatusAA0dG0OSgvp",
-            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV05frontD6StatusAA0dG0OSgvp",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV21frontProcessingStatusAA0fG0Ovp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV21frontProcessingStatusAA0fG0Ovp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -22940,22 +23166,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "BlinkIDVerify.ProcessingStatus?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProcessingStatus",
-                        "printedName": "BlinkIDVerify.ProcessingStatus",
-                        "usr": "s:13BlinkIDVerify16ProcessingStatusO"
-                      }
-                    ],
-                    "usr": "s:Sq"
+                    "name": "ProcessingStatus",
+                    "printedName": "BlinkIDVerify.ProcessingStatus",
+                    "usr": "s:13BlinkIDVerify16ProcessingStatusO"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV05frontD6StatusAA0dG0OSgvg",
-                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV05frontD6StatusAA0dG0OSgvg",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV21frontProcessingStatusAA0fG0Ovg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV21frontProcessingStatusAA0fG0Ovg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -22969,22 +23187,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "BlinkIDVerify.ProcessingStatus?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProcessingStatus",
-                    "printedName": "BlinkIDVerify.ProcessingStatus",
-                    "usr": "s:13BlinkIDVerify16ProcessingStatusO"
-                  }
-                ],
-                "usr": "s:Sq"
+                "name": "ProcessingStatus",
+                "printedName": "BlinkIDVerify.ProcessingStatus",
+                "usr": "s:13BlinkIDVerify16ProcessingStatusO"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV04backD6StatusAA0dG0OSgvp",
-            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV04backD6StatusAA0dG0OSgvp",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV20backProcessingStatusAA0fG0Ovp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV20backProcessingStatusAA0fG0Ovp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -23000,22 +23210,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "BlinkIDVerify.ProcessingStatus?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProcessingStatus",
-                        "printedName": "BlinkIDVerify.ProcessingStatus",
-                        "usr": "s:13BlinkIDVerify16ProcessingStatusO"
-                      }
-                    ],
-                    "usr": "s:Sq"
+                    "name": "ProcessingStatus",
+                    "printedName": "BlinkIDVerify.ProcessingStatus",
+                    "usr": "s:13BlinkIDVerify16ProcessingStatusO"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV04backD6StatusAA0dG0OSgvg",
-                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV04backD6StatusAA0dG0OSgvg",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV20backProcessingStatusAA0fG0Ovg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV20backProcessingStatusAA0fG0Ovg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -23035,8 +23237,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV15recognitionModeAA011RecognitionG0Ovp",
-            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV15recognitionModeAA011RecognitionG0Ovp",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV15recognitionModeAA011RecognitionF0Ovp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV15recognitionModeAA011RecognitionF0Ovp",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "HasStorage",
@@ -23058,8 +23260,442 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV15recognitionModeAA011RecognitionG0Ovg",
-                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV15recognitionModeAA011RecognitionG0Ovg",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV15recognitionModeAA011RecognitionF0Ovg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV15recognitionModeAA011RecognitionF0Ovg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "firstSideAdditionalProcessingInfo",
+            "printedName": "firstSideAdditionalProcessingInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AdditionalProcessingInfo",
+                "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
+                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV09firstSidec10ProcessingD0AA0cgD0Vvp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV09firstSidec10ProcessingD0AA0cgD0Vvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdditionalProcessingInfo",
+                    "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
+                    "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV09firstSidec10ProcessingD0AA0cgD0Vvg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV09firstSidec10ProcessingD0AA0cgD0Vvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "secondSideAdditionalProcessingInfo",
+            "printedName": "secondSideAdditionalProcessingInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AdditionalProcessingInfo",
+                "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
+                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV010secondSidec10ProcessingD0AA0cgD0Vvp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV010secondSidec10ProcessingD0AA0cgD0Vvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdditionalProcessingInfo",
+                    "printedName": "BlinkIDVerify.AdditionalProcessingInfo",
+                    "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV010secondSidec10ProcessingD0AA0cgD0Vvg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV010secondSidec10ProcessingD0AA0cgD0Vvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV11descriptionSSvp",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV11descriptionSSvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV11descriptionSSvg",
+                "mangledName": "$s13BlinkIDVerify14AdditionalInfoV11descriptionSSvg",
+                "moduleName": "BlinkIDVerify",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AdditionalInfo",
+                "printedName": "BlinkIDVerify.AdditionalInfo",
+                "usr": "s:13BlinkIDVerify14AdditionalInfoV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13BlinkIDVerify14AdditionalInfoV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s13BlinkIDVerify14AdditionalInfoV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "BlinkIDVerify",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:13BlinkIDVerify14AdditionalInfoV",
+        "mangledName": "$s13BlinkIDVerify14AdditionalInfoV",
+        "moduleName": "BlinkIDVerify",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AdditionalProcessingInfo",
+        "printedName": "AdditionalProcessingInfo",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "missingMandatoryFields",
+            "printedName": "missingMandatoryFields",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[BlinkIDVerify.FieldType]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.FieldType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV22missingMandatoryFieldsSayAA9FieldTypeOGSgvp",
+            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV22missingMandatoryFieldsSayAA9FieldTypeOGSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[BlinkIDVerify.FieldType]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[BlinkIDVerify.FieldType]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "FieldType",
+                            "printedName": "BlinkIDVerify.FieldType",
+                            "usr": "s:13BlinkIDVerify9FieldTypeO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV22missingMandatoryFieldsSayAA9FieldTypeOGSgvg",
+                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV22missingMandatoryFieldsSayAA9FieldTypeOGSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "extraPresentFields",
+            "printedName": "extraPresentFields",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[BlinkIDVerify.FieldType]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.FieldType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV18extraPresentFieldsSayAA9FieldTypeOGSgvp",
+            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV18extraPresentFieldsSayAA9FieldTypeOGSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[BlinkIDVerify.FieldType]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[BlinkIDVerify.FieldType]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "FieldType",
+                            "printedName": "BlinkIDVerify.FieldType",
+                            "usr": "s:13BlinkIDVerify9FieldTypeO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV18extraPresentFieldsSayAA9FieldTypeOGSgvg",
+                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV18extraPresentFieldsSayAA9FieldTypeOGSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "invalidCharacterFields",
+            "printedName": "invalidCharacterFields",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[BlinkIDVerify.FieldType]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.FieldType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV22invalidCharacterFieldsSayAA9FieldTypeOGSgvp",
+            "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV22invalidCharacterFieldsSayAA9FieldTypeOGSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[BlinkIDVerify.FieldType]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[BlinkIDVerify.FieldType]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "FieldType",
+                            "printedName": "BlinkIDVerify.FieldType",
+                            "usr": "s:13BlinkIDVerify9FieldTypeO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify24AdditionalProcessingInfoV22invalidCharacterFieldsSayAA9FieldTypeOGSgvg",
+                "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV22invalidCharacterFieldsSayAA9FieldTypeOGSgvg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -23138,8 +23774,7 @@
         "mangledName": "$s13BlinkIDVerify24AdditionalProcessingInfoV",
         "moduleName": "BlinkIDVerify",
         "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
+          "AccessControl"
         ],
         "conformances": [
           {
@@ -33829,6 +34464,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.Country]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Country",
+                    "printedName": "BlinkIDVerify.Country",
+                    "usr": "s:13BlinkIDVerify7CountryO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify7CountryO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify7CountryO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.Country]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Country",
+                        "printedName": "BlinkIDVerify.Country",
+                        "usr": "s:13BlinkIDVerify7CountryO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify7CountryO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify7CountryO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -33904,6 +34599,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.Country]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Country",
+                        "printedName": "BlinkIDVerify.Country",
+                        "usr": "s:13BlinkIDVerify7CountryO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -39191,6 +39916,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.Region]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Region",
+                    "printedName": "BlinkIDVerify.Region",
+                    "usr": "s:13BlinkIDVerify6RegionO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify6RegionO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify6RegionO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.Region]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Region",
+                        "printedName": "BlinkIDVerify.Region",
+                        "usr": "s:13BlinkIDVerify6RegionO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify6RegionO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify6RegionO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -39266,6 +40051,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.Region]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Region",
+                        "printedName": "BlinkIDVerify.Region",
+                        "usr": "s:13BlinkIDVerify6RegionO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -42235,6 +43050,80 @@
             "moduleName": "BlinkIDVerify"
           },
           {
+            "kind": "Var",
+            "name": "nonCardTribalId",
+            "printedName": "nonCardTribalId",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.DocumentType.Type) -> BlinkIDVerify.DocumentType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DocumentType",
+                    "printedName": "BlinkIDVerify.DocumentType",
+                    "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.DocumentType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DocumentType",
+                        "printedName": "BlinkIDVerify.DocumentType",
+                        "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify12DocumentTypeO15nonCardTribalIdyA2CmF",
+            "mangledName": "$s13BlinkIDVerify12DocumentTypeO15nonCardTribalIdyA2CmF",
+            "moduleName": "BlinkIDVerify"
+          },
+          {
+            "kind": "Var",
+            "name": "diplomaticId",
+            "printedName": "diplomaticId",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.DocumentType.Type) -> BlinkIDVerify.DocumentType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DocumentType",
+                    "printedName": "BlinkIDVerify.DocumentType",
+                    "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.DocumentType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DocumentType",
+                        "printedName": "BlinkIDVerify.DocumentType",
+                        "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify12DocumentTypeO12diplomaticIdyA2CmF",
+            "mangledName": "$s13BlinkIDVerify12DocumentTypeO12diplomaticIdyA2CmF",
+            "moduleName": "BlinkIDVerify"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -42333,6 +43222,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.DocumentType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DocumentType",
+                    "printedName": "BlinkIDVerify.DocumentType",
+                    "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify12DocumentTypeO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify12DocumentTypeO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DocumentType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DocumentType",
+                        "printedName": "BlinkIDVerify.DocumentType",
+                        "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify12DocumentTypeO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify12DocumentTypeO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -42408,6 +43357,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DocumentType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DocumentType",
+                        "printedName": "BlinkIDVerify.DocumentType",
+                        "usr": "s:13BlinkIDVerify12DocumentTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -44166,6 +45145,63 @@
                 "declKind": "Accessor",
                 "usr": "s:13BlinkIDVerify18DetailedDateResultV4yearSivg",
                 "mangledName": "$s13BlinkIDVerify18DetailedDateResultV4yearSivg",
+                "moduleName": "BlinkIDVerify",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "date",
+            "printedName": "date",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify18DetailedDateResultV4date10Foundation0D0VSgvp",
+            "mangledName": "$s13BlinkIDVerify18DetailedDateResultV4date10Foundation0D0VSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify18DetailedDateResultV4date10Foundation0D0VSgvg",
+                "mangledName": "$s13BlinkIDVerify18DetailedDateResultV4date10Foundation0D0VSgvg",
                 "moduleName": "BlinkIDVerify",
                 "accessorKind": "get"
               }
@@ -46186,8 +47222,273 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "RectangleFPoint",
+        "printedName": "RectangleFPoint",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "x",
+            "printedName": "x",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify15RectangleFPointV1xSfvp",
+            "mangledName": "$s13BlinkIDVerify15RectangleFPointV1xSfvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify15RectangleFPointV1xSfvg",
+                "mangledName": "$s13BlinkIDVerify15RectangleFPointV1xSfvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "y",
+            "printedName": "y",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify15RectangleFPointV1ySfvp",
+            "mangledName": "$s13BlinkIDVerify15RectangleFPointV1ySfvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify15RectangleFPointV1ySfvg",
+                "mangledName": "$s13BlinkIDVerify15RectangleFPointV1ySfvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:13BlinkIDVerify15RectangleFPointV",
+        "mangledName": "$s13BlinkIDVerify15RectangleFPointV",
+        "moduleName": "BlinkIDVerify",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "RectangleF",
         "printedName": "RectangleF",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "origin",
+            "printedName": "origin",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "RectangleFPoint",
+                "printedName": "BlinkIDVerify.RectangleFPoint",
+                "usr": "s:13BlinkIDVerify15RectangleFPointV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify10RectangleFV6originAA0C6FPointVvp",
+            "mangledName": "$s13BlinkIDVerify10RectangleFV6originAA0C6FPointVvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RectangleFPoint",
+                    "printedName": "BlinkIDVerify.RectangleFPoint",
+                    "usr": "s:13BlinkIDVerify15RectangleFPointV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify10RectangleFV6originAA0C6FPointVvg",
+                "mangledName": "$s13BlinkIDVerify10RectangleFV6originAA0C6FPointVvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "width",
+            "printedName": "width",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify10RectangleFV5widthSfvp",
+            "mangledName": "$s13BlinkIDVerify10RectangleFV5widthSfvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify10RectangleFV5widthSfvg",
+                "mangledName": "$s13BlinkIDVerify10RectangleFV5widthSfvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "height",
+            "printedName": "height",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify10RectangleFV6heightSfvp",
+            "mangledName": "$s13BlinkIDVerify10RectangleFV6heightSfvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify10RectangleFV6heightSfvg",
+                "mangledName": "$s13BlinkIDVerify10RectangleFV6heightSfvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
         "declKind": "Struct",
         "usr": "s:13BlinkIDVerify10RectangleFV",
         "mangledName": "$s13BlinkIDVerify10RectangleFV",
@@ -47088,6 +48389,66 @@
             "moduleName": "BlinkIDVerify",
             "implicit": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.ScanningMode]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanningMode",
+                    "printedName": "BlinkIDVerify.ScanningMode",
+                    "usr": "s:13BlinkIDVerify12ScanningModeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify12ScanningModeO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify12ScanningModeO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.ScanningMode]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanningMode",
+                        "printedName": "BlinkIDVerify.ScanningMode",
+                        "usr": "s:13BlinkIDVerify12ScanningModeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify12ScanningModeO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify12ScanningModeO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -47133,6 +48494,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.ScanningMode]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanningMode",
+                        "printedName": "BlinkIDVerify.ScanningMode",
+                        "usr": "s:13BlinkIDVerify12ScanningModeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -47384,6 +48775,66 @@
             "moduleName": "BlinkIDVerify",
             "implicit": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.DetectionLevel]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DetectionLevel",
+                    "printedName": "BlinkIDVerify.DetectionLevel",
+                    "usr": "s:13BlinkIDVerify14DetectionLevelO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify14DetectionLevelO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify14DetectionLevelO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DetectionLevel]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DetectionLevel",
+                        "printedName": "BlinkIDVerify.DetectionLevel",
+                        "usr": "s:13BlinkIDVerify14DetectionLevelO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify14DetectionLevelO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify14DetectionLevelO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -47429,6 +48880,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DetectionLevel]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DetectionLevel",
+                        "printedName": "BlinkIDVerify.DetectionLevel",
+                        "usr": "s:13BlinkIDVerify14DetectionLevelO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -53294,6 +54775,66 @@
             "moduleName": "BlinkIDVerify",
             "implicit": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.MRZDocumentType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MRZDocumentType",
+                    "printedName": "BlinkIDVerify.MRZDocumentType",
+                    "usr": "s:13BlinkIDVerify15MRZDocumentTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify15MRZDocumentTypeO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify15MRZDocumentTypeO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.MRZDocumentType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MRZDocumentType",
+                        "printedName": "BlinkIDVerify.MRZDocumentType",
+                        "usr": "s:13BlinkIDVerify15MRZDocumentTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify15MRZDocumentTypeO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify15MRZDocumentTypeO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -53339,6 +54880,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.MRZDocumentType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MRZDocumentType",
+                        "printedName": "BlinkIDVerify.MRZDocumentType",
+                        "usr": "s:13BlinkIDVerify15MRZDocumentTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -55333,6 +56904,128 @@
           },
           {
             "kind": "Var",
+            "name": "certificateNumber",
+            "printedName": "certificateNumber",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify9VIZResultV17certificateNumberAA0A5IDSDKV12StringResultVSgvp",
+            "mangledName": "$s13BlinkIDVerify9VIZResultV17certificateNumberAA0A5IDSDKV12StringResultVSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify9VIZResultV17certificateNumberAA0A5IDSDKV12StringResultVSgvg",
+                "mangledName": "$s13BlinkIDVerify9VIZResultV17certificateNumberAA0A5IDSDKV12StringResultVSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "countryCode",
+            "printedName": "countryCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify9VIZResultV11countryCodeAA0A5IDSDKV12StringResultVSgvp",
+            "mangledName": "$s13BlinkIDVerify9VIZResultV11countryCodeAA0A5IDSDKV12StringResultVSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify9VIZResultV11countryCodeAA0A5IDSDKV12StringResultVSgvg",
+                "mangledName": "$s13BlinkIDVerify9VIZResultV11countryCodeAA0A5IDSDKV12StringResultVSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "driverLicenseDetailedInfo",
             "printedName": "driverLicenseDetailedInfo",
             "children": [
@@ -55654,6 +57347,67 @@
           },
           {
             "kind": "Var",
+            "name": "nationalInsuranceNumber",
+            "printedName": "nationalInsuranceNumber",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify9VIZResultV23nationalInsuranceNumberAA0A5IDSDKV12StringResultVSgvp",
+            "mangledName": "$s13BlinkIDVerify9VIZResultV23nationalInsuranceNumberAA0A5IDSDKV12StringResultVSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify9VIZResultV23nationalInsuranceNumberAA0A5IDSDKV12StringResultVSgvg",
+                "mangledName": "$s13BlinkIDVerify9VIZResultV23nationalInsuranceNumberAA0A5IDSDKV12StringResultVSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "vehicleType",
             "printedName": "vehicleType",
             "children": [
@@ -55842,35 +57596,8 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[BlinkIDVerify.DependentInfo]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "DependentInfo",
-                    "printedName": "BlinkIDVerify.DependentInfo",
-                    "usr": "s:13BlinkIDVerify13DependentInfoV"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGvp",
-            "mangledName": "$s13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGvp",
-            "moduleName": "BlinkIDVerify",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
+                "name": "Optional",
+                "printedName": "[BlinkIDVerify.DependentInfo]?",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -55887,9 +57614,52 @@
                     "usr": "s:Sa"
                   }
                 ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGSgvp",
+            "mangledName": "$s13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[BlinkIDVerify.DependentInfo]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[BlinkIDVerify.DependentInfo]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DependentInfo",
+                            "printedName": "BlinkIDVerify.DependentInfo",
+                            "usr": "s:13BlinkIDVerify13DependentInfoV"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
                 "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGvg",
-                "mangledName": "$s13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGvg",
+                "usr": "s:13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGSgvg",
+                "mangledName": "$s13BlinkIDVerify9VIZResultV14dependentsInfoSayAA09DependentE0VGSgvg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -57890,6 +59660,66 @@
             "moduleName": "BlinkIDVerify",
             "implicit": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.BarcodeType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BarcodeType",
+                    "printedName": "BlinkIDVerify.BarcodeType",
+                    "usr": "s:13BlinkIDVerify11BarcodeTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify11BarcodeTypeO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify11BarcodeTypeO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.BarcodeType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BarcodeType",
+                        "printedName": "BlinkIDVerify.BarcodeType",
+                        "usr": "s:13BlinkIDVerify11BarcodeTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify11BarcodeTypeO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify11BarcodeTypeO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -57935,6 +59765,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.BarcodeType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BarcodeType",
+                        "printedName": "BlinkIDVerify.BarcodeType",
+                        "usr": "s:13BlinkIDVerify11BarcodeTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -62723,6 +64583,250 @@
           },
           {
             "kind": "Var",
+            "name": "vehicleOwner",
+            "printedName": "vehicleOwner",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify0A16IDScanningResultV12vehicleOwnerAA0A5IDSDKV06StringD0VSgvp",
+            "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV12vehicleOwnerAA0A5IDSDKV06StringD0VSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A16IDScanningResultV12vehicleOwnerAA0A5IDSDKV06StringD0VSgvg",
+                "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV12vehicleOwnerAA0A5IDSDKV06StringD0VSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "certificateNumber",
+            "printedName": "certificateNumber",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify0A16IDScanningResultV17certificateNumberAA0A5IDSDKV06StringD0VSgvp",
+            "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV17certificateNumberAA0A5IDSDKV06StringD0VSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A16IDScanningResultV17certificateNumberAA0A5IDSDKV06StringD0VSgvg",
+                "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV17certificateNumberAA0A5IDSDKV06StringD0VSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "countryCode",
+            "printedName": "countryCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify0A16IDScanningResultV11countryCodeAA0A5IDSDKV06StringD0VSgvp",
+            "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV11countryCodeAA0A5IDSDKV06StringD0VSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A16IDScanningResultV11countryCodeAA0A5IDSDKV06StringD0VSgvg",
+                "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV11countryCodeAA0A5IDSDKV06StringD0VSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "nationalInsuranceNumber",
+            "printedName": "nationalInsuranceNumber",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StringResult",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                    "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify0A16IDScanningResultV23nationalInsuranceNumberAA0A5IDSDKV06StringD0VSgvp",
+            "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV23nationalInsuranceNumberAA0A5IDSDKV06StringD0VSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StringResult",
+                        "printedName": "BlinkIDVerify.BlinkIDSDK.StringResult",
+                        "usr": "s:13BlinkIDVerify0A5IDSDKV12StringResultV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A16IDScanningResultV23nationalInsuranceNumberAA0A5IDSDKV06StringD0VSgvg",
+                "mangledName": "$s13BlinkIDVerify0A16IDScanningResultV23nationalInsuranceNumberAA0A5IDSDKV06StringD0VSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "dateOfBirth",
             "printedName": "dateOfBirth",
             "children": [
@@ -63573,6 +65677,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.ScanningSide]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanningSide",
+                    "printedName": "BlinkIDVerify.ScanningSide",
+                    "usr": "s:13BlinkIDVerify12ScanningSideO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify12ScanningSideO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify12ScanningSideO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.ScanningSide]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanningSide",
+                        "printedName": "BlinkIDVerify.ScanningSide",
+                        "usr": "s:13BlinkIDVerify12ScanningSideO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify12ScanningSideO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify12ScanningSideO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -63641,6 +65805,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.ScanningSide]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanningSide",
+                        "printedName": "BlinkIDVerify.ScanningSide",
+                        "usr": "s:13BlinkIDVerify12ScanningSideO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -63855,6 +66049,66 @@
             "moduleName": "BlinkIDVerify",
             "implicit": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BlinkIDVerify.DataMatchState]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DataMatchState",
+                    "printedName": "BlinkIDVerify.DataMatchState",
+                    "usr": "s:13BlinkIDVerify14DataMatchStateO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify14DataMatchStateO8allCasesSayACGvpZ",
+            "mangledName": "$s13BlinkIDVerify14DataMatchStateO8allCasesSayACGvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DataMatchState]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataMatchState",
+                        "printedName": "BlinkIDVerify.DataMatchState",
+                        "usr": "s:13BlinkIDVerify14DataMatchStateO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify14DataMatchStateO8allCasesSayACGvgZ",
+                "mangledName": "$s13BlinkIDVerify14DataMatchStateO8allCasesSayACGvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -63900,6 +66154,36 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[BlinkIDVerify.DataMatchState]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataMatchState",
+                        "printedName": "BlinkIDVerify.DataMatchState",
+                        "usr": "s:13BlinkIDVerify14DataMatchStateO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -65422,9 +67706,120 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "microblinkProxyURL",
+            "printedName": "microblinkProxyURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvp",
+            "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvg",
+                "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvs",
+                "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvs",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvM",
+                "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV18microblinkProxyURLSSSgvM",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(licenseKey:licensee:helloLogEnabled:downloadResources:resourceDownloadUrl:resourceLocalFolder:bundleURL:resourceRequestTimeout:)",
+            "printedName": "init(licenseKey:licensee:helloLogEnabled:downloadResources:resourceDownloadUrl:resourceLocalFolder:bundleURL:resourceRequestTimeout:microblinkProxyURL:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -65502,11 +67897,26 @@
                 "printedName": "BlinkIDVerify.RequestTimeout",
                 "hasDefaultArg": true,
                 "usr": "s:13BlinkIDVerify14RequestTimeoutV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV10licenseKey8licensee15helloLogEnabled17downloadResources19resourceDownloadUrl0M11LocalFolder9bundleURL0M14RequestTimeoutACSS_SSSgS2bS2S10Foundation0S0VSgAA0tU0Vtcfc",
-            "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV10licenseKey8licensee15helloLogEnabled17downloadResources19resourceDownloadUrl0M11LocalFolder9bundleURL0M14RequestTimeoutACSS_SSSgS2bS2S10Foundation0S0VSgAA0tU0Vtcfc",
+            "usr": "s:13BlinkIDVerify0A13IDSdkSettingsV10licenseKey8licensee15helloLogEnabled17downloadResources19resourceDownloadUrl0M11LocalFolder9bundleURL0M14RequestTimeout015microblinkProxyS0ACSS_SSSgS2bS2S10Foundation0S0VSgAA0tU0VAMtcfc",
+            "mangledName": "$s13BlinkIDVerify0A13IDSdkSettingsV10licenseKey8licensee15helloLogEnabled17downloadResources19resourceDownloadUrl0M11LocalFolder9bundleURL0M14RequestTimeout015microblinkProxyS0ACSS_SSSgS2bS2S10Foundation0S0VSgAA0tU0VAMtcfc",
             "moduleName": "BlinkIDVerify",
             "declAttributes": [
               "AccessControl"
@@ -66044,8 +68454,8 @@
         "children": [
           {
             "kind": "Var",
-            "name": "fullDocument",
-            "printedName": "fullDocument",
+            "name": "document",
+            "printedName": "document",
             "children": [
               {
                 "kind": "TypeFunc",
@@ -66075,8 +68485,8 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:13BlinkIDVerify19ImageExtractionTypeO12fullDocumentyA2CmF",
-            "mangledName": "$s13BlinkIDVerify19ImageExtractionTypeO12fullDocumentyA2CmF",
+            "usr": "s:13BlinkIDVerify19ImageExtractionTypeO8documentyA2CmF",
+            "mangledName": "$s13BlinkIDVerify19ImageExtractionTypeO8documentyA2CmF",
             "moduleName": "BlinkIDVerify"
           },
           {
@@ -77687,6 +80097,117 @@
             "moduleName": "BlinkIDVerify"
           },
           {
+            "kind": "Var",
+            "name": "nationalInsuranceNumber",
+            "printedName": "nationalInsuranceNumber",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.FieldType.Type) -> BlinkIDVerify.FieldType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FieldType",
+                    "printedName": "BlinkIDVerify.FieldType",
+                    "usr": "s:13BlinkIDVerify9FieldTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.FieldType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify9FieldTypeO23nationalInsuranceNumberyA2CmF",
+            "mangledName": "$s13BlinkIDVerify9FieldTypeO23nationalInsuranceNumberyA2CmF",
+            "moduleName": "BlinkIDVerify"
+          },
+          {
+            "kind": "Var",
+            "name": "countryCode",
+            "printedName": "countryCode",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.FieldType.Type) -> BlinkIDVerify.FieldType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FieldType",
+                    "printedName": "BlinkIDVerify.FieldType",
+                    "usr": "s:13BlinkIDVerify9FieldTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.FieldType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify9FieldTypeO11countryCodeyA2CmF",
+            "mangledName": "$s13BlinkIDVerify9FieldTypeO11countryCodeyA2CmF",
+            "moduleName": "BlinkIDVerify"
+          },
+          {
+            "kind": "Var",
+            "name": "certificateNumber",
+            "printedName": "certificateNumber",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BlinkIDVerify.FieldType.Type) -> BlinkIDVerify.FieldType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FieldType",
+                    "printedName": "BlinkIDVerify.FieldType",
+                    "usr": "s:13BlinkIDVerify9FieldTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "BlinkIDVerify.FieldType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FieldType",
+                        "printedName": "BlinkIDVerify.FieldType",
+                        "usr": "s:13BlinkIDVerify9FieldTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13BlinkIDVerify9FieldTypeO17certificateNumberyA2CmF",
+            "mangledName": "$s13BlinkIDVerify9FieldTypeO17certificateNumberyA2CmF",
+            "moduleName": "BlinkIDVerify"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -78794,6 +81315,63 @@
                     "declKind": "Accessor",
                     "usr": "s:13BlinkIDVerify0aB3SDKV10DateResultV4yearSivg",
                     "mangledName": "$s13BlinkIDVerify0aB3SDKV10DateResultV4yearSivg",
+                    "moduleName": "BlinkIDVerify",
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "date",
+                "printedName": "date",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:13BlinkIDVerify0aB3SDKV10DateResultV4date10Foundation0D0VSgvp",
+                "mangledName": "$s13BlinkIDVerify0aB3SDKV10DateResultV4date10Foundation0D0VSgvp",
+                "moduleName": "BlinkIDVerify",
+                "declAttributes": [
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Foundation.Date?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Date",
+                            "printedName": "Foundation.Date",
+                            "usr": "s:10Foundation4DateV"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:13BlinkIDVerify0aB3SDKV10DateResultV4date10Foundation0D0VSgvg",
+                    "mangledName": "$s13BlinkIDVerify0aB3SDKV10DateResultV4date10Foundation0D0VSgvg",
                     "moduleName": "BlinkIDVerify",
                     "accessorKind": "get"
                   }
@@ -81379,51 +83957,6 @@
                 "declKind": "Accessor",
                 "usr": "s:13BlinkIDVerify19FrameAnalysisResultV16documentLocationAA08DocumentG0VSgvg",
                 "mangledName": "$s13BlinkIDVerify19FrameAnalysisResultV16documentLocationAA08DocumentG0VSgvg",
-                "moduleName": "BlinkIDVerify",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "documentLocalizationStatus",
-            "printedName": "documentLocalizationStatus",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "DocumentLocalizationStatus",
-                "printedName": "BlinkIDVerify.DocumentLocalizationStatus",
-                "usr": "s:13BlinkIDVerify26DocumentLocalizationStatusO"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13BlinkIDVerify19FrameAnalysisResultV26documentLocalizationStatusAA08DocumentgH0Ovp",
-            "mangledName": "$s13BlinkIDVerify19FrameAnalysisResultV26documentLocalizationStatusAA08DocumentgH0Ovp",
-            "moduleName": "BlinkIDVerify",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "DocumentLocalizationStatus",
-                    "printedName": "BlinkIDVerify.DocumentLocalizationStatus",
-                    "usr": "s:13BlinkIDVerify26DocumentLocalizationStatusO"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13BlinkIDVerify19FrameAnalysisResultV26documentLocalizationStatusAA08DocumentgH0Ovg",
-                "mangledName": "$s13BlinkIDVerify19FrameAnalysisResultV26documentLocalizationStatusAA08DocumentgH0Ovg",
                 "moduleName": "BlinkIDVerify",
                 "implicit": true,
                 "accessorKind": "get"
@@ -88496,6 +91029,293 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "UXLicenseProviderBridge",
+        "printedName": "UXLicenseProviderBridge",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "showDemoOverlay",
+            "printedName": "showDemoOverlay",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvp",
+            "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "Custom",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvg",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvs",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvs",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvM",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC15showDemoOverlaySbvM",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "showProductionOverlay",
+            "printedName": "showProductionOverlay",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvp",
+            "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvp",
+            "moduleName": "BlinkIDVerify",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "Custom",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvg",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvg",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvs",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvs",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvM",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC21showProductionOverlaySbvM",
+                "moduleName": "BlinkIDVerify",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UXLicenseProviderBridge",
+                "printedName": "BlinkIDVerify.UXLicenseProviderBridge",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC6sharedACvpZ",
+            "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC6sharedACvpZ",
+            "moduleName": "BlinkIDVerify",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "Custom",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UXLicenseProviderBridge",
+                    "printedName": "BlinkIDVerify.UXLicenseProviderBridge",
+                    "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC6sharedACvgZ",
+                "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC6sharedACvgZ",
+                "moduleName": "BlinkIDVerify",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:13BlinkIDVerify23UXLicenseProviderBridgeC",
+        "mangledName": "$s13BlinkIDVerify23UXLicenseProviderBridgeC",
+        "moduleName": "BlinkIDVerify",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "Custom",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -95469,6 +98289,166 @@
             "mangledName": "$ss23CustomStringConvertibleP"
           }
         ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NativeBarcodeElements",
+        "printedName": "NativeBarcodeElements",
+        "declKind": "Struct",
+        "usr": "c:@N@MB@N@NativeBlinkID@S@NativeBarcodeElements",
+        "moduleName": "__ObjC",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LicenseToken",
+        "printedName": "LicenseToken",
+        "declKind": "Struct",
+        "usr": "c:@N@MB@N@License@S@LicenseToken",
+        "moduleName": "__ObjC",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CxxSession",
+        "printedName": "CxxSession",
+        "declKind": "Struct",
+        "usr": "c:@N@MB@N@NativeBlinkID@S@CxxSession",
+        "moduleName": "__ObjC",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "InputImage",
+        "printedName": "InputImage",
+        "declKind": "Struct",
+        "usr": "c:@N@MB@S@InputImage",
+        "moduleName": "__ObjC",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CxxSession",
+        "printedName": "CxxSession",
+        "declKind": "Struct",
+        "usr": "c:@N@MB@N@DocumentVerify@S@CxxSession",
+        "moduleName": "__ObjC",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
@@ -95674,279 +98654,279 @@
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Shared\/Resources\/ResourceManifest.swift",
       "kind": "Dictionary",
       "offset": 118,
-      "length": 3483,
-      "value": "[(\"ccc_lookup_table.zzip\", \"25fcbe37707d6bd1f4e0dbc7032700b1099d4b82a5fac20770133834a5431d60\"), (\"Model_854f87e7c7478066c6fcdabd51853b4cad313f688725dfeb6d0695c33f46fa41.strop\", \"3bbaddea67f8940694077bc064108d9cf4df3f508e6c721ded3ff37550a92579\"), (\"Model_8326c5065a6d8451d6d004db73babf4a4a9f502c68643a14934cc098d04bf44f.strop\", \"a92a1867405dc9019231b2eaa1a1e4572975d20aee997b231b8bddc9e4f1185c\"), (\"Model_2880751121560047e6dc571bc8ff4683aeb863886f7c0789234594ceb1e23577.strop\", \"a9501dd262ffd1a74cf73304d1a6c258ef42c79305cf6bc2222bd7bb9d42364f\"), (\"Model_8161cc951620be0dabb65f44e8a31a49970e9da1ac94106d29130f470b0eabe4.strop\", \"8b541731cd732ea60746dc7aebeaeeb94ba2f21f1338c4c925ce90cdb655461b\"), (\"Model_86d689f894da5af89553f5a5a9514ab5a6fdbab4b67a5a7c51f45c2189357ca5.strop\", \"ce43ad539120fd2a724d04c268cc70bc1d93de1ab0a228fe2773890237d4a933\"), (\"Model_d68548d94b956e67d6b606c7a8988082c3d66f494f94a14d705d0cdea6635151.strop\", \"3a786851507428d0e8845e8725aaac4ea6f01561e7162ae9cdb77a3132ae4898\"), (\"Model_a1516add883f909ebecf9b565238086f8f31bbb3e7fb2113258e3ae7c659555e.strop\", \"e327f3c9da2e4d5e2be98195b24aabae557ec3cfb99b91e5630d7efab8ef93d8\"), (\"Model_3b11c3ffacbbf390b932fb9a7024f1a0016f66281ea8c790f8b5903374ad89c2.strop\", \"b4d598a0f368c1accbf2d0b5342517035c25fe4197570f69990ba48f8c02a67c\"), (\"Model_07c7ab860e77ec2e92bb822f6d62424b8595a5beb4340f6b2f7f6a4cffa5d050.strop\", \"ffb65e14de57564460d5cc2bd68785d315e6c8b7a8cae2b56792b080075a5561\"), (\"Model_f2874f5766b779c063dbe30467979163497dc4b29c43bab23d70c798ee32993a.strop\", \"e07141ce6e363a2c7718ee8dc8bdee275c0947c0812ce56044ec03d8064a7c3a\"), (\"Model_36d8e94f4cb46097bd6b7385f2aa91fcdee1a5fefeec59e56d1b9e82c94b00a7.strop\", \"43eb07f0ad07e4a0dd2b5d8973fae1b0c66e586838da4b6eb85655aea4b75b69\"), (\"Model_9a8a29486ce57a15db08a18c76a94df4c811039737750667147f0001942f19d3.strop\", \"a752e2e222141490c22ad8335319ef410706717ee7a12f7a97626f531202ee63\"), (\"static_features.zzip\", \"cdc5240cdc7100dd9f1deff9e23a8cec61968ad38beaa73aca4e7fb4d20b075b\"), (\"Model_93607315418f2c5d3abec06d0b2a81e69abeb1b8d0506ed6373d7d74bd5e4b05.strop\", \"79bb41b564a2904e832fd6d6610b20308210293a89a47e606e96197bc7d84cda\"), (\"Model_f531088a1f65a31d6ba039e09446fe24c18360080fec3792308ac01514803620.strop\", \"403290ec4e4b5987cd36e5c930d6563bb35e94ff8b1884132503cb324c5899d2\"), (\"Model_5ff8f19b99d6b1393981e63c8e563b5af6297aa07808474d3007b609ae416485.strop\", \"49aedf55202bf2173bf397563995fc4aae670a34c618b7e0b39865303a88d536\"), (\"Model_8c7727da554fd257fa758787ca3d0f517b47f6c5ba791792f516da7dd210fde8.strop\", \"637c348c0f5940c4edeb50b1dbf5e5574b97060ab373fed9667e4762375e3248\"), (\"Model_473ac5f5e256623c0a6b282698c1f1b033b9fb5359e6aa142e9fb4a4022afe4e.strop\", \"8bece4d92f69a65e3611d9a0da87d1bf337003195f62ce0caf0d02a3277d410b\"), (\"Model_f11e17b7a27c16e0910be26e455bc8fc119a80e50614afbe8c744b5c2c639e94.strop\", \"9e504b9b3787a751f0d82e823fd6b9fcec8060e6b4ef280c8d79e0b09c4f814f\"), (\"Model_fc22f7553e3e85531eb79ef6db1474302664508cc7ae4ff0d950447b20f2f8ee.strop\", \"af1059000b474cd998e2e424262163da3a3274d40dcd014107f44ef1b88f3f1d\"), (\"Model_b452fd3cd4037080cfcb4c423dba5bc58c8ceafc28427fdf9c5778fb353f088e.strop\", \"180119c1917935b4c0a44793d1bf3a7f4afdfae2b24ba95932e6781d48a43127\"), (\"Model_faf688599c7e261a2a7404730f69ed029115bb0d3e7a3657731d88e701720efe.strop\", \"7e608a509c1413f33df020c79d6276fec2e6d8c4d4b72766a6c020efb42b43cf\")]"
+      "length": 3383,
+      "value": "[(\"ccc_lookup_table.zzip\", \"25fcbe37707d6bd1f4e0dbc7032700b1099d4b82a5fac20770133834a5431d60\"), (\"Model_f479233a81ecef2708f6217ed1e29dfe437522e0cf34bd4d9ef6c39266afa9ab.strop\", \"ffaf07998839448fb233e22931ee5be4f16e6a56872ead471b64d1b6b0b07b75\"), (\"Model_8326c5065a6d8451d6d004db73babf4a4a9f502c68643a14934cc098d04bf44f.strop\", \"a92a1867405dc9019231b2eaa1a1e4572975d20aee997b231b8bddc9e4f1185c\"), (\"Model_2880751121560047e6dc571bc8ff4683aeb863886f7c0789234594ceb1e23577.strop\", \"a9501dd262ffd1a74cf73304d1a6c258ef42c79305cf6bc2222bd7bb9d42364f\"), (\"Model_86d689f894da5af89553f5a5a9514ab5a6fdbab4b67a5a7c51f45c2189357ca5.strop\", \"ce43ad539120fd2a724d04c268cc70bc1d93de1ab0a228fe2773890237d4a933\"), (\"Model_d68548d94b956e67d6b606c7a8988082c3d66f494f94a14d705d0cdea6635151.strop\", \"3a786851507428d0e8845e8725aaac4ea6f01561e7162ae9cdb77a3132ae4898\"), (\"Model_a1516add883f909ebecf9b565238086f8f31bbb3e7fb2113258e3ae7c659555e.strop\", \"e327f3c9da2e4d5e2be98195b24aabae557ec3cfb99b91e5630d7efab8ef93d8\"), (\"Model_3b11c3ffacbbf390b932fb9a7024f1a0016f66281ea8c790f8b5903374ad89c2.strop\", \"b4d598a0f368c1accbf2d0b5342517035c25fe4197570f69990ba48f8c02a67c\"), (\"Model_92fad94c6d734a880f5555b0cb6f436b91a2f3c36435d895fc0fab48772e2bbf.strop\", \"e59ffa861a1e7a76552788df3dfbe71a1f7c7adcd3998c36c02cc1d1b664aa76\"), (\"Model_07c7ab860e77ec2e92bb822f6d62424b8595a5beb4340f6b2f7f6a4cffa5d050.strop\", \"ffb65e14de57564460d5cc2bd68785d315e6c8b7a8cae2b56792b080075a5561\"), (\"Model_f2874f5766b779c063dbe30467979163497dc4b29c43bab23d70c798ee32993a.strop\", \"e07141ce6e363a2c7718ee8dc8bdee275c0947c0812ce56044ec03d8064a7c3a\"), (\"Model_4336af7999b059ac75281d0d71b60dd55b33c2b22c2b2c8e2b9ab56fe6ad720d.strop\", \"8595d0f208af3d392a1a8d42f099181e56b8d731691a1994dd2dded6b5d90755\"), (\"Model_36d8e94f4cb46097bd6b7385f2aa91fcdee1a5fefeec59e56d1b9e82c94b00a7.strop\", \"43eb07f0ad07e4a0dd2b5d8973fae1b0c66e586838da4b6eb85655aea4b75b69\"), (\"Model_9a8a29486ce57a15db08a18c76a94df4c811039737750667147f0001942f19d3.strop\", \"a752e2e222141490c22ad8335319ef410706717ee7a12f7a97626f531202ee63\"), (\"Model_93607315418f2c5d3abec06d0b2a81e69abeb1b8d0506ed6373d7d74bd5e4b05.strop\", \"79bb41b564a2904e832fd6d6610b20308210293a89a47e606e96197bc7d84cda\"), (\"Model_f531088a1f65a31d6ba039e09446fe24c18360080fec3792308ac01514803620.strop\", \"403290ec4e4b5987cd36e5c930d6563bb35e94ff8b1884132503cb324c5899d2\"), (\"Model_8c7727da554fd257fa758787ca3d0f517b47f6c5ba791792f516da7dd210fde8.strop\", \"637c348c0f5940c4edeb50b1dbf5e5574b97060ab373fed9667e4762375e3248\"), (\"Model_473ac5f5e256623c0a6b282698c1f1b033b9fb5359e6aa142e9fb4a4022afe4e.strop\", \"8bece4d92f69a65e3611d9a0da87d1bf337003195f62ce0caf0d02a3277d410b\"), (\"Model_fc22f7553e3e85531eb79ef6db1474302664508cc7ae4ff0d950447b20f2f8ee.strop\", \"af1059000b474cd998e2e424262163da3a3274d40dcd014107f44ef1b88f3f1d\"), (\"Model_b452fd3cd4037080cfcb4c423dba5bc58c8ceafc28427fdf9c5778fb353f088e.strop\", \"180119c1917935b4c0a44793d1bf3a7f4afdfae2b24ba95932e6781d48a43127\"), (\"Model_a9623413eba53db7d5cd23301e49b37d71d77290b0b2bc2efa9cbe69cb7e2b2e.strop\", \"c32f1ba290df937daceb56a6a01e8b2d5dbd46b08acf62b29974b0bbcdf18b96\"), (\"Model_faf688599c7e261a2a7404730f69ed029115bb0d3e7a3657731d88e701720efe.strop\", \"7e608a509c1413f33df020c79d6276fec2e6d8c4d4b72766a6c020efb42b43cf\")]"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/DetailedDateResult.swift",
       "kind": "StringLiteral",
-      "offset": 2143,
+      "offset": 2150,
       "length": 20,
       "value": "\"successfullyParsed\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/DetailedDateResult.swift",
       "kind": "StringLiteral",
-      "offset": 2204,
+      "offset": 2211,
       "length": 25,
       "value": "\"filledByDomainKnowledge\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/DetailedDateResult.swift",
       "kind": "StringLiteral",
-      "offset": 2250,
+      "offset": 2257,
       "length": 5,
       "value": "\"day\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/DetailedDateResult.swift",
       "kind": "StringLiteral",
-      "offset": 2278,
+      "offset": 2285,
       "length": 7,
       "value": "\"month\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/DetailedDateResult.swift",
       "kind": "StringLiteral",
-      "offset": 2307,
+      "offset": 2314,
       "length": 6,
       "value": "\"year\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 2071,
+      "offset": 2099,
       "length": 3,
       "value": "250"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 2117,
+      "offset": 2145,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 2164,
+      "offset": 2192,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 2211,
+      "offset": 2239,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 2263,
+      "offset": 2291,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 3846,
+      "offset": 3874,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 3876,
+      "offset": 3904,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6646,
+      "offset": 6674,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6682,
+      "offset": 6710,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6722,
+      "offset": 6750,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6758,
+      "offset": 6786,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6796,
+      "offset": 6824,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 6848,
+      "offset": 6876,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 19605,
+      "offset": 19633,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 19715,
+      "offset": 19743,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 19847,
+      "offset": 19875,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 19930,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 19998,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 20050,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 19903,
+      "offset": 20331,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 19972,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
-      "kind": "BooleanLiteral",
-      "offset": 20024,
+      "offset": 20387,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 20305,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
-      "kind": "BooleanLiteral",
-      "offset": 20361,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
-      "kind": "BooleanLiteral",
-      "offset": 20402,
+      "offset": 20428,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 20538,
+      "offset": 20564,
       "length": 4,
       "value": "0.02"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 20588,
+      "offset": 20614,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 20647,
+      "offset": 20673,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 20706,
+      "offset": 20732,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 20758,
+      "offset": 20784,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/BlinkIDSessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 24273,
+      "offset": 24299,
       "length": 4,
       "value": "15.0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/DataMatchResult.swift",
       "kind": "IntegerLiteral",
-      "offset": 226,
+      "offset": 240,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/Session\/DataMatchResult.swift",
       "kind": "IntegerLiteral",
-      "offset": 246,
+      "offset": 260,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/BlinkIDSdk.swift",
       "kind": "BooleanLiteral",
-      "offset": 1588,
+      "offset": 1664,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/BlinkIDSdk.swift",
       "kind": "BooleanLiteral",
-      "offset": 1621,
+      "offset": 1697,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/BlinkIDSdk.swift",
       "kind": "StringLiteral",
-      "offset": 1657,
+      "offset": 1733,
       "length": 45,
       "value": "\"https:\/\/models.cdn.microblink.com\/resources\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/BlinkID\/BlinkIDSdk.swift",
       "kind": "StringLiteral",
-      "offset": 1734,
+      "offset": 1810,
       "length": 10,
       "value": "\"MLModels\""
     },
@@ -95988,56 +98968,56 @@
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 3482,
+      "offset": 3489,
       "length": 20,
       "value": "\"successfullyParsed\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 3547,
+      "offset": 3554,
       "length": 25,
       "value": "\"filledByDomainKnowledge\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 3597,
+      "offset": 3604,
       "length": 5,
       "value": "\"day\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 3629,
+      "offset": 3636,
       "length": 7,
       "value": "\"month\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 3662,
+      "offset": 3669,
       "length": 6,
       "value": "\"year\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 8073,
+      "offset": 8080,
       "length": 9,
       "value": "\"country\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 8110,
+      "offset": 8117,
       "length": 8,
       "value": "\"region\""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ExtractionResults\/Unique\/VerifyUniqueResults.swift",
       "kind": "StringLiteral",
-      "offset": 8144,
+      "offset": 8151,
       "length": 6,
       "value": "\"type\""
     },
@@ -96177,14 +99157,14 @@
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/Shared\/Ping\/PingProvider.swift",
       "kind": "StringLiteral",
-      "offset": 1654,
+      "offset": 1698,
       "length": 19,
       "value": "\"[ERROR]: \""
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/Shared\/Ping\/PingProvider.swift",
       "kind": "StringLiteral",
-      "offset": 1672,
+      "offset": 1716,
       "length": 2,
       "value": "\"\""
     },
@@ -96201,6 +99181,20 @@
       "offset": 630,
       "length": 38,
       "value": "\"MBServerPermissionSubmitTimeInterval\""
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/Shared\/License\/LicenseProvider.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10758,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Capture\/Swift\/Shared\/License\/LicenseProvider.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10809,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/opt\/jenkins-iphone-12-mini\/E0\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/BlinkIDVerify\/Models\/Results\/ImageResult.swift",

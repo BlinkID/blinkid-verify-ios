@@ -21,8 +21,8 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     
     private var cancellables = Set<AnyCancellable>()
     
-    public override init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = true) {
-        super.init(analyzer: analyzer, shouldShowIntroductionAlert: shouldShowIntroductionAlert)
+    public override init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = true, showHelpButton: Bool = true) {
+        super.init(analyzer: analyzer, shouldShowIntroductionAlert: shouldShowIntroductionAlert, showHelpButton: showHelpButton)
         startEventHandling()
         camera.$status
             .sink { [weak self] _ in
@@ -92,8 +92,10 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
             for await events in await analyzer.events.stream {
                 if events.contains(.requestDocumentSide(side: .back)) {
                     firstSideScanned()
+                    cancelTooltipTimer()
                 } else if events.contains(.requestDocumentSide(side: .barcode)) {
                     self.setReticleState(.barcode, force: true)
+                    startTooltipTimer()
                 } else if events.contains(.wrongSide) {
                     self.setReticleState(.error("mb_scanning_wrong_side"))
                 } else if events.contains(.tooClose) {
@@ -112,6 +114,8 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
                     self.setReticleState(.error("mb_document_not_fully_visible"))
                 } else if events.contains(.occlusion) {
                     self.setReticleState(.error("mb_document_not_fully_visible"))
+                } else {
+                    self.setReticleState(inactiveState)
                 }
             }
         }
@@ -120,10 +124,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     private func firstSideScanned() {
         pauseScanning()
 
-        let remainingTime = calculateRemainingTime()
+        let remainingTime = calculateRemainingTime(stateDuration: 1.0)
 
         if remainingTime > 0 {
-            timer?.invalidate()
             Timer.scheduledTimer(withTimeInterval: remainingTime, repeats: false) { [weak self] _ in
                 Task {
                     await self?.animateFirstSideScanned()
@@ -204,10 +207,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     public func finishScan() {
         pauseScanning()
         
-        let remainingTime = calculateRemainingTime()
+        let remainingTime = calculateRemainingTime(stateDuration: 1.0)
         
         if remainingTime > 0 {
-            timer?.invalidate()
             Timer.scheduledTimer(withTimeInterval: remainingTime, repeats: false) { [weak self] _ in
                 Task {
                     await self?.animateSuccess()

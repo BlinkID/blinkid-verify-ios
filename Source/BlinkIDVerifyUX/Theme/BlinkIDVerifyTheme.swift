@@ -44,4 +44,11 @@ public final class BlinkIDVerifyTheme: UXThemeProtocol {
     // help button
     public var helpButtonForegroundColor: Color = .mbSecondary
     public var helpButtonBackgroundColor: Color = .mbHelpBackground
+    
+    // help button tooltip
+    public var helpButtonTooltipForegroundColor: Color = .white
+    public var helpButtonTooltipBackgroundColor: Color = .mbNeedHelpTooltipBackground
+    
+    // Toast
+    public var toastBackgroundColor: Color = .mbToastBackground
 }

@@ -38,10 +38,10 @@ final class ScanningUXTranslator {
         switch frameAnalysisResult.processingStatus {
         case .scanningWrongSide, .awaitingOtherSide:
             events.append(.wrongSide)
-        case .success, .detectionFailed:
-            break
-        default:
+        case .mandatoryFieldMissing, .invalidCharactersFound, .mrzParsingFailed:
             events.append(.notFullyVisible)
+        default:
+            break
         }
         
         switch frameAnalysisResult.detectionStatus {
@@ -71,7 +71,6 @@ final class ScanningUXTranslator {
         if frameAnalysisResult.tiltDetected {
             events.append(.tilt)
         }
-        
         return events
     }
     
