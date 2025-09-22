@@ -51,6 +51,9 @@ actor CaptureService {
     // A Boolean value that indicates whether the actor finished its required configuration.
     private var isSetUp = false
     
+    // A enum preffered camera
+    private var preferredCamera: Camera.CameraPosition = .back
+    
     // Task for monitoring system preferred camera
     private var monitorTask: Task<Void, Never>?
     
@@ -118,7 +121,7 @@ actor CaptureService {
         
         do {
             // Retrieve the default camera.
-            let defaultCamera = try deviceLookup.defaultCamera
+            let defaultCamera = preferredCamera == .back ? try deviceLookup.defaultCamera : try deviceLookup.frontCamera
 
             // Add inputs for the default camera devices.
             activeVideoInput = try addInput(for: defaultCamera)
@@ -415,3 +418,10 @@ actor CaptureService {
 }
 
 fileprivate let logger = Logger(subsystem: "com.microblink.camera", category: "CaptureService")
+
+// - MARK: Front/Back Switch
+extension CaptureService {
+    func setPreferredCamera(_ camera: Camera.CameraPosition = .back) {
+        preferredCamera = camera
+    }
+}

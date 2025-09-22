@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/BlinkIDVerify-Swift.h</key>
 		<data>
-		1oSIVEpJH5ljmEz3MDW7bNFbMlo=
+		SM+0opXVOIEBbq0P/wXSi4kGnMk=
 		</data>
 		<key>Headers/BlinkIDVerify.h</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		G1Ku4qEQlOsIQ4hhG+9xex/3pHg=
+		bSyJa0yJivuXXoOB+/dYEVP055g=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		qHtlxWtUTlyF1omYv4xLxZLDf38=
+		pnnDMWoHk1RfNSjYA2wwhzxofME=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		WqHsSOpmOjWOY+3Jddtoyy2l7D0=
+		03zEd4oB0biPMvgFPHOtKfizfyk=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		WqHsSOpmOjWOY+3Jddtoyy2l7D0=
+		03zEd4oB0biPMvgFPHOtKfizfyk=
 		</data>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lazlL4sq61HD/rALxd40aiJ32oU=
+		USw6jL1R8rUf9NeU1XEUe65Zeyc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>conan.xcconfig</key>
 		<data>
-		okVkI97PwYBTt7BIwQlneIlfC0Y=
+		TZRvs75S4KaQwHtMU8vBs55uFaI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/FazApU18KuGoUi1uJe1svdLVq2DScHMMe4/viIg5tA=
+			uCJOoSJ/31oNiSa7rmUB/4Y/UnR0Ps278usjd4sknoY=
 			</data>
 		</dict>
 		<key>Headers/BlinkIDVerify.h</key>
@@ -88,14 +88,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wc+9iFaRhj8IJgR/hItWR83+Rdr/c8r9JBEySAro2FU=
+			80Rfry+FzN++LKwom3JMMjCx1G9q0cnAGJuRB1+tH90=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nWoDvxCPv5MzIkXK3+15INbEiaGXC5j6XyNNg0OkHtA=
+			lyWE2u6E5vKJVDMMFdC9SRsQhERrU+efjvBfkNq9eAk=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -109,14 +109,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nWoDvxCPv5MzIkXK3+15INbEiaGXC5j6XyNNg0OkHtA=
+			lyWE2u6E5vKJVDMMFdC9SRsQhERrU+efjvBfkNq9eAk=
 			</data>
 		</dict>
 		<key>Modules/BlinkIDVerify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tt5B+WeyCvuQz65fa0c55Frlc1+teUuqvVBISCz/xqE=
+			mDnkrH7QOmmS/oc626y7QJ5HrN7RsXE/0fkw9PgmMwo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -151,7 +151,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			w/liOTrOpQStytL9LKF2RZqdhjQN4AuEngiV+nyIi5g=
+			bOra1SZBmUaHMvcw4A+2AcqUz//f0opXSmRBz7tEFMo=
 			</data>
 		</dict>
 	</dict>

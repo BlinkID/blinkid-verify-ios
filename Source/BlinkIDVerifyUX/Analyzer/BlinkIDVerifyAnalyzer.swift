@@ -19,6 +19,10 @@ public actor BlinkIDVerifyEventStream: EventStream {
         self.continuation = continuation
     }
     
+    deinit {
+        continuation.finish()
+    }
+    
     /// Sends UI events to the stream.
     /// - Parameter events: Array of UI events to be processed
     public func send(_ events: [UIEvent]) {

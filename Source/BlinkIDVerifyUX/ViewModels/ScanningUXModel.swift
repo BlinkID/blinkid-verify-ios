@@ -20,9 +20,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     @Published public var captureResult: BlinkIDVerifyCaptureResultState?
     
     private var cancellables = Set<AnyCancellable>()
-    
-    public override init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = true, showHelpButton: Bool = true) {
-        super.init(analyzer: analyzer, shouldShowIntroductionAlert: shouldShowIntroductionAlert, showHelpButton: showHelpButton)
+
+    public override init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, uxSettings: ScanningUXSettings = ScanningUXSettings()) {
+        super.init(analyzer: analyzer, uxSettings: uxSettings)
         startEventHandling()
         camera.$status
             .sink { [weak self] _ in
@@ -62,12 +62,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     }
     
     public override func licenseErrorAlertDismised() {
-        captureResult = BlinkIDVerifyCaptureResultState(captureResult: nil)
-    }
-    
-    public override func scanningDidCancel() {
-        super.scanningDidCancel()
-        captureResult = BlinkIDVerifyCaptureResultState(captureResult: nil)
+        Task {
+            await self.analyzer.end()
+        }
     }
     
     public override func timeoutAlertDismised() {
@@ -82,7 +79,6 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
         Task {
             await self.analyzer.end()
         }
-        captureResult = BlinkIDVerifyCaptureResultState(captureResult: nil)
     }
     
     // - MARK: - Handle UIEvents
@@ -142,6 +138,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     // - MARK: Animations
 
     private func animateFirstSideScanned() async {
+        if uxSettings.allowHapticFeedback {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
         showSuccessImage = true
         setReticleState(.inactive, force: true)
 
@@ -188,6 +187,9 @@ public final class ScanningUXModel: ScanningViewModel<BlinkIDVerifyCaptureResult
     }
     
     private func animateSuccess() {
+        if uxSettings.allowHapticFeedback {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
         showSuccessImage = true
         self.setReticleState(.inactive, force: true)
 
