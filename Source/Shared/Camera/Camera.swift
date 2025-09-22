@@ -15,6 +15,20 @@ import AVFoundation
 /// An object that provides the interface to the features of the camera.
 public final class Camera: CameraModel {
     
+    /// An enum indicating preffered camera position
+    public enum CameraPosition: Equatable {
+        case back
+        case front
+    }
+    
+    /// Set/get preffered camera on init
+    public var preferredCamera: CameraPosition = .back {
+        didSet {
+            Task {
+                await captureService.setPreferredCamera(preferredCamera)
+            }
+        }
+    }
     /// The current status of the camera, such as unauthorized, running, or failed.
     @Published public private(set) var status = CameraStatus.unknown
     
@@ -99,7 +113,6 @@ public final class Camera: CameraModel {
     }
     
     // MARK: - Changing modes
-    
     /// A value that indicates the mode of capture for the camera.
     var captureMode = CaptureMode.video {
         didSet {

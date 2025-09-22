@@ -19608,6 +19608,18 @@ struct implClassFor<BlinkIDVerify::DependentInfo> { using type = BlinkIDVerify::
 
 namespace BlinkIDVerify SWIFT_PRIVATE_ATTR SWIFT_SYMBOL_MODULE("BlinkIDVerify") {
 
+class SWIFT_SYMBOL("s:13BlinkIDVerify11DetailValueO") DetailValue;
+} // end namespace 
+
+namespace swift SWIFT_PRIVATE_ATTR {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++17-extensions"
+template<>
+inline const constexpr bool isUsableInGenericContext<BlinkIDVerify::DetailValue> = true;
+#pragma clang diagnostic pop
+} // namespace swift
+
+namespace BlinkIDVerify SWIFT_PRIVATE_ATTR SWIFT_SYMBOL_MODULE("BlinkIDVerify") {
 namespace _impl {
 
 class _impl_DetailDictionary;
@@ -72590,6 +72602,18 @@ struct implClassFor<BlinkIDVerify::DependentInfo> { using type = BlinkIDVerify::
 
 namespace BlinkIDVerify SWIFT_PRIVATE_ATTR SWIFT_SYMBOL_MODULE("BlinkIDVerify") {
 
+class SWIFT_SYMBOL("s:13BlinkIDVerify11DetailValueO") DetailValue;
+} // end namespace 
+
+namespace swift SWIFT_PRIVATE_ATTR {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++17-extensions"
+template<>
+inline const constexpr bool isUsableInGenericContext<BlinkIDVerify::DetailValue> = true;
+#pragma clang diagnostic pop
+} // namespace swift
+
+namespace BlinkIDVerify SWIFT_PRIVATE_ATTR SWIFT_SYMBOL_MODULE("BlinkIDVerify") {
 namespace _impl {
 
 class _impl_DetailDictionary;

@@ -47,7 +47,6 @@ protocol ScanningViewModelProtocol: ObservableObject {
     func pauseScanning()
     func resumeScanning()
     func restartScanning()
-    func scanningDidCancel()
     func licenseErrorAlertDismised()
     func presentAlert()
     func dismissAlert()
@@ -66,6 +65,7 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     
     let camera: Camera = Camera()
     let analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>
+    let uxSettings: ScanningUXSettings
     
     // MARK: - UI Elements
     // Cancel button
@@ -80,6 +80,9 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     
     @Published public var isTorchOn: Bool = false {
         didSet {
+            if uxSettings.allowHapticFeedback {
+                UISelectionFeedbackGenerator().selectionChanged()
+            }
             camera.isTorchEnabled = isTorchOn
             torchImage = isTorchOn ? Image(systemName: "bolt.fill") : Image(systemName: "bolt.slash.fill")
             torchHint = isTorchOn ? "Turn flashlight on" : "Turn flashlight off"
@@ -96,12 +99,6 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     let helpLabel = "Help"
     let helpHint = "Open scanning onboarding help"
     @Published var showSheet = false
-    
-    // Introduction alert
-    let shouldShowIntroductionAlert: Bool
-    
-    // Onboarding sheet
-    let showHelpButton: Bool
     
     // MARK: - Alert States
     @Published public var showIntroductionAlert = false {
@@ -120,6 +117,9 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
         didSet {
             if showScanningAlert {
                 pauseScanning()
+                if uxSettings.allowHapticFeedback {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
             }
             else {
                 timeoutAlertDismised()
@@ -132,6 +132,9 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
         didSet {
             if showLicenseErrorAlert {
                 pauseScanning()
+                if uxSettings.allowHapticFeedback {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
             } else {
                 licenseErrorAlertDismised()
             }
@@ -183,16 +186,17 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     
     /// Initializes a new scanning UX model with the specified document analyzer.
     /// - Parameter analyzer: The analyzer responsible for processing camera frames and detecting documents.
-    /// - Parameter shouldShowIntroductionAlert: Whether introduction alert will be shown on appear
-    public init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, shouldShowIntroductionAlert: Bool = false, showHelpButton: Bool = false) {
+    /// - Parameter uxSettings: Settings used for scanning.
+    public init(analyzer: any CameraFrameAnalyzer<CameraFrame, UIEvent>, uxSettings: ScanningUXSettings = ScanningUXSettings()) {
         self.analyzer = analyzer
-        self.shouldShowIntroductionAlert = shouldShowIntroductionAlert
-        self.showHelpButton = showHelpButton
+        self.uxSettings = uxSettings
         self.showDemoOverlayImage = UXLicenseProviderBridge.shared.showDemoOverlay
         self.showProductionOverlayImage = UXLicenseProviderBridge.shared.showProductionOverlay
+        self.camera.preferredCamera = uxSettings.preferredCameraPosition
     }
     
     deinit {
+        showTooltipTimer?.invalidate()
         hideTooltipTimer?.invalidate()
     }
     
@@ -228,6 +232,7 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
     
     public func stopEventHandling() {
         eventHandlingTask?.cancel()
+        eventHandlingTask = nil
     }
     
     public func pauseScanning() {
@@ -250,10 +255,6 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
             setReticleState(.front, force: true)
             await camera.start()
         }
-    }
-    
-    public func scanningDidCancel() {
-         scanningResult = nil
     }
     
     // MARK: - Common Methods
@@ -330,6 +331,11 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
             break
         }
         
+        if case .error = reticleState {
+            if uxSettings.allowHapticFeedback {
+                UINotificationFeedbackGenerator().notificationOccurred(.warning)
+            }
+        }
         lastReticleStateChange = currentTime
         eventCounter.removeAll()
     }
@@ -348,15 +354,18 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
             }
             
             await MainActor.run {
-                showTooltipTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(showTooltipInvoked), userInfo: nil, repeats: false)
+                showTooltipTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false, block: { [weak self] _ in
+                    Task {
+                        await self?.showTooltipInvoked()
+                    }
+                })
                 RunLoop.current.add(showTooltipTimer!, forMode: .common)
             }
         }
-        
     }
     
     @MainActor
-    @objc private func showTooltipInvoked() {
+    private func showTooltipInvoked() {
         showTooltip = true
     }
     
@@ -367,12 +376,18 @@ public class ScanningViewModel<T, U>: ObservableObject, ScanningViewModelProtoco
         showTooltip = false
     }
     
+    @MainActor
     private func startHideTooltipTimer() {
-        hideTooltipTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(hideTooltipInvoked), userInfo: nil, repeats: false)
+        hideTooltipTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { [weak self] _ in
+            Task {
+                await self?.hideTooltipInvoked()
+            }
+        })
         RunLoop.current.add(hideTooltipTimer!, forMode: .common)
     }
     
-    @objc private func hideTooltipInvoked() {
+    @MainActor
+    private func hideTooltipInvoked() {
         showTooltip = false
     }
 }

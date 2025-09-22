@@ -1,5 +1,15 @@
 # Release notes
 
+## 3.14.1
+
+### Improvements
+- Added the option to use the front-facing camera for scanning. You can select front-facing camera through `ScanningUXSettings` property of `ScanningUXModel` and `BlinkIDUXModel`.
+- Added haptics to the scanning process. Haptics can be disabled in `ScanningUXSettings`
+
+### Breaking API Changes
+- Removed `shouldShowIntroductionAlert` and `showHelpButton` from `ScanningUXModel` and `BlinkIDUXModel` init. They are now included in the `ScanningUXSettings` property.
+- Added `ScanningUXSettings` to `ScanningUXModel` and `BlinkIDUXModel` init
+
 ## 3.14.0
 
 ### What's New

@@ -168,7 +168,7 @@ extension ScanningUXProtocol where Self: View {
                                     }
                                 }
                                 Spacer()
-                                if viewModel.showHelpButton {
+                                if viewModel.uxSettings.showHelpButton {
                                     HelpButton(
                                         showTooltip: viewModel.showTooltip,
                                         tooltipText: "mb_need_help_tooltip".localizedString
@@ -229,7 +229,7 @@ extension ScanningUXProtocol where Self: View {
                 await viewModel.analyze()
             }
             .onAppear {
-                if viewModel.shouldShowIntroductionAlert {
+                if viewModel.uxSettings.showIntroductionAlert {
                     viewModel.presentAlert()
                 } else {
                     viewModel.startTooltipTimer()

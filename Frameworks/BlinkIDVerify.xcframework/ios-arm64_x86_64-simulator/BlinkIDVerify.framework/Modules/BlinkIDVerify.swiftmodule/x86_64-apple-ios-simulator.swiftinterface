@@ -151,6 +151,9 @@ public enum RecognitionMode : Swift.String, Swift.Sendable, Swift.Decodable, Swi
   }
 }
 public struct DetailDictionary : Swift.Sendable, Swift.Decodable, Swift.CustomStringConvertible {
+  public var values: [BlinkIDVerify.DetailValue] {
+    get
+  }
   public init(from decoder: any Swift.Decoder) throws
   public var description: Swift.String {
     get
