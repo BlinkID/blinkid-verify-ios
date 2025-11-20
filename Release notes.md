@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.14.2
+
+### Bugfixes
+- Fixed issue with verify request affected by endpoint API changes
+
 ## 3.14.1
 
 ### Improvements
