@@ -3,15 +3,24 @@
 //  This code is provided for use as-is and may not be copied, modified, or redistributed.
 //
 
+import BlinkIDVerify
+
 /// Scanning alert type
-public enum BlinkIDVerifyScanningAlertType: Sendable, AlertTypeProtocol {
+public enum BlinkIDVerifyScanningAlertType: Int, Sendable, AlertTypeProtocol {
+    public var id: Int { rawValue }
+    
     /// Scanning session timed out.
     case timeout
+    
+    /// Scanned document currently not supported by the recognizer
+    case unsupportedDocument
     
     public var title: String {
         switch self {
         case .timeout:
             return "mb_recognition_timeout_dialog_title".localizedString
+        case .unsupportedDocument:
+            return "mb_unsupported_document_title".localizedString
         }
     }
     
@@ -19,6 +28,24 @@ public enum BlinkIDVerifyScanningAlertType: Sendable, AlertTypeProtocol {
         switch self {
         case .timeout:
             return "mb_recognition_timeout_dialog_message".localizedString
+        case .unsupportedDocument:
+            return "mb_unsupported_document_message".localizedString
+        }
+    }
+    
+    public var buttonTitle: String {
+        switch self {
+        case .timeout, .unsupportedDocument:
+            return "mb_recognition_timeout_dialog_retry_button".localizedString
+        }
+    }
+    
+    public var pingletAlertType: UxEventPinglet.AlertType {
+        switch self {
+        case .timeout:
+            return .steptimeout
+        case .unsupportedDocument:
+            return .documentnotsupported
         }
     }
 }

@@ -42,14 +42,16 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     public typealias Frame = CameraFrame
     public typealias Event = UIEvent
     
-    private let captureSession: CaptureSession
+    private let blinkIdVerifySession: BlinkIDVerifySession
     private let eventStream: BlinkIDVerifyEventStream
-    private let translator: ScanningUXTranslator = ScanningUXTranslator()
+    private let translator: BlinkIDVerifyUXTranslator = BlinkIDVerifyUXTranslator()
     private var scanningDone = false
     private var paused = false
     private var resultContinuation: CheckedContinuation<Result, Never>?
     public private(set) var stepTimeoutDuration: TimeInterval
     private var timerTask: Task<Void, Never>?
+    private var unsupportedDocumentTimerTask: Task<Void, Never>?
+    
     
     /// Creates a new document verification analyzer.
     /// - Parameters:
@@ -58,12 +60,20 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     ///   - eventStream: Stream to receive UI events during scanning
     public init(
         sdk: BlinkIDVerifySdk,
-        captureSessionSettings: CaptureSessionSettings = CaptureSessionSettings(capturePolicy: .video),
+        blinkIdVerifySessionSettings: BlinkIDVerifySessionSettings = BlinkIDVerifySessionSettings(),
         eventStream: BlinkIDVerifyEventStream
-    ) async {
-        self.captureSession = await sdk.createScanningSession(sessionSettings: captureSessionSettings)
+    ) async throws {
+        self.blinkIdVerifySession = try await sdk.createScanningSession(sessionSettings: blinkIdVerifySessionSettings)
+        // Change this
+        self._sessionNumber = await blinkIdVerifySession.getSessionNumber()
         self.eventStream = eventStream
-        self.stepTimeoutDuration = captureSessionSettings.stepTimeoutDuration
+        self.stepTimeoutDuration = blinkIdVerifySessionSettings.stepTimeoutDuration
+    }
+    
+    private let _sessionNumber: Int
+        
+    nonisolated public var sessionNumber: Int {
+        return _sessionNumber
     }
     
     /// Processes a camera frame for document analysis.
@@ -78,27 +88,31 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
         let inputImage = InputImage(cameraFrame: image)
         
         do {
-            let result = try await captureSession.process(inputImage: inputImage)
+            let result = try await blinkIdVerifySession.process(inputImage: inputImage)
             
-            let events = translator.translate(
-                resultCompleteness: result.resultCompleteness,
-                frameAnalysisResult: result.frameAnalysisResult,
-                session: self.captureSession
-                )
+            let events = translator.translate(frameProcessResult: result)
             
-            if events.contains(.requestDocumentSide(side: .barcode)) {
+            if events.contains(.unsupportedDocument) {
+                startUnsupportedDocumentScanTimer()
+            } else {
+                unsupportedDocumentTimerTask?.cancel()
+            }
+            
+            if events.contains(UIEvent.requestDocumentSide(side: .barcode)) {
                 timerTask?.cancel()
                 startTimer(stepTimeoutDuration)
+                Task { @ProcessingActor in
+                    blinkIdVerifySession.allowBarcodeStep()
+                }
             }
                     
             await eventStream.send(events)
 
-            if result.resultCompleteness.overallFlowFinished {
+            if result.processResult?.resultCompleteness.scanningStatus == .documentScanned {
                 guard !scanningDone else { return }
                 scanningDone = true
                 Task { @ProcessingActor in
-                    let sessionResult = captureSession.getResult()
-                    
+                    let sessionResult = blinkIdVerifySession.getResult()
                     await finishScanning(with: .completed(sessionResult))
                 }
             }
@@ -109,21 +123,14 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     
     private func finishScanning(with result: ScanningResult<BlinkIDVerifyCaptureResult, BlinkIDVerifyScanningAlertType>) {
         timerTask?.cancel()
-        timerTask = nil
+        unsupportedDocumentTimerTask?.cancel()
         resultContinuation?.resume(returning: result)
         resultContinuation = nil
     }
     
     /// Cancels the current document scanning session.
     public func cancel() {
-        self.captureSession.cancelActiveProcessing()
-    }
-    
-    /// Ends the current document scanning session.
-    public func end() {
-        pause()
-        resultContinuation?.resume(returning: .ended)
-        resultContinuation = nil
+        self.blinkIdVerifySession.cancelActiveProcessing()
     }
     
     /// Returns the final result of the scanning session.
@@ -138,11 +145,13 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
         self.paused = true
         self.cancel()
         timerTask?.cancel()
+        unsupportedDocumentTimerTask?.cancel()
     }
     
     /// Resumes the document analysis after being paused.
     public func resume() {
         guard paused else { return }
+        self.blinkIdVerifySession.resumeActiveProcessing()
         
         paused = false
         startTimer(stepTimeoutDuration)
@@ -150,8 +159,18 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
     
     /// Restarts the document analysis after being paused.
     public func restart() {
+        Task { @ProcessingActor in
+            try self.blinkIdVerifySession.reset()
+        }
         translator.resetState()
         self.resume()
+    }
+    
+    /// Ends the current document scanning session.
+    public func end() {
+        pause()
+        resultContinuation?.resume(returning: .ended)
+        resultContinuation = nil
     }
     
     /// Stream of UI events generated during document analysis.
@@ -167,16 +186,31 @@ public actor BlinkIDVerifyAnalyzer: CameraFrameAnalyzer {
                 let nanoseconds = UInt64(interval * Double(NSEC_PER_SEC))
                 try? await Task.sleep(nanoseconds: nanoseconds)
                 if !Task.isCancelled {
-                    await timerFired()
+                    await scanInterrupted(with: .timeout)
                 }
             }
         }
     }
     
-    private func timerFired() {
+    private func startUnsupportedDocumentScanTimer() {
+        guard unsupportedDocumentTimerTask == nil ||
+              unsupportedDocumentTimerTask?.isCancelled == true else { return }
+
+        unsupportedDocumentTimerTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: UInt64(1.5 * 1_000_000_000))
+            if !Task.isCancelled {
+                await self?.scanInterrupted(with: .unsupportedDocument)
+            }
+        }
+    }
+    
+    private func scanInterrupted(with alertType: BlinkIDVerifyScanningAlertType) {
         pause()
-        resultContinuation?.resume(returning: .interrupted(.timeout))
+        resultContinuation?.resume(returning: .interrupted(alertType))
         resultContinuation = nil
-        captureSession.restart()
+        
+        Task {
+            await PingManager.shared.sendPinglets()
+        }
     }
 }

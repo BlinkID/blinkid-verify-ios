@@ -78,9 +78,16 @@ public actor BlinkIDAnalyzer: CameraFrameAnalyzer {
         classFilter: (any BlinkIDClassFilter)? = nil
     ) async throws {
         self.session = try await sdk.createScanningSession(sessionSettings: blinkIdSessionSettings)
+        self._sessionNumber = await session.getSessionNumber()
         self.eventStream = eventStream
         self.stepTimeoutDuration = blinkIdSessionSettings.stepTimeoutDuration
         self.classFilter = classFilter
+    }
+    
+    private let _sessionNumber: Int
+        
+    nonisolated public var sessionNumber: Int {
+        return _sessionNumber
     }
         
     /// Processes a camera frame for document analysis.
@@ -93,37 +100,43 @@ public actor BlinkIDAnalyzer: CameraFrameAnalyzer {
         }
         
         let inputImage = InputImage(cameraFrame: image)
-        
-        let frameProcessResult = await session.process(inputImage: inputImage)
-        
-        if let classInfo = frameProcessResult.processResult?.inputImageAnalysisResult.documentClassInfo,
-           !classInfo.isEmpty(),
-           let filter = classFilter {
-            if !filter.classAllowed(classInfo: classInfo) {
-                /// - Note: scanInterrupted returns alert type in continuation which results in presenting an alert.
-                ///         Presening an alert results in paused scanning, which is resumed and reset on alert dismiss.
-                ///                                                          (4.3.2025. Toni Kreso)
-                scanInterrupted(with: .disallowedClass)
-                return
+        do {
+            let frameProcessResult = try await session.process(inputImage: inputImage)
+            
+            if let classInfo = frameProcessResult.processResult?.inputImageAnalysisResult.documentClassInfo,
+               !classInfo.isEmpty(),
+               let filter = classFilter {
+                if !filter.classAllowed(classInfo: classInfo) {
+                    /// - Note: scanInterrupted returns alert type in continuation which results in presenting an alert.
+                    ///         Presening an alert results in paused scanning, which is resumed and reset on alert dismiss.
+                    ///                                                          (4.3.2025. Toni Kreso)
+                    scanInterrupted(with: .disallowedClass)
+                    return
+                }
             }
-        }
-        
-        let events = translator.translate(frameProcessResult: frameProcessResult, session: session)
-
-        if events.contains(.requestDocumentSide(side: .barcode)) {
-            timerTask?.cancel()
-            startTimer(stepTimeoutDuration)
-        }
-        
-        await eventStream.send(events)
-        
-        if frameProcessResult.processResult?.resultCompleteness.scanningStatus == .documentScanned {
-            guard !scanningDone else { return }
-            scanningDone = true
-            Task { @ProcessingActor in
-                let sessionResult = session.getResult()
-                await finishScanning(with: .completed(sessionResult))
+            
+            let events = translator.translate(frameProcessResult: frameProcessResult, scanningSettings: session.settings.scanningSettings)
+            
+            if events.contains(.requestDocumentSide(side: .barcode)) {
+                timerTask?.cancel()
+                startTimer(stepTimeoutDuration)
+                Task { @ProcessingActor in
+                    session.allowBarcodeStep()
+                }
             }
+            
+            await eventStream.send(events)
+            
+            if frameProcessResult.processResult?.resultCompleteness.scanningStatus == .documentScanned {
+                guard !scanningDone else { return }
+                scanningDone = true
+                Task { @ProcessingActor in
+                    let sessionResult = session.getResult()
+                    await finishScanning(with: .completed(sessionResult))
+                }
+            }
+        } catch {
+            resultContinuation?.resume(returning: .cancelled)
         }
         
     }
@@ -155,8 +168,10 @@ public actor BlinkIDAnalyzer: CameraFrameAnalyzer {
     
     /// Resumes the document analysis after being paused.
     public func resume() {
-        self.paused = false
+        guard paused else { return }
         self.session.resumeActiveProcessing()
+        
+        paused = false
         startTimer(stepTimeoutDuration)
     }
     
@@ -198,6 +213,11 @@ public actor BlinkIDAnalyzer: CameraFrameAnalyzer {
         pause()
         resultContinuation?.resume(returning: .interrupted(alertType))
         resultContinuation = nil
+        
+        // ADR 15 - Platform implemented scan timeout
+        Task {
+            await PingManager.shared.sendPinglets()
+        }
     }
 }
 

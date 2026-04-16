@@ -46,4 +46,10 @@ public enum UIEvent: Equatable, Sendable {
     
     /// Face photo on the document is not fully visible
     case facePhotoNotFullyVisible
+    
+    /// Indicates the wrong side of the passport with a barcode is being presented
+    case wrongSidePassportWithBarcode
+    
+    /// Document currently not supported by the recognizer
+    case unsupportedDocument
 }

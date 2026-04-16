@@ -3,12 +3,6 @@
 //  Modifications are allowed under the terms of the license for files located in the UX/UI lib folder.
 //
 
-protocol ReticleStateProtocol: Equatable, Hashable {
-    var text: String? { get }
-    var duration: Double { get }
-    var shouldExpire: Bool { get }
-}
-
 public enum ReticleState: ReticleStateProtocol {
     case front
     case back
@@ -20,7 +14,15 @@ public enum ReticleState: ReticleStateProtocol {
     case passport(String)
     case inactiveWithMessage(String)
     
-    var text: String? {
+    public static var initialState: ReticleState {
+        .front
+    }
+    
+    public static var inactiveState: ReticleState {
+        .inactive
+    }
+    
+    public var text: String? {
         switch self {
         case .front:
             return "mb_front_instructions"
@@ -41,7 +43,7 @@ public enum ReticleState: ReticleStateProtocol {
         }
     }
     
-    var duration: Double {
+    public var duration: Double {
         switch self {
         case .front, .back, .barcode:
             2.0
@@ -56,7 +58,7 @@ public enum ReticleState: ReticleStateProtocol {
         }
     }
     
-    var shouldExpire: Bool {
+    public var shouldExpire: Bool {
         switch self {
         case .front, .back, .detecting, .inactive, .flip, .barcode:
             return false
@@ -64,6 +66,37 @@ public enum ReticleState: ReticleStateProtocol {
             return true
         case .passport(_), .inactiveWithMessage(_):
             return false
+        }
+    }
+    
+    public var canBeFallback: Bool {
+        switch self {
+        case .front, .back, .barcode, .passport(_), .inactiveWithMessage(_):
+            return true
+        case .flip, .inactive, .error(_), .detecting:
+            return false
+        }
+    }
+    
+    public var isErrorState: Bool {
+        switch self {
+        case .error(_):
+            return true
+        default:
+            return false
+        }
+    }
+    
+    public var reticleStateAppearance: ReticleStateAppearance {
+        switch self {
+        case .inactive, .flip, .inactiveWithMessage(_):
+            return .empty
+        case .error(_):
+            return .error
+        case .detecting:
+            return .detecting
+        case .front, .back, .barcode, .passport(_):
+            return .spinning
         }
     }
 }

@@ -7,12 +7,12 @@
 
 #pragma once
 
-// missing in Inputs.hpp within runner, so until fixed package gets propagated, this include is needed here
-#include <tuple>
-
 #import "Frame/InputImage.hpp"
 #import "BlinkIDVerify/NativeSession.hpp"
 #import "NativeDocumentVerify.hpp"
 #import "License/NativeLicenseProvider.hpp"
 #import "BlinkID/NativeBlinkIDScanningSession.hpp"
 #import "NativeBlinkId.hpp"
+#import "Ping/NativePingManagerHelper.hpp"
+#import "Shared/NativeSettings.hpp"
+#import "BlinkID/NativeUtils.hpp"

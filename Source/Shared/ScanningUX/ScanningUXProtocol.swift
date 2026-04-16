@@ -5,15 +5,26 @@
 
 import SwiftUI
 
+#if canImport(BlinkIDVerify)
+import BlinkIDVerify
+#elseif canImport(BlinkID)
+import BlinkID
+#elseif canImport(BlinkCard)
+import BlinkCard
+#endif
+
 @MainActor
 /// Protocol defining the core functionality required for document scanning views
 protocol ScanningUXProtocol {
     
     associatedtype ScanResult
     associatedtype AlertType: AlertTypeProtocol
-    associatedtype UXModel: ScanningViewModel<ScanResult, AlertType>
+    associatedtype EventType
+    associatedtype ReticleStateMachineType: ReticleStateMachineProtocol
+    associatedtype UXModel: ScanningViewModel<ScanResult, EventType, ReticleStateMachineType, AlertType>
     associatedtype UXTheme: UXThemeProtocol
     associatedtype GenericContentView: View
+    associatedtype OnboardingStepType: OnboardingStepProtocol
     
     /// ViewModel used in the document scanning process
     var viewModel: UXModel { get }
@@ -25,15 +36,19 @@ protocol ScanningUXProtocol {
     var theme: UXTheme { get }
     
     /// Builder for Reticle
-    func ReticleView(reticleState: Binding<ReticleState>) -> GenericContentView
+    func ReticleView(reticleStateMachine: ReticleStateMachineType) -> GenericContentView
     
     /// Builder for whole view
-    func MainView(reticleState: Binding<ReticleState>,
+    func MainView(reticleStateMachine: ReticleStateMachineType,
                   isTorchOn: Binding<Bool>,
                   showToast: Binding<Bool>,
                   showSheet: Binding<Bool>,
-                  showScanningAlert: Binding<Bool>,
-                  showLicenseErrorAlert: Binding<Bool>) -> GenericContentView
+                  showLicenseErrorAlert: Binding<Bool>,
+                  onboardingAlertTitle: String,
+                  onboardingAlertDescription: String,
+                  onboardingAlertImage: Image,
+                  timeoutAlertDescription: String,
+                  flashlightWarningMessage: String) -> GenericContentView
     
     /// Builder for the cancel button
     func CancelButton() -> GenericContentView
@@ -97,27 +112,35 @@ extension ScanningUXProtocol where Self: View {
     }
     
     @ViewBuilder
-    func ReticleView(reticleState: Binding<ReticleState>) -> GenericContentView {
-        createReticleView(reticleState: reticleState) as! GenericContentView
+    func ReticleView(reticleStateMachine: ReticleStateMachineType) -> GenericContentView {
+        createReticleView(reticleStateMachine: reticleStateMachine) as! GenericContentView
     }
     
     @ViewBuilder
-    func MainView(reticleState: Binding<ReticleState>,
+    func MainView(reticleStateMachine: ReticleStateMachineType,
                   isTorchOn: Binding<Bool>,
                   showToast: Binding<Bool>,
                   showSheet: Binding<Bool>,
-                  showScanningAlert: Binding<Bool>,
-                  showLicenseErrorAlert: Binding<Bool>) -> GenericContentView {
-        createMainView(reticleState: reticleState, isTorchOn: isTorchOn, showToast: showToast, showSheet: showSheet, showScanningAlert: showScanningAlert, showLicenseErrorAlert: showLicenseErrorAlert) as! GenericContentView
+                  showLicenseErrorAlert: Binding<Bool>,
+                  onboardingAlertTitle: String,
+                  onboardingAlertDescription: String,
+                  onboardingAlertImage: Image,
+                  timeoutAlertDescription: String,
+                  flashlightWarningMessage: String) -> GenericContentView {
+        createMainView(reticleStateMachine: reticleStateMachine, isTorchOn: isTorchOn, showToast: showToast, showSheet: showSheet, showLicenseErrorAlert: showLicenseErrorAlert, onboardingAlertTitle: onboardingAlertTitle, onboardingAlertDescription: onboardingAlertDescription, onboardingAlertImage: onboardingAlertImage, timeoutAlertDescription: timeoutAlertDescription, flashlightWarningMessage: flashlightWarningMessage) as! GenericContentView
     }
     
     @ViewBuilder
-    private func createMainView(reticleState: Binding<ReticleState>,
+    private func createMainView(reticleStateMachine: ReticleStateMachineType,
                                 isTorchOn: Binding<Bool>,
                                 showToast: Binding<Bool>,
                                 showSheet: Binding<Bool>,
-                                showScanningAlert: Binding<Bool>,
-                                showLicenseErrorAlert: Binding<Bool>) -> some View {
+                                showLicenseErrorAlert: Binding<Bool>,
+                                onboardingAlertTitle: String,
+                                onboardingAlertDescription: String,
+                                onboardingAlertImage: Image,
+                                timeoutAlertDescription: String,
+                                flashlightWarningMessage: String) -> some View {
         
         AnyView(
             Group {
@@ -138,6 +161,7 @@ extension ScanningUXProtocol where Self: View {
                                     Spacer()
                                     Image.demoOverlayImage
                                         .offset(y: -Self.reticleDiameter)
+                                        .accessibilityHidden(true)
                                     Spacer()
                                 }
                                 .frame(maxHeight: .infinity)
@@ -148,15 +172,17 @@ extension ScanningUXProtocol where Self: View {
                                 VStack {
                                     Spacer()
                                     Image.productionOverlayImage
+                                        .accessibilityHidden(true)
                                 }
                                 .zIndex(3)
                             }
                             
                             VStack(spacing: 8) {
-                                ReticleView(reticleState: reticleState)
+                                Spacer()
+                                ReticleView(reticleStateMachine: reticleStateMachine)
                                 Spacer()
                             }
-                            .offset(y: geometry.size.height / 2 - Self.reticleDiameter / 2)
+                            .offset(y: Self.reticleDiameter / 2)
                             .zIndex(4)
                             
                             VStack {
@@ -183,7 +209,11 @@ extension ScanningUXProtocol where Self: View {
                                 ZStack {
                                     Color.black.opacity(0.5)
                                         .ignoresSafeArea()
+                                        .accessibilityHidden(true)
                                     OnboardingAlertView(theme: self.theme,
+                                                        title: onboardingAlertTitle,
+                                                        message: onboardingAlertDescription,
+                                                        image: onboardingAlertImage,
                                                         dismiss: viewModel.dismissAlert())
                                 }
                                 .transition(.opacity)
@@ -192,26 +222,49 @@ extension ScanningUXProtocol where Self: View {
                                 
                         }
                     }
-                    .onChange(of: viewModel.reticleState) { newValue in
-                        if let text = newValue.text {
+                    .onChange(of: reticleStateMachine.reticleState) { newValue in
+                        if let text = newValue.text?.localizedString {
                             UIAccessibility.post(notification: .announcement, argument: text)
                         }
                     }
                     .sheet(isPresented: showSheet) {
-                        OnboardingSheetView(theme: self.theme)
+                        OnboardingSheetView<OnboardingStepType>(theme: self.theme, sessionNumber: viewModel.sessionNumber)
                             .presentationDetents([.height(600)])
+                            .interactiveDismissDisabled()
                             .onAppear {
                                 viewModel.pauseScanning()
+                                Task {
+                                    if viewModel.sessionNumber > 0 {
+                                        let uxEventPinglet = UxEventPinglet(eventType: .helpopened)
+                                        await PingManager.shared.addPinglet(pinglet: uxEventPinglet, sessionNumber: viewModel.sessionNumber)
+                                    }
+                                }
+
                             }
                             .onDisappear {
                                 viewModel.resumeScanning()
+                                viewModel.startTooltipTimer()
+                                
+                                Task {
+                                    if viewModel.sessionNumber > 0 {
+                                        let uxEventPinglet = UxEventPinglet(eventType: .helpclosed)
+                                        await PingManager.shared.addPinglet(pinglet: uxEventPinglet, sessionNumber: viewModel.sessionNumber)
+                                    }
+
+                                }
+
                             }
                     }
-                    .alert(isPresented: showScanningAlert) {
+                    .alert(
+                        item: Binding(
+                            get: { viewModel.alertType },
+                            set: { viewModel.alertType = $0 }
+                        )
+                    ) { alert in
                         Alert(
-                            title: Text(viewModel.alertType?.title ?? "mb_recognition_timeout_dialog_title".localizedString),
-                            message: Text(viewModel.alertType?.description ?? "mb_recognition_timeout_dialog_message".localizedString),
-                            dismissButton: .default(Text("mb_recognition_timeout_dialog_retry_button".localizedString))
+                            title: Text(alert.title),
+                            message: Text(alert.description),
+                            dismissButton: .default(Text(alert.buttonTitle))
                         )
                     }
                     .alert("mb_license_locked".localizedString, isPresented: showLicenseErrorAlert) {
@@ -220,20 +273,19 @@ extension ScanningUXProtocol where Self: View {
                     .onTapGesture(count: 2) {
                         viewModel.showTooltip.toggle()
                     }
-                    .toast(isShowing: showToast, message: "mb_flashlight_warning_message".localizedString, duration: 3, backgroundColor: self.theme.toastBackgroundColor)
+                    .toast(isShowing: showToast, message: flashlightWarningMessage.localizedString, duration: 3, backgroundColor: self.theme.toastBackgroundColor)
                 }
             }
             .task {
                 // Start the capture pipeline.
+                await viewModel.camera.checkAuthorization(sessionNumber: viewModel.sessionNumber)
+                await viewModel.camera.sendConditionsPinglet(sessionNumber: viewModel.sessionNumber)
+                await viewModel.camera.sendCameraStartPinglet(sessionNumber: viewModel.sessionNumber)
                 await viewModel.camera.start()
-                await viewModel.analyze()
-            }
-            .onAppear {
                 if viewModel.uxSettings.showIntroductionAlert {
                     viewModel.presentAlert()
                 } else {
-                    viewModel.startTooltipTimer()
-                    UIAccessibility.post(notification: .screenChanged, argument: ReticleState.front.text)
+                    viewModel.startScanning()
                 }
             }
             .onDisappear {
@@ -242,6 +294,12 @@ extension ScanningUXProtocol where Self: View {
                 Task { @MainActor in
                     await viewModel.camera.stop()
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                viewModel.pauseScanning()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                viewModel.resumeScanning()
             }
         )
     }
@@ -255,6 +313,7 @@ extension ScanningUXProtocol where Self: View {
                     VStack(spacing: 0) {
                         ToolTipView(message: tooltipText, foregroundColor: self.theme.helpButtonTooltipForegroundColor, backgroundColor: self.theme.helpButtonTooltipBackgroundColor)
                             .offset(x: -8, y: -45) // Adjust this value to control the spacing between tooltip and button
+                            .accessibilityHidden(true)
                     }
                     .animation(.easeInOut(duration: 0.2), value: showTooltip)
                 }
@@ -264,18 +323,20 @@ extension ScanningUXProtocol where Self: View {
     }
     
     @ViewBuilder
-    private func createReticleView(reticleState: Binding<ReticleState>) -> some View {
+    private func createReticleView(reticleStateMachine: ReticleStateMachineType) -> some View {
         AnyView(
             Group {
                 ZStack {
-                    Reticle(diameter: Self.reticleDiameter, reticleState: reticleState)
-                    if viewModel.showCardImage {
-                        viewModel.cardImage
+                    Reticle<ReticleStateMachineType>(diameter: Self.reticleDiameter, reticleStateMachine: reticleStateMachine)
+                    if viewModel.showCardImage,
+                       let cardImage = viewModel.cardImage {
+                        cardImage
                             .resizable()
                             .scaledToFit()
                             .frame(height: 60)
                             .rotation3DEffect(.degrees(viewModel.flipCardDegrees), axis: (x: 0, y: 1, z: 0))
                             .scaleEffect(viewModel.flipCardScale)
+                            .accessibilityHidden(true)
                     }
                     if viewModel.showRippleView {
                         Circle()
@@ -283,6 +344,7 @@ extension ScanningUXProtocol where Self: View {
                             .frame(height: Self.reticleDiameter)
                             .scaleEffect(viewModel.rippleViewScale)
                             .opacity(viewModel.rippleViewOpacity)
+                            .accessibilityHidden(true)
                     }
                     if viewModel.showSuccessImage {
                         viewModel.successImage
@@ -292,13 +354,11 @@ extension ScanningUXProtocol where Self: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.black, .white)
                             .scaleEffect(viewModel.successImageScale)
+                            .accessibilityHidden(true)
                     }
                 }
                 .frame(height: 100)
-                if let text = viewModel.reticleState.text?.localizedString {
-                    MessageContainer(theme: self.theme, text: text)
-                        .accessibilityHidden(true)
-                }
+                MessageContainer<ReticleStateMachineType>(theme: self.theme, stateMachine: viewModel.reticleStateMachine)
             }
         )
     }

@@ -17,11 +17,14 @@ import BlinkID
 /// This view consists of `CameraView` and `Reticle`.
 ///
 /// For `UIEvent` stream, and UX logic, see ``ScanningUXModel``.
-public struct BlinkIDUXView: View, ScanningUXProtocol {
+public struct BlinkIDUXView: View, ScanningUXProtocol, PassportAnimatableView {
     typealias GenericContentView = AnyView
     typealias ScanResult = BlinkIDScanningResult
     typealias AlertType = BlinkIDScanningAlertType
     typealias UXModel = BlinkIDUXModel
+    typealias EventType = UIEvent
+    typealias ReticleStateMachineType = ReticleStateMachine
+    typealias OnboardingStepType = OnboardingStep
 
     @ObservedObject var viewModel: BlinkIDUXModel
             
@@ -32,26 +35,28 @@ public struct BlinkIDUXView: View, ScanningUXProtocol {
     }
 
     public var body: some View {
-        MainView(reticleState: $viewModel.reticleState, isTorchOn: $viewModel.isTorchOn, showToast: $viewModel.isToastVisible, showSheet: $viewModel.showSheet, showScanningAlert: $viewModel.showScanningAlert, showLicenseErrorAlert: $viewModel.showLicenseErrorAlert)
+        MainView(reticleStateMachine: viewModel.reticleStateMachine, isTorchOn: $viewModel.isTorchOn, showToast: $viewModel.isToastVisible, showSheet: $viewModel.showSheet, showLicenseErrorAlert: $viewModel.showLicenseErrorAlert, onboardingAlertTitle: "mb_onboarding_dialog_title", onboardingAlertDescription: "mb_onboarding_dialog_message", onboardingAlertImage: Image.allDetailsVisibleImage, timeoutAlertDescription: "mb_recognition_timeout_dialog_message".localizedString, flashlightWarningMessage: "mb_flashlight_warning_message".localizedString)
     }
 }
 
 // Override the ReticleView implementation in BlinkIDUXView, we have some custom things for BlinkID
 extension BlinkIDUXView {
     @ViewBuilder
-    func ReticleView(reticleState: Binding<ReticleState>) -> GenericContentView {
+    func ReticleView(reticleStateMachine: ReticleStateMachineType) -> GenericContentView {
         AnyView(
             Group {
                 VStack {
                     ZStack {
-                        Reticle(diameter: Self.reticleDiameter, reticleState: reticleState)
-                        if viewModel.showCardImage {
-                            viewModel.cardImage
+                        Reticle<ReticleStateMachineType>(diameter: Self.reticleDiameter, reticleStateMachine: reticleStateMachine)
+                        if viewModel.showCardImage,
+                           let cardImage = viewModel.cardImage {
+                            cardImage
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 60)
                                 .rotation3DEffect(.degrees(viewModel.flipCardDegrees), axis: (x: 0, y: 1, z: 0))
                                 .scaleEffect(viewModel.flipCardScale)
+                                .accessibilityHidden(true)
                         }
                         if viewModel.showRippleView {
                             Circle()
@@ -59,6 +64,7 @@ extension BlinkIDUXView {
                                 .frame(height: Self.reticleDiameter)
                                 .scaleEffect(viewModel.rippleViewScale)
                                 .opacity(viewModel.rippleViewOpacity)
+                                .accessibilityHidden(true)
                         }
                         if viewModel.showSuccessImage {
                             viewModel.successImage
@@ -68,10 +74,11 @@ extension BlinkIDUXView {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.black, .white)
                                 .scaleEffect(viewModel.successImageScale)
+                                .accessibilityHidden(true)
                         }
-                        if viewModel.showPassportAnimation {
-                            if let passportOrientation = viewModel.passportOrientation {
-                                switch passportOrientation {
+                        if viewModel.passportState.showAnimation {
+                            if let orientation = viewModel.passportState.orientation {
+                                switch orientation {
                                 case .none:
                                     PassportAnimationView()
                                 case .left90:
@@ -83,66 +90,9 @@ extension BlinkIDUXView {
                         }
                     }
                     .frame(height: 100)
-                    
-                    if let text = viewModel.reticleState.text?.localizedString {
-                        MessageContainer(theme: self.theme, text: text)
-                            .accessibilityHidden(true)
-                    }
+                    MessageContainer<ReticleStateMachineType>(theme: self.theme, stateMachine: viewModel.reticleStateMachine)
                 }
             }
         )
     }
-    
-    @ViewBuilder
-    func PassportAnimationView() -> some View {
-        VStack(spacing: 0) {
-            // Top passport image
-            viewModel.passportToAnimationImage
-                .opacity(viewModel.topImageOpacity)
-            
-            ZStack(alignment: .center) {
-                
-                // Bottom passport image
-                viewModel.passportFromAnimationImage
-                    .opacity(viewModel.bottomImageOpacity)
-                
-                // Highlight image that slides
-                viewModel.passportHighlightAnimationImage
-                    .offset(y: -viewModel.passportHighlightDistance)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .offset(y: -PassportAnimationValues.offsets.y)
-        .background(
-            GeometryReader { geometry in
-                Color.clear
-                    .onAppear {
-                        viewModel.passportHighlightDistance = geometry.size.height / 2
-                    }
-            }
-        )
-    }
-    
-    // Add rotated variants if needed
-    @ViewBuilder
-    func PassportAnimationRotatedBy90LeftView() -> some View {
-        PassportAnimationView()
-            .rotationEffect(.degrees(-90))
-            .offset(x: PassportAnimationValues.offsets.x, y: -PassportAnimationValues.offsets.y)
-    }
-    
-    @ViewBuilder
-    func PassportAnimationRotatedBy90RightView() -> some View {
-        PassportAnimationView()
-            .rotationEffect(.degrees(90))
-            .offset(x: -PassportAnimationValues.offsets.x, y: -PassportAnimationValues.offsets.y)
-    }
-}
-
-// Animation values structure
-typealias AnimationOffset = (x: CGFloat, y: CGFloat)
-struct PassportAnimationValues {
-    var opacity: Double = 1.0
-    var offsetY: CGFloat = 0
-    static let offsets: AnimationOffset = (x: 32, y: 32)
 }
