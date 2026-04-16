@@ -13,8 +13,16 @@ import UIKit
 import os.log
 @preconcurrency import AVFoundation
 
+#if canImport(BlinkIDVerify)
+import BlinkIDVerify
+#elseif canImport(BlinkID)
+import BlinkID
+#elseif canImport(BlinkCard)
+import BlinkCard
+#endif
+
 /// An actor that manages the capture pipeline, which includes the capture session, device inputs, and capture outputs.
-actor CaptureService {
+public actor CaptureService {
     /// A value that indicates whether the capture service is idle.
     @Published private(set) var captureActivity: CaptureActivity = .idle
     /// A value that indicates the current capture capabilities of the service.
@@ -107,6 +115,7 @@ actor CaptureService {
         captureSession.stopRunning()
         stopTasks()
         isSetUp = false
+        videoCapture.end()
     }
     
     // MARK: - Capture setup
@@ -121,7 +130,7 @@ actor CaptureService {
         
         do {
             // Retrieve the default camera.
-            let defaultCamera = preferredCamera == .back ? try deviceLookup.defaultCamera : try deviceLookup.frontCamera
+            let defaultCamera = preferredCamera == .back ? try deviceLookup.backCamera : try deviceLookup.frontCamera
 
             // Add inputs for the default camera devices.
             activeVideoInput = try addInput(for: defaultCamera)
@@ -229,7 +238,7 @@ actor CaptureService {
             // An object monitors changes to camera deivce observer (CDO) value.
             for await camera in systemPreferredCamera.changes {
                 // If the CDO isn't the currently selected camera, attempt to change to that device.
-                if let camera, currentDevice != camera {
+                if currentDevice != camera, camera.position == currentDevice.position {
                     logger.debug("Switching camera selection to the system-preferred camera.")
                     changeCaptureDevice(to: camera)
                 }
@@ -418,6 +427,113 @@ actor CaptureService {
 }
 
 fileprivate let logger = Logger(subsystem: "com.microblink.camera", category: "CaptureService")
+
+// - MARK: Pinglets
+extension CaptureService {
+    private func createCameraInputInfoPinglet() -> CameraInputInfoPinglet? {
+        guard let activeInput = activeVideoInput,
+              let previewLayer = captureSession.connections.compactMap({ $0.videoPreviewLayer }).first else {
+            return nil
+        }
+        
+        let device = activeInput.device
+        let cameraFacing: CameraInputInfoPinglet.CameraFacing = device.position == .front ? .front : .back
+        
+        let dimensions = CMVideoFormatDescriptionGetDimensions(device.activeFormat.formatDescription)
+        let cameraFrameWidth = Int(dimensions.width)
+        let cameraFrameHeight = Int(dimensions.height)
+        
+        let previewBounds = previewLayer.bounds
+        let viewPortAspectRatio = Double(previewBounds.width / previewBounds.height)
+        
+        let roiRect = previewLayer.metadataOutputRectConverted(fromLayerRect: previewBounds)
+        let roiWidth = Int(roiRect.width * CGFloat(cameraFrameWidth))
+        let roiHeight = Int(roiRect.height * CGFloat(cameraFrameHeight))
+        
+        return CameraInputInfoPinglet(
+            deviceId: device.localizedName,
+            cameraFacing: cameraFacing,
+            cameraFrameWidth: Int64(cameraFrameWidth),
+            cameraFrameHeight: Int64(cameraFrameHeight),
+            roiWidth: Int64(roiWidth),
+            roiHeight: Int64(roiHeight),
+            viewPortAspectRatio: viewPortAspectRatio
+        )
+    }
+    
+    func sendCameraInputInfoPinglet(sessionNumber: Int) {
+        Task {
+            if let pinglet = createCameraInputInfoPinglet() {
+                await PingManager.shared.addPinglet(pinglet: pinglet, sessionNumber: sessionNumber)
+            }
+        }
+    }
+}
+
+extension CaptureService {
+    private func createCameraHardwareInfoPinglet() -> CameraHardwareInfoPinglet {
+        var availableCameras: [CameraHardwareInfoPinglet.AvailableCamerasItem] = []
+        
+        // Get all available video devices
+        let discoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera, .builtInUltraWideCamera],
+            mediaType: .video,
+            position: .unspecified
+        )
+        
+        for device in discoverySession.devices {
+            let cameraFacing: CameraHardwareInfoPinglet.CameraFacing = device.position == .front ? .front : .back
+            
+            let focus: CameraHardwareInfoPinglet.Focus? = {
+                if device.isFocusModeSupported(.autoFocus) || device.isFocusModeSupported(.continuousAutoFocus) {
+                    return .auto
+                } else if device.isFocusModeSupported(.locked) {
+                    return .fixed
+                }
+                return nil
+            }()
+            
+            var availableResolutions: [CameraHardwareInfoPinglet.AvailableResolutionsItem] = []
+            var seenResolutions = Set<String>()
+            
+            for format in device.formats {
+                let dimensions = CMVideoFormatDescriptionGetDimensions(format.formatDescription)
+                let resolutionKey = "\(dimensions.width)x\(dimensions.height)"
+                
+                if !seenResolutions.contains(resolutionKey) {
+                    seenResolutions.insert(resolutionKey)
+                    availableResolutions.append(
+                        CameraHardwareInfoPinglet.AvailableResolutionsItem(
+                            width: Int64(dimensions.width),
+                            height: Int64(dimensions.height)
+                        )
+                    )
+                }
+            }
+            
+            availableResolutions.sort { $0.width * $0.height > $1.width * $1.height }
+            
+            let cameraItem = CameraHardwareInfoPinglet.AvailableCamerasItem(
+                deviceId: device.localizedName,
+                cameraFacing: cameraFacing,
+                focus: focus,
+                availableResolutions: availableResolutions
+            )
+            
+            availableCameras.append(cameraItem)
+        }
+        
+        return CameraHardwareInfoPinglet(availableCameras: availableCameras)
+    }
+
+    func sendCameraHardwareInfoPinglet() {
+        Task {
+            let pinglet = createCameraHardwareInfoPinglet()
+            await PingManager.shared.addPinglet(pinglet: pinglet, sessionNumber: 0)
+        }
+
+    }
+}
 
 // - MARK: Front/Back Switch
 extension CaptureService {

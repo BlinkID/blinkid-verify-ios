@@ -11,10 +11,16 @@ struct OnboardingAlertView: View {
     @State private var contentHeight: CGFloat = 40
     
     private let theme: any UXThemeProtocol
+    private let title: String
+    private let message: String
+    private let image: Image
     private let dismiss: () -> Void
     
-    init(theme: any UXThemeProtocol, dismiss: @autoclosure @escaping () -> Void) {
+    init(theme: any UXThemeProtocol, title: String, message: String, image: Image, dismiss: @autoclosure @escaping () -> Void) {
         self.theme = theme
+        self.title = title
+        self.message = message
+        self.image = image
         self.dismiss = dismiss
     }
     
@@ -24,12 +30,12 @@ struct OnboardingAlertView: View {
                 VStack(alignment: .center) { bodyContent }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 24)
-                    .accessibilitySortPriority(2)
+                    .accessibilitySortPriority(6)
             } else {
                 HStack(alignment: .center) { bodyContent }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 24)
-                    .accessibilitySortPriority(2)
+                    .accessibilitySortPriority(6)
             }
             Divider()
             Button {
@@ -42,7 +48,7 @@ struct OnboardingAlertView: View {
                     .frame(maxWidth: .infinity)
             }
             .padding(.vertical, 10)
-            .accessibilitySortPriority(1)
+            .accessibilitySortPriority(5)
         }
         .background(theme.alertBackgroundColor)
         .clipShape(
@@ -50,19 +56,22 @@ struct OnboardingAlertView: View {
         )
         .padding(50)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: titleText)
+        }
     }
     
     @ViewBuilder
     var bodyContent: some View {
         if !isPortrait {
-            image
+            alertImage
         }
         
         ScrollView {
             VStack(alignment: isPortrait ? .center : .leading, spacing: 10) {
                 titleText
                 if isPortrait {
-                    image
+                    alertImage
                 }
                 descriptionText
             }
@@ -82,24 +91,25 @@ struct OnboardingAlertView: View {
     }
     
     var titleText: some View {
-        Text("mb_onboarding_dialog_title".localizedString)
+        Text(title.localizedString)
             .bold()
             .font(theme.alertTitleFont)
             .multilineTextAlignment(isPortrait ? .center : .leading)
             .foregroundStyle(theme.alertTitleColor)
             .accessibilitySortPriority(2)
+            .accessibilityHeading(.h1)
     }
     
     var descriptionText: some View {
-        Text("mb_onboarding_dialog_message".localizedString)
+        Text(message.localizedString)
             .font(theme.alertDescriptionFont)
             .multilineTextAlignment(isPortrait ? .center : .leading)
             .foregroundStyle(theme.alertDescriptionColor)
             .accessibilitySortPriority(1)
     }
     
-    var image: some View {
-        Image.allDetailsVisibleImage
+    var alertImage: some View {
+        image
             .resizable()
             .scaledToFit()
             .frame(width: 220)

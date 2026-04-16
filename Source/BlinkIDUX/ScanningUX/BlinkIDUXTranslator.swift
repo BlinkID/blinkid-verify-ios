@@ -22,15 +22,19 @@ final class BlinkIDUXTranslator {
     private var reticleLocked: Bool = false
     private var barcodeTimerTask: Task<Void, Never>?
     
-    func translate(frameProcessResult: FrameProcessResult, session: BlinkIDSession) -> [UIEvent] {
+    func translate(frameProcessResult: FrameProcessResult, scanningSettings: ScanningSettings) -> [UIEvent] {
         var events: [UIEvent] = []
         
         if frameProcessResult.processResult?.resultCompleteness.scanningStatus == .sideScanned && (!backSideDispatched && !passportDispatched) {
             
             if let inputImageAnalysisResult = frameProcessResult.processResult?.inputImageAnalysisResult, inputImageAnalysisResult.documentClassInfo.documentType == .passport {
                 passportDispatched = true
-
-                events.append(.requestDocumentSide(side: .passport(getPassportOrientation(inputImageAnalysisResult.documentRotation))))
+                if [Country.usa, Country.india].contains(inputImageAnalysisResult.documentClassInfo.country) {
+                    events.append(.requestDocumentSide(side: .passportBarcode))
+                } else {
+                    events.append(.requestDocumentSide(side: .passport(inputImageAnalysisResult.documentRotation.passportOrientation)))
+                }
+                
             }
             else {
                 backSideDispatched = true
@@ -56,7 +60,11 @@ final class BlinkIDUXTranslator {
         switch frameProcessResult.processResult?.inputImageAnalysisResult.processingStatus {
         case .scanningWrongSide, .awaitingOtherSide:
             if passportDispatched, let inputImageAnalysisResult = frameProcessResult.processResult?.inputImageAnalysisResult {
-                events.append(.wrongSidePassport(passportOrientation: getPassportOrientation(inputImageAnalysisResult.documentRotation)))
+                if [Country.usa, Country.india].contains(inputImageAnalysisResult.documentClassInfo.country) {
+                    events.append(.wrongSidePassportWithBarcode)
+                } else {
+                    events.append(.wrongSidePassport(passportOrientation: inputImageAnalysisResult.documentRotation.passportOrientation))
+                }
             }
             else {
                 events.append(.wrongSide)
@@ -89,19 +97,19 @@ final class BlinkIDUXTranslator {
             break
         }
         
-        if frameProcessResult.processResult?.inputImageAnalysisResult.blurDetectionStatus == .detected {
+        if frameProcessResult.processResult?.inputImageAnalysisResult.blurDetectionStatus == .detected && scanningSettings.skipImagesWithBlur {
             events.append(.blur)
         }
-        if frameProcessResult.processResult?.inputImageAnalysisResult.glareDetectionStatus == .detected {
+        if frameProcessResult.processResult?.inputImageAnalysisResult.glareDetectionStatus == .detected && scanningSettings.skipImagesWithGlare {
             events.append(.glare)
         }
-        if frameProcessResult.processResult?.inputImageAnalysisResult.documentHandOcclusionStatus == .detected {
+        if frameProcessResult.processResult?.inputImageAnalysisResult.documentHandOcclusionStatus == .detected && scanningSettings.skipImagesOccludedByHand {
             events.append(.occlusion)
         }
-        if frameProcessResult.processResult?.inputImageAnalysisResult.documentLightingStatus == .tooDark {
+        if frameProcessResult.processResult?.inputImageAnalysisResult.documentLightingStatus == .tooDark && scanningSettings.skipImagesWithInadequateLightingConditions {
             events.append(.tooDark)
         }
-        if frameProcessResult.processResult?.inputImageAnalysisResult.documentLightingStatus == .tooBright {
+        if frameProcessResult.processResult?.inputImageAnalysisResult.documentLightingStatus == .tooBright && scanningSettings.skipImagesWithInadequateLightingConditions {
             events.append(.tooBright)
         }
         
@@ -126,16 +134,18 @@ final class BlinkIDUXTranslator {
             }
         }
     }
-    
-    private func getPassportOrientation(_ documentRotation: DocumentRotation) -> PassportOrientation {
+}
+
+extension DocumentRotation {
+    public var passportOrientation: PassportOrientation {
         let currentOrientation = UIDevice.current.orientation
         let isPortrait = currentOrientation.isPortrait || currentOrientation == .unknown
         let isFlat = currentOrientation.isFlat
         if isPortrait {
-            if documentRotation == .zero {
+            if self == .zero {
                 return PassportOrientation.right90
             }
-            if documentRotation == .upsideDown {
+            if self == .upsideDown {
                 return PassportOrientation.left90
             }
         }
@@ -144,10 +154,10 @@ final class BlinkIDUXTranslator {
         }
         else {
             if currentOrientation.isLandscape {
-                if documentRotation == .zero {
+                if self == .zero {
                     return PassportOrientation.none
                 }
-                else if documentRotation == .clockwise90 {
+                else if self == .clockwise90 {
                     if currentOrientation == .landscapeLeft {
                         return PassportOrientation.right90
                     }
@@ -155,7 +165,7 @@ final class BlinkIDUXTranslator {
                         return PassportOrientation.right90
                     }
                 }
-                else if documentRotation == .counterClockwise90 {
+                else if self == .counterClockwise90 {
                     if currentOrientation == .landscapeLeft {
                         return PassportOrientation.left90
                     }
@@ -163,12 +173,12 @@ final class BlinkIDUXTranslator {
                         return PassportOrientation.right90
                     }
                 }
-                else if documentRotation == .upsideDown {
+                else if self == .upsideDown {
                     return PassportOrientation.none
                 }
             }
         }
-        
+
         return PassportOrientation.none
     }
 }

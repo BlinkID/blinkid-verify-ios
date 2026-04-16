@@ -1,11 +1,11 @@
-//  Created by Toni Krešo on 22.11.2024.. 
+//  Created by Toni Krešo on 13.02.2026..
 //  Copyright (c) Microblink. All rights reserved.
 //  Modifications are allowed under the terms of the license for files located in the UX/UI lib folder.
 //
 
 import SwiftUI
 
-enum OnboardingStep: Int, CaseIterable, Identifiable {
+enum OnboardingStep: Int, OnboardingStepProtocol {
     case allFieldsVisible, harshLight, keepStill
     
     var id: Int { rawValue }

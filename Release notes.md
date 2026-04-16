@@ -1,5 +1,23 @@
 # Release notes
 
+## 3.20.0
+
+### What's New
+- Update to BlinkID v7.7 for document capturing and extraction
+
+### Minor API changes
+- added new settings to `ScanningSettings`:
+  - `scanPassportDataPageOnly` - when enabled, only the passport data page (containing `MRZ`) is scanned; when disabled, scanning of the second page is required for certain passports
+  - `scanUnsupportedBack` - when enabled, the back side of documents whose back side is not supported will also be scanned
+- added new properties to `BlinkIDVerifyRequestSettings`:
+  - `photocopyMatchLevel`
+  - `photoForgeryMatchLevel`
+  - `generativeAiMatchLevel`
+- added new properties to `ExtractionFrameAnalysisResult`:
+  - `documentClassInfo`
+  - `documentOrientation`
+  - `documentRotation`
+
 ## 3.14.2
 
 ### Bugfixes
