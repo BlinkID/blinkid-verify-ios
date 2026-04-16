@@ -25,7 +25,7 @@ enum UIState {
 
 @MainActor
 final class BlinkIDVerifyViewModel: ObservableObject {
-    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBKWNvbS5taWNyb2JsaW5rLkRvY3VtZW50VmVyaWZpY2F0aW9uU2FtcGxl/cT+zgvB/gf4RsGVXwjWVESBt+5XVJwXU24kfSmcgWvVxzNbXxUvgwzFyM5T9Eu6cqbdkWkz3DPMuY2f3AoG/P5qTuyqJPeUyZ9aCFci1/BQzJqElIjfjkyUQ2Eztm/7+4s7LPxAv72mlgqwVwI="
+    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBKWNvbS5taWNyb2JsaW5rLkRvY3VtZW50VmVyaWZpY2F0aW9uU2FtcGxl/cT+zgvB/gf4RsGVv5SpZYs3Rl9fvCPdHsyVTcaI9IG5E6DTtwma7VDWaLZvllk8CGfITBAs2hcSn2h4I+ikrsUNTTZLjSfWu6hEtovlh+KNp+1XfcaVAb/KvNaxgSFQ6wkCTXaeOnqFXxIyxHk="
     private var sdkInstance: BlinkIDVerifySdk?
     private var cancellables = Set<AnyCancellable>()
     @Published var state: UIState = .loading
@@ -52,36 +52,38 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             state = .error("Failed to perform scan due to missing sdk")
             return
         }
-        let analyzer = await BlinkIDVerifyAnalyzer(sdk: sdkInstance, eventStream: BlinkIDVerifyEventStream())
+        let analyzer = try? await BlinkIDVerifyAnalyzer(sdk: sdkInstance, eventStream: BlinkIDVerifyEventStream())
         
-        if customScan {
-            let scanningUxModel = CustomScanningViewModel(analyzer: analyzer)
-            scanningUxModel.$captureResult
-                .sink { [weak self] captureResult in
-                    if let captureResult = captureResult {
-                        self?.state = .success(captureResult)
-                    } else {
-                        self?.state = .home
-                    }
-                }
-                .store(in: &cancellables)
-            state = .scanCustom(scanningUxModel)
-        } else {
-            let scanningUxModel = ScanningUXModel(analyzer: analyzer)
-            scanningUxModel.$captureResult
-                .sink { [weak self] captureResultState in
-                    if let captureResultState {
-                        if let captureResult = captureResultState.captureResult {
+        if let analyzer = analyzer {
+            if customScan {
+                let scanningUxModel = CustomScanningViewModel(analyzer: analyzer)
+                scanningUxModel.$captureResult
+                    .sink { [weak self] captureResult in
+                        if let captureResult = captureResult {
                             self?.state = .success(captureResult)
-                        }
-                        else {
+                        } else {
                             self?.state = .home
                         }
                     }
-                }
-                .store(in: &cancellables)
-            
-            state = .scanBuiltin(scanningUxModel)
+                    .store(in: &cancellables)
+                state = .scanCustom(scanningUxModel)
+            } else {
+                let scanningUxModel = ScanningUXModel(analyzer: analyzer)
+                scanningUxModel.$captureResult
+                    .sink { [weak self] captureResultState in
+                        if let captureResultState {
+                            if let captureResult = captureResultState.captureResult {
+                                self?.state = .success(captureResult)
+                            }
+                            else {
+                                self?.state = .home
+                            }
+                        }
+                    }
+                    .store(in: &cancellables)
+                
+                state = .scanBuiltin(scanningUxModel)
+            }
         }
     }
     
