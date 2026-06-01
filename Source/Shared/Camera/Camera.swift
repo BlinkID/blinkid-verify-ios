@@ -397,7 +397,7 @@ extension ScanningConditionsPinglet.DeviceOrientation {
         case .landscapeLeft:
             return .landscapeleft
         @unknown default:
-            fatalError("Unknown AVCaptureVideoOrientation: \(orientation)")
+            return .landscaperight
         }
     }
 }

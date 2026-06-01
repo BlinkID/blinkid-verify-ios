@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.21.0
+
+### What's New
+- Update to BlinkID v7.8 for document capturing and extraction
+
 ## 3.20.0
 
 ### What's New
@@ -18,20 +23,12 @@
   - `documentOrientation`
   - `documentRotation`
 
-## 3.14.2
-
-### Bugfixes
-- Fixed issue with verify request affected by endpoint API changes
-
-## 3.14.1
-
-### Improvements
-- Added the option to use the front-facing camera for scanning. You can select front-facing camera through `ScanningUXSettings` property of `ScanningUXModel` and `BlinkIDUXModel`.
-- Added haptics to the scanning process. Haptics can be disabled in `ScanningUXSettings`
-
-### Breaking API Changes
-- Removed `shouldShowIntroductionAlert` and `showHelpButton` from `ScanningUXModel` and `BlinkIDUXModel` init. They are now included in the `ScanningUXSettings` property.
-- Added `ScanningUXSettings` to `ScanningUXModel` and `BlinkIDUXModel` init
+### Improvements and bug fixes
+- Added custom passport animations - users are now guided with tailored animations when scanning passports, improving the scanning experience for passport documents
+- Refactored and extracted the reticle state into a dedicated state machine for cleaner separation and easier customization
+- Added a "document not supported" alert - when an unsupported document is detected during scanning, the user is now clearly notified via an alert
+- UI localization coverage has been expanded with additional languages
+- Other miscellaneous improvements
 
 ## 3.14.0
 
