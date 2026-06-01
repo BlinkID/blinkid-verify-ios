@@ -8,6 +8,9 @@
 
 The Document Verification SDK is a comprehensive solution for implementing secure document scanning and verification on iOS. It offers powerful capabilities for capturing, analyzing, and verifying a wide range of identification documents. The package consists of BlinkIDVerify, which serves as the core module, and an optional BlinkIDVerifyUX package that provides a complete, ready-to-use solution with a user-friendly interface.
 
+
+The list of all supported documents and result fields can be found [here](https://docs.microblink.com/blinkid/supported-documents).
+
 # Table of Contents
 
 - [Requirements](#requirements)

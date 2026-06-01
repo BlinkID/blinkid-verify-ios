@@ -210,7 +210,10 @@ public actor CaptureService {
     // Changes the device the service uses for video capture.
     private func changeCaptureDevice(to device: AVCaptureDevice) {
         // The service must have a valid video input prior to calling this method.
-        guard let currentInput = activeVideoInput else { fatalError() }
+        guard let currentInput = activeVideoInput else {
+            logger.error("Missing video input")
+            return
+        }
         
         // Bracket the following configuration in a begin/commit configuration pair.
         captureSession.beginConfiguration()
@@ -255,9 +258,10 @@ public actor CaptureService {
     }
     
     func updatePreviewOrientation(_ orientation: AVCaptureVideoOrientation) {
-        let previewLayer = videoPreviewLayer
-        Task { @MainActor in
-            previewLayer.connection?.videoOrientation = orientation
+        if let previewLayer = videoPreviewLayer {
+            Task { @MainActor in
+                previewLayer.connection?.videoOrientation = orientation
+            }
         }
     }
 
@@ -266,10 +270,11 @@ public actor CaptureService {
         outputServices.forEach { $0.setVideoOrientation(orientation) }
     }
     
-    private var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer? {
         // Access the capture session's connected preview layer.
         guard let previewLayer = captureSession.connections.compactMap({ $0.videoPreviewLayer }).first else {
-            fatalError("The app is misconfigured. The capture session should have a connection to a preview layer.")
+            logger.error("The app is misconfigured. The capture session should have a connection to a preview layer.")
+            return nil
         }
         return previewLayer
     }
@@ -281,12 +286,13 @@ public actor CaptureService {
     /// The app calls this method as the result of a person tapping on the preview area.
     func focusAndExpose(at point: CGPoint) {
         // The point this call receives is in view-space coordinates. Convert this point to device coordinates.
-        let devicePoint = videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: point)
-        do {
-            // Perform a user-initiated focus and expose.
-            try focusAndExpose(at: devicePoint, isUserInitiated: true)
-        } catch {
-            logger.debug("Unable to perform focus and exposure operation. \(error)")
+        if let devicePoint = videoPreviewLayer?.captureDevicePointConverted(fromLayerPoint: point) {
+            do {
+                // Perform a user-initiated focus and expose.
+                try focusAndExpose(at: devicePoint, isUserInitiated: true)
+            } catch {
+                logger.debug("Unable to perform focus and exposure operation. \(error)")
+            }
         }
     }
     
