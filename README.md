@@ -31,6 +31,7 @@ The list of all supported documents and result fields can be found [here](https:
   - [ScanningUXModel](#scanningUXModel)
   - [ScanningUXView](#scanningUXModel)
 - [Creating custom UX component](#creating-custom-ux-component)
+- [Supported documents ](#supported-docs)
 - [SDK Integration Troubleshooting](#sdk-integration-troubleshooting)
 - [SDK size](#document-verification-sdk-size)
 - [Additional info](#additional-info)
@@ -1207,6 +1208,26 @@ struct ContentView: View {
 ```
 
 And that's it! You have created a custom SwiftUI View and ViewModel!
+
+## <a name="supported-docs"></a> Supported documents 
+
+BlinkID Verify SDK uses BlinkID SDK for document scanning and extraction. The list of supported documents and result fields is maintained for BlinkID SDK.
+
+To determine what is supported in a specific Verify SDK version:
+
+1. Find your Verify SDK version in the table below.
+2. Note the corresponding BlinkID SDK version.
+3. Check the [supported documents documentation](https://docs.microblink.com/blinkid/supported-documents) for that BlinkID version.
+
+Version mapping:
+
+| Verify SDK | BlinkID SDK |
+| :--------: |:-----------:|
+| v3.21.0    |    v7.8     |
+| v3.20.0    |    v7.7     |
+| v3.14.1    |    v7.4     |
+| v3.14.0    |    v7.4     |
+| v3.9.0     |    v7.0     |
 
 ## <a name="sdk-integration-troubleshooting"></a> SDK Integration Troubleshooting
 
