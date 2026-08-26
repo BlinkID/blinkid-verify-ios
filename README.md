@@ -8,9 +8,6 @@
 
 The Document Verification SDK is a comprehensive solution for implementing secure document scanning and verification on iOS. It offers powerful capabilities for capturing, analyzing, and verifying a wide range of identification documents. The package consists of BlinkIDVerify, which serves as the core module, and an optional BlinkIDVerifyUX package that provides a complete, ready-to-use solution with a user-friendly interface.
 
-
-The list of all supported documents and result fields can be found [here](https://docs.microblink.com/blinkid/supported-documents).
-
 # Table of Contents
 
 - [Requirements](#requirements)
@@ -31,7 +28,7 @@ The list of all supported documents and result fields can be found [here](https:
   - [ScanningUXModel](#scanningUXModel)
   - [ScanningUXView](#scanningUXModel)
 - [Creating custom UX component](#creating-custom-ux-component)
-- [Supported documents ](#supported-docs)
+- [Localization](#localization)
 - [SDK Integration Troubleshooting](#sdk-integration-troubleshooting)
 - [SDK size](#document-verification-sdk-size)
 - [Additional info](#additional-info)
@@ -1209,25 +1206,45 @@ struct ContentView: View {
 
 And that's it! You have created a custom SwiftUI View and ViewModel!
 
-## <a name="supported-docs"></a> Supported documents 
+## <a name="localization"></a> Localization
 
-BlinkID Verify SDK uses BlinkID SDK for document scanning and extraction. The list of supported documents and result fields is maintained for BlinkID SDK.
+Our app supports localization following Apple’s recommended approach. We provide a `Localizable.xcstrings` file that you can use or modify as needed. Localization is determined by the system settings, meaning you must define 
+supported languages in your app’s `Info.plist` under the `Localizations` key, ensuring all required keys are included. Once configured, users can change the app’s language via Settings > [App Name] > Language. Note that in-app 
+language switching is not supported, as we adhere to Apple’s intended localization flow.
 
-To determine what is supported in a specific Verify SDK version:
+### <a name="custom-translations"></a> Providing your own translations
 
-1. Find your Verify SDK version in the table below.
-2. Note the corresponding BlinkID SDK version.
-3. Check the [supported documents documentation](https://docs.microblink.com/blinkid/supported-documents) for that BlinkID version.
+If you want to override some or all of the SDK's built-in strings — for example to change the wording, or to ship a language we don't provide out of the box — you can point the SDK at your own translations bundle through the theme.
 
-Version mapping:
+Add the keys you want to override (the SDK's string keys are prefixed with `mb_`, e.g. `mb_back_instructions`) to your app's `Localizable.xcstrings` (or a dedicated `.strings`/`.stringsdict` table), then configure the theme before presenting the scanning UI:
 
-| Verify SDK | BlinkID SDK |
-| :--------: |:-----------:|
-| v3.21.0    |    v7.8     |
-| v3.20.0    |    v7.7     |
-| v3.14.1    |    v7.4     |
-| v3.14.0    |    v7.4     |
-| v3.9.0     |    v7.0     |
+```swift
+import BlinkIDUX
+
+// Load overrides from your app's main bundle.
+BlinkIDTheme.shared.localizationBundle = .main
+
+// Optional: if your overrides live in a dedicated table (e.g. BlinkIDStrings.xcstrings),
+// set its name here. Leave it as nil to use the default `Localizable` table.
+BlinkIDTheme.shared.localizationTableName = "BlinkIDStrings"
+```
+
+For every string, the SDK first looks up the key in `localizationBundle` and falls back to its own built-in translation when the key isn't found — so you only need to provide the strings you actually want to change. Set `localizationBundle` back to `nil` to restore the SDK's own translations.
+
+### <a name="forcing-a-language"></a> Forcing a specific language (in-app language switching)
+
+By default the SDK follows the device's system language. If you want to display the scanning UI in a specific language regardless of the device settings — for example to let users switch language from within your app — set the language on the theme:
+
+```swift
+import BlinkIDUX
+
+BlinkIDTheme.shared.language = "de"   // force German
+// BlinkIDTheme.shared.language = nil // follow the system language (default)
+```
+
+The language must be present in the SDK's bundled translations (or in your `localizationBundle`); if it isn't, the SDK falls back to the system language. Right-to-left languages (Arabic, Hebrew, …) automatically flip the scanning UI's layout direction.
+
+Configure this **before presenting the scanning UI** — SwiftUI does not re-render an already-visible scanning screen when the value changes, so set it prior to launching a new scan.
 
 ## <a name="sdk-integration-troubleshooting"></a> SDK Integration Troubleshooting
 

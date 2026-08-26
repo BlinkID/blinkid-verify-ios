@@ -25,7 +25,7 @@ enum UIState {
 
 @MainActor
 final class BlinkIDVerifyViewModel: ObservableObject {
-    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBKWNvbS5taWNyb2JsaW5rLkRvY3VtZW50VmVyaWZpY2F0aW9uU2FtcGxl/cT+zgvB/gf4RsGVv5SpZYs3Rl9fvCPdHsyVTcaI9IG5E6DTtwma7VDWaLZvllk8CGfITBAs2hcSn2h4I+ikrsUNTTZLjSfWu6hEtovlh+KNp+1XfcaVAb/KvNaxgSFQ6wkCTXaeOnqFXxIyxHk="
+    private let licenseKey = "sRwDAAEpY29tLm1pY3JvYmxpbmsuRG9jdW1lbnRWZXJpZmljYXRpb25TYW1wbGUBCk1pY3JvYmxpbmsrTqiAFrB7/SM4U6JgO29Dkmhq3gruMihZLlJnEh/QG8PRg7HXf0UqJmNTfj1t/a0Wyeb5154oCkV9um6CYZkZN9ykklnaybi/Fg2iHNni5xGZbzu4FAMc+YXdbItRgGDCA3GHms3+"
     private var sdkInstance: BlinkIDVerifySdk?
     private var cancellables = Set<AnyCancellable>()
     @Published var state: UIState = .loading
@@ -53,7 +53,6 @@ final class BlinkIDVerifyViewModel: ObservableObject {
             return
         }
         let analyzer = try? await BlinkIDVerifyAnalyzer(sdk: sdkInstance, eventStream: BlinkIDVerifyEventStream())
-        
         if let analyzer = analyzer {
             if customScan {
                 let scanningUxModel = CustomScanningViewModel(analyzer: analyzer)

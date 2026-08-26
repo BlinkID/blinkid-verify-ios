@@ -301,6 +301,7 @@ extension ScanningUXProtocol where Self: View {
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                 viewModel.resumeScanning()
             }
+            .mbLocalizationLayoutDirection()
         )
     }
     
@@ -361,5 +362,23 @@ extension ScanningUXProtocol where Self: View {
                 MessageContainer<ReticleStateMachineType>(theme: self.theme, stateMachine: viewModel.reticleStateMachine)
             }
         )
+    }
+}
+
+extension View {
+    /// Forces the SwiftUI layout direction to match `Bundle.languageOverride`
+    /// (right-to-left for languages such as Arabic or Hebrew). When no language
+    /// override is active, the view is returned unchanged so it keeps following
+    /// the system / host layout direction.
+    @ViewBuilder
+    func mbLocalizationLayoutDirection() -> some View {
+        switch Bundle.overrideCharacterDirection {
+        case .rightToLeft:
+            self.environment(\.layoutDirection, .rightToLeft)
+        case .leftToRight:
+            self.environment(\.layoutDirection, .leftToRight)
+        default:
+            self
+        }
     }
 }
