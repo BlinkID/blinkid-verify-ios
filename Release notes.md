@@ -1,5 +1,9 @@
 # Release notes
 
+## 3.21.1
+
+- Added support for setting a custom localization bundle and switching the in-app language at runtime
+
 ## 3.21.0
 
 ### What's New
